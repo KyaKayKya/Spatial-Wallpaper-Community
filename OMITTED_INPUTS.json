@@ -1,0 +1,1631 @@
+{
+  "format": 1,
+  "source_commit": "564c1c685f8893e609ec0620735da2ab50819d99",
+  "notice": "Omitted assets must be obtained separately with their own distribution rights. No LFS fetching is performed.",
+  "inputs": [
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/Blocks.png",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/Catalog.json",
+      "reason": "artwork-resource-metadata"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/EditorAssets.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/Materials/Cutout.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/Materials/Glass.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/Materials/Glow.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/Materials/Ground.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/Materials/Opaque.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/Materials/Particles.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/Materials/ReflectionBinding.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/Materials/Water.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/Materials/WaterSurface.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/SOURCES.json",
+      "reason": "artwork-resource-metadata"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/Sky/SOURCES.json",
+      "reason": "artwork-resource-metadata"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/Terrain/dirt.png",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/Terrain/grass_block_top.png",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Resources/Blueprint/Terrain/snow.png",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Scenes/Blueprint.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Settings/Appearance.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Settings/Forward0.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Settings/Forward1.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Settings/Forward2.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Settings/Quality0.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Settings/Quality1.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Settings/Quality2.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Blueprint/Settings/Sky.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Calibration/Fonts/CalibrationChinese.asset",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Calibration/Fonts/SourceHanSansSC-Regular.otf",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Calibration/Resources/Icons/maximize.png",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Calibration/Resources/Icons/maximize.svg",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Calibration/Resources/Icons/rotate-ccw.png",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Calibration/Resources/Icons/rotate-ccw.svg",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Calibration/Resources/Icons/undo-2.png",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Calibration/Resources/Icons/undo-2.svg",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Calibration/Resources/ManagerIcons.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Calibration/Resources/ManagerSurface.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Calibration/Runtime/CalibrationSurface.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Calibration/Scenes/CalibrationDemo.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Desktop/Scenes/NativeEntry.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Resources/Library/limpool.jpg",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Resources/Library/minishotgame.jpg",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Resources/Library/mita.jpg",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Resources/Library/no-wallpaper.png",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Resources/Library/parking.jpg",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Resources/Library/pool.jpg",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Resources/Library/rainycafe.jpg",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Resources/Library/showcase.jpg",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Resources/Library/train.jpg",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Scenes/Library.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Scenes/blueprint.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Scenes/limpool.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Scenes/minishotgame.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Scenes/mita.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Scenes/parking.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Scenes/pool.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Scenes/rainycafe.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Scenes/showcase.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Library/Scenes/train.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Limpool/Materials/NeutralPlaster.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Limpool/Materials/ReflectionBinding.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Limpool/Materials/ReflectionSplit.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Limpool/Materials/SatinRails.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Limpool/Materials/Sky.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Limpool/Materials/SkylightRadiance.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Limpool/Materials/Underwater.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Limpool/Materials/Water.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Limpool/Materials/WaterLight.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Limpool/Scenes/Limpool.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Limpool/Settings/Appearance.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Limpool/Settings/Forward.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Limpool/Settings/LimpoolURP.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/MiniShotGame/Generated/manifest.json",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/MiniShotGame/Materials/FloorGrid.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/MiniShotGame/Materials/VertexEmission.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/MiniShotGame/Materials/WallGrid.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/MiniShotGame/Prefabs/MiniShotContent.prefab",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/MiniShotGame/Scenes/MiniShotGame.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Baked/BakeryFixtures_final.hdr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Baked/BakeryGround_final.hdr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/Asphalt.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/BakeryAlbedoProxy.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/CRTV.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/CRTVHS.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/CRT_0.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/CRT_1.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/CRT_STATIC_17___two_active_screens_only.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/CRT_STATIC_31___two_active_screens_only.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/CRT_glass_OFF___no_emission.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/Dark_anodized_cast_aluminum.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/Faded_off_white_parking_paint.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/Frosted_lamp_lens___physically_emissive.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/Lamp_black_rubber_gasket.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/Night_asphalt_fine_aggregate.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/Oxidized_zinc_hardware.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/Satin_galvanized_charcoal_steel.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/Screen.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/Screen_001.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/Television_01.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/Weathered_clean_concrete_plinth.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Materials/television_02.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/Ground.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/GroundBakeFar.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/GroundBakeNear.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/LampLOD.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/LampNear.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/TV_01_Housing.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/TV_01_Screen.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/TV_02_Housing.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/TV_02_Screen.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/TV_03_Housing.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/TV_03_Screen.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/TV_04_Housing.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/TV_04_Screen.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/TV_05_Housing.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/TV_05_Screen.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/TV_06_Housing.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/TV_06_Screen.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/TV_07_Housing.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/TV_07_Screen.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/TV_08_Housing.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Meshes/TV_08_Screen.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Prefabs/ParkingContent.prefab",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Scenes/Parking.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Settings/BakeryFixtures.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Settings/BakeryGround.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Settings/Night.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Settings/ParkingBox.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Settings/ParkingForward.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Settings/ParkingURP.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Back wall.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Ceiling front.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Ceiling left.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Ceiling rear.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Ceiling right.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Central tiled column.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Left wall.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Right wall.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Skylight front.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Skylight left.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Skylight rear.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Skylight right.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 01.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 02.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 03.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 04.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 05.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 06.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 07.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 08.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 09.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 10.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 11.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 12.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 13.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 14.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 15.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 16.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 17.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 18.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 19.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 20.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 21.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 22.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 23.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 24.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 25.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Spiral step 26.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/Underwater floor.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/manifest.json",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Baked/pool_baked.fbx",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Lighting/Bakery/Pool_LM0_dir.tga",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Lighting/Bakery/Pool_LM0_final.hdr",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Lighting/Bakery/Pool_LMA1_dir.tga",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Lighting/Bakery/Pool_LMA1_final.hdr",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Lighting/Bakery/Pool_LMA2_dir.tga",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Lighting/Bakery/Pool_LMA2_final.hdr",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Lighting/Bakery/Pool_LMA3_dir.tga",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Lighting/Bakery/Pool_LMA3_final.hdr",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Lighting/Bakery/Pool_LMA4_dir.tga",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Lighting/Bakery/Pool_LMA4_final.hdr",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Lighting/Bakery/Pool_LMA5_dir.tga",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Lighting/Bakery/Pool_LMA5_final.hdr",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Back wall.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/BakeryCeramic.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Ceiling front.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Ceiling left.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Ceiling rear.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Ceiling right.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Central tiled column.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/CeramicAndCaustics.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/CutawayTint.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Left wall.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/PoolWater.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Right wall.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/RingVinyl.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Skylight front.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Skylight left.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Skylight rear.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Skylight right.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 01.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 02.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 03.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 04.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 05.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 06.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 07.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 08.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 09.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 10.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 11.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 12.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 13.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 14.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 15.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 16.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 17.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 18.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 19.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 20.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 21.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 22.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 23.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 24.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 25.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Spiral step 26.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/Underwater floor.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Materials/WaterReflection.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Models/FrontGrid.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Models/WaterGrid.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Models/pool_static.fbx",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Scenes/Pool.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Settings/PoolAppearance.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Settings/PoolForward.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Settings/PoolURP.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Source/import-manifest.json",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Source/revision_validation.json",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Source/validation_manifest.json",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Textures/Caustics.tif",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Textures/ivory_tiles_basecolor.png",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Textures/ivory_tiles_height.png",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Textures/ivory_tiles_normal.png",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Textures/ivory_tiles_roughness.png",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Pool/Textures/ring_retro_basecolor.png",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Generated/manifest.json",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Ceiling.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Counter.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Exterior.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Flame0.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Flame1.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Flame2.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Flame3.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Flame4.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Flame5.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Floor.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Foliage.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Furniture.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Glass.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Lamps.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/LeftNearWallReturn.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Photographs.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Plants.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/PluginRain0Rain Impact.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/PluginRain0Rain.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/PluginRain1Rain Impact.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/PluginRain1Rain.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/PluginRain2Rain Impact.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/PluginRain2Rain.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Props.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Rain0.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Rain1.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Rain2.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/RightNearWallReturn.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/SmallGlass.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Steam0.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Steam1.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/StreetBulb.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/StreetGlass.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Materials/Walls.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Meshes/CoffeeSteam0.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Meshes/CoffeeSteam1.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Meshes/Flame0.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Meshes/Flame1.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Meshes/Flame2.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Meshes/Flame3.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Meshes/Flame4.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Meshes/Flame5.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Meshes/RainLayer0.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Meshes/RainLayer1.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Meshes/RainLayer2.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Prefabs/RainyCafeContent.prefab",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Scenes/RainyCafe.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Settings/RainyCafeForward.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/RainyCafe/Settings/RainyCafeURP.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Settings/BakeryProjectSettings.asset",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/AcceptedAgX.png",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/CabinetBaked.fbx",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Back_empty.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Back_empty.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Back_occupied.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Back_occupied.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Base_empty.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Base_empty.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Base_occupied.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Base_occupied.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Left_empty.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Left_empty.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Left_occupied.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Left_occupied.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Right_empty.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Right_empty.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Right_occupied.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Right_occupied.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Top_empty.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Top_empty.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Top_occupied.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Cabinet_Top_occupied.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/CeilingPinlight_Left_empty.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/CeilingPinlight_Left_occupied.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/CeilingPinlight_Right_empty.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/CeilingPinlight_Right_occupied.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/EmptyReflection.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Organic_Sculpture__Flareworks_Studio_occupied.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Shelf_empty.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Shelf_empty.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Shelf_occupied.exr",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Shelf_occupied.mat",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/bake-manifest.json",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Materials/IvoryCeramic.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Materials/MatteBacking.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Materials/WarmWhitePaint.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Models/Cabinet.fbx",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Models/Ceramic.fbx",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Prefabs/ReplaceableCeramic.prefab",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Prefabs/ReplaceableOrganic.prefab",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Scenes/Showcase.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Scenes/Showcase/LightingData.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Scenes/Showcase/Lightmap-0_comp_light.exr",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Scenes/Showcase/Lightmap-0_comp_shadowmask.png",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Scenes/Showcase/ReflectionProbe-0.exr",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Settings/DisplayAppearance.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Settings/EmptyCabinetLighting.lighting",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Settings/EmptyCabinetReflection.exr",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Settings/ShowcaseForward.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Settings/ShowcaseURP.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/StreamingAssets/display-profile.json",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/StreamingAssets/tracking-calibration-synthetic.json",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Fonts/LiberationSans.ttf",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Resources/TMP Settings.asset",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMP_SDF.shader",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMP_Sprite.shader",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMPro.cginc",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Sprites/EmojiOne.json",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/TextMesh Pro/Sprites/EmojiOne.png",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/ThirdParty/BoatAttack/source.json",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/ThirdParty/PlanarReflections/SOURCE.txt",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/ThirdParty/URPWater/Graphs/Caustics.shadersubgraph",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/ThirdParty/URPWater/Graphs/WaterDistortion.shadergraph",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/ThirdParty/URPWater/Graphs/WaterSurface.shadergraph",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/ThirdParty/URPWater/Graphs/WaterUnder.shadergraph",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/ThirdParty/URPWater/README.md",
+      "reason": "third-party-input-not-authorized"
+    },
+    {
+      "path": "Prototype/Assets/Train/Generated/manifest.json",
+      "reason": "original-or-third-party-asset-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Materials/Architecture.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Materials/Details.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Materials/Furnishings.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Materials/Lamps.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Materials/Window0.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Materials/Window1.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Materials/Window2.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Materials/Window3.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Materials/Window4.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Materials/Window5.mat",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Materials/WindowMesh0.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Materials/WindowMesh1.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Materials/WindowMesh2.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Materials/WindowMesh3.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Materials/WindowMesh4.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Materials/WindowMesh5.asset",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Prefabs/TrainContent.prefab",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Scenes/Train.unity",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/Train/Textures/SnowTrees.png",
+      "reason": "asset-or-binary-input"
+    },
+    {
+      "path": "Prototype/Assets/UniversalRenderPipelineGlobalSettings.asset",
+      "reason": "third-party-input-not-authorized"
+    }
+  ]
+}

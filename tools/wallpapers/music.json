@@ -1,0 +1,152 @@
+[
+  {
+    "scene": "MiniShotGame",
+    "title": "Aurora",
+    "author": "Cal McEachern (Trex0n)",
+    "page": "https://opengameart.org/content/aurora-0",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "url": "https://opengameart.org/sites/default/files/aurora.wav",
+    "sha256": "a1469bd6adbb1db5a19c899f646e5769a214e1d9574b5157335c09d57fb56a25",
+    "bytes": 21168146,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "pcm_s24le",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "80.000000"
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "title": "Sunset Walk",
+    "author": "Kilua Boy",
+    "page": "https://opengameart.org/content/sunset-walk-ambient-quiet-sweet-loop",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "url": "https://opengameart.org/sites/default/files/SunsetWalk.ogg",
+    "sha256": "1d230721e6200276065b913e44943d0e0503af88fc2dd793be1249738e06d98c",
+    "bytes": 1828550,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "76.800000"
+      }
+    }
+  },
+  {
+    "scene": "Showcase",
+    "title": "Calm Track",
+    "author": "pmiller",
+    "page": "https://opengameart.org/content/calm-track",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "url": "https://opengameart.org/sites/default/files/calm_track-loop.ogg",
+    "sha256": "8c49a37fb9ee5994c919d0e43cf397dd990cb7f2c6c1200b9710a8fe942ad969",
+    "bytes": 3415564,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "249.237188"
+      }
+    }
+  },
+  {
+    "scene": "Parking",
+    "title": "Subtle Bass",
+    "author": "TinyWorlds",
+    "page": "https://opengameart.org/content/subtle-bass",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "url": "https://opengameart.org/sites/default/files/bassy_tune.ogg",
+    "sha256": "2739e35bbf2dd29e8b1cfba7d322698f6682795f5377a2cfcf1df3fbf62832ce",
+    "bytes": 443714,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "60.640363"
+      }
+    }
+  },
+  {
+    "scene": "RainyCafe",
+    "title": "Rain Drops",
+    "author": "SpringySpringo",
+    "page": "https://opengameart.org/content/rain-drops",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "url": "https://opengameart.org/sites/default/files/rain_drops_2.mp3",
+    "sha256": "44f3439ba189b1e2a99ccc5f977aff0258e8ff45776653cdd714434c57622b07",
+    "bytes": 7104260,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "177.606500"
+      }
+    }
+  },
+  {
+    "scene": "RainyCafe-rain",
+    "title": "Rain on Window Loop",
+    "author": "alxl",
+    "page": "https://opengameart.org/content/rain-on-window-loop",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "url": "https://opengameart.org/sites/default/files/rain_on_window_loop.wav",
+    "sha256": "97b9405025e5ed7ed8a58d24dd7146d06e925519b1f718efda94bb85dcd1a61a",
+    "bytes": 1916852,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "pcm_s16le",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "10.866259"
+      }
+    }
+  }
+]

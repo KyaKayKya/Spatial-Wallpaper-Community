@@ -1,0 +1,18 @@
+{
+  "bundle": "bfa911b00a80f276",
+  "files": {
+    "Architecture.png": "497933e53f86c367c2d9edf6e058f26f46027d61b3f18259dbf1ae792cbe81e8",
+    "Furnishings.png": "0cb03e292ce1c65bc9157d1b339a8366ee06eed751ed97206689ad0f468362c3",
+    "Details.png": "be66bb780e7d38520812692a90798ec971a4ad9ec13314b7dd39180f9a7301c3",
+    "Lamps.png": "b29aa73e056b793c22a60888c63ccdd7d2cd6559b8bb97e1b325650ea574085e",
+    "Architecture.fbx": "285bbadde381450dd98315571e54f69c4d3f1ee44791257ae32354b1a27d1532",
+    "Furnishings.fbx": "2f8c73835cb98eea4ceebe0a9f187971629fc3acfaf12349aa76905a22dad67d",
+    "Details.fbx": "c4a544718cf948f4f3dcdf0634c203355f4ebdc6b90ed746bec0b2c7807ea6c7",
+    "Lamps.fbx": "7f1c08ff19047ba1d788d6f4674c4b181775c50567896139c7d2733c9c10130b",
+    "SnowyPark.png": "89ef6397de39220c16295a7d786cc123fc1ece37a645b5a3aada69a642170f17"
+  },
+  "authoring": {
+    "name": "train_compartment_complete.blend",
+    "sha256": "7db1d3223efb619a657c5dde2bc09cfbacbad7da07f1001a9eff1c4c9f318324"
+  }
+}

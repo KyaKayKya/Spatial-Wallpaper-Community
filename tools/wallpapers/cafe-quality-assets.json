@@ -1,0 +1,20 @@
+{
+  "archive": ".local-assets/sdk-scene-20261111/RainyCafeQuality.zip",
+  "sha256": "2d99a86d72fc3b32b5a09d79303f025d980df92429b9765c72c2d1befe686cd2",
+  "files": {
+    "Reduced/Counter.fbx": "ef1ed2922117e45b8e6407e0aa4724535bada0eef3e05506326944d504f5d6a6",
+    "Reduced/Exterior.fbx": "d87bb1f2d98e0ca98dbe465bab6ad43413b4ddd72db219c2d1e04494e752df2f",
+    "Reduced/Foliage.fbx": "7c4da750d3b9a3ed6132240cc2c7cd6c4d35fc28d399ea2ca6b86ae29e942728",
+    "Reduced/Furniture.fbx": "1cbf9b70eb66292a0caf7a331d532e38af1af8cedd055232f150a66a0c6326ed",
+    "Reduced/Lamps.fbx": "33442644f7500a2b3937b92547b89285088b97f3375a9721c1d8bf048bbb98c7",
+    "Reduced/Plants.fbx": "7c4ba5df9dddef303d7593311f3e8ea83299cc2add6530cb93bc94af5be12abe",
+    "Reduced/Props.fbx": "6f55d477037f8ea4ec8eb855aa76bbde0a9f6263686e391a19719f469d9845aa",
+    "Reduced/geometry-source.json": "1acdefa40b152b7917762a0975bb371d55c4ed1e1d6fb52c9d3d6bcd65d40931",
+    "NativeDetails/details.json": "fafdca2d1dd2e2d037a54915ed787342e7d8646ad1d5074b2c188fe738c530e3",
+    "NativeDetails/WindowProps.smesh": "e3749f5b03b667e1df28834a281878eefb7754e3e1a737916fb8ccd944058130",
+    "NativeDetails/PlantPots.smesh": "89cf211af599a9eabc0829169aa7619ae372cbef730ecc6ee97dba9c2aad9fd7",
+    "NativeDetails/FurniturePots.smesh": "ef9c029decb9af196015f436e5ce51e7ab5534141b4f5e55fd44616427a28450"
+  },
+  "source": "Existing licensed local RainyCafe originals; UV-preserving LOD and original Unity triangle detail extraction; no asset migration repeated",
+  "rights": "Local internal use; original redistribution rights unverified"
+}

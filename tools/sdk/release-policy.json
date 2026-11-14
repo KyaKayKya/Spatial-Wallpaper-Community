@@ -1,0 +1,10 @@
+{
+  "id": "sdk-release-acceptance-2026-10-31",
+  "status": "approved-requirements-not-verification",
+  "input": {"idle_seconds": 1800, "interaction_seconds": 1800, "start_stop_cycles": 100, "fault_cycles_each": 20, "uncommanded_focus_losses_allowed": 0, "accepted_input_losses_allowed": 0},
+  "coverage": {"source": "release-supported-configuration-catalog", "identity_dimensions": ["os", "display_topology", "dpi", "render_profile_id", "render_profile_version", "render_profile_format_version"], "all_declared_configurations_require_evidence": true, "missing_catalog_or_evidence": "fail"},
+  "runtime": {"startup_ms": 15000, "frame_progress_ms": 1000, "normal_stop_grace_ms": 500, "max_render_side": 1920, "max_render_pixels": 2073600, "max_fps": 60},
+  "performance": {"resolutions": [[1280, 720], [1920, 1080]], "target_fps": [30, 60], "warmup_seconds": 60, "sample_seconds": 300, "repetitions": 3, "percentiles": [95, 99], "report_maximum": true, "frame_time_unit": "milliseconds", "cpu_frame_scope": "worker-frame-critical-path-excluding-intentional-frame-pacing", "gpu_frame_scope": "worker-rendered-frame", "grade_formula": "max(cpu_frame_ms_p95,gpu_frame_ms_p95)/(1000/target_fps)", "host_and_proxy_cpu_usage": "report-separately-not-frame-time", "frame_budget_fraction_boundaries": [0.25, 0.5, 0.8], "missing_cpu_or_gpu_result": "unmeasured"},
+  "contractor": {"independent_author_required": true, "continuous_seconds": 3600, "clean_client_without_unity": true, "final_candidate_reverification_required": true},
+  "main_merge": "requires-user-version-acceptance"
+}

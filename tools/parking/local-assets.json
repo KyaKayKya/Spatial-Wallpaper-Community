@@ -1,0 +1,196 @@
+{
+  "schema": 1,
+  "bundle": "20261018-pbr-v2",
+  "files": [
+    {
+      "path": "Prototype/Assets/Parking/Generated/aerial_asphalt_01_diff_4k_jpg.png",
+      "size": 29886569,
+      "sha256": "3fdb2a72437a70476b52eafceb07a1047dccb2c4f1476a4ba20164d5713dd90b"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/aerial_asphalt_01_macro_blurred_4k_png.png",
+      "size": 6028734,
+      "sha256": "9bf44733f5a7090c4b983ffe9c2e0d708ed93aca9c0649055b23f62d0ba5c85c"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/aerial_asphalt_01_nor_gl_4k_png.png",
+      "size": 30974564,
+      "sha256": "fdaf546b3d4012b0e7edb805ebb91eac6c6c5f90ecacc8a8bcf404f36c503eed"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/aerial_asphalt_01_rough_4k_png.png",
+      "size": 9232637,
+      "sha256": "5b41c06a3395a2a0edc057a516636d93363b0c8868ea581c74c971e3fcf7fe20"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/Asphalt_Weathering_26m_RGB_png.png",
+      "size": 5559168,
+      "sha256": "b49346fd96546b7696fcc8302d13acb884e1795e5102d94fc903cbccc88deb78"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/clean_asphalt_diff_4k_jpg.png",
+      "size": 28819589,
+      "sha256": "c1d6dc2a5f19c88971d9f1caa22f54273ec1994560c4a95604d6a1b8e00263ab"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/clean_asphalt_nor_gl_4k_exr.png",
+      "size": 81719441,
+      "sha256": "1dd3955a92b9d43ee3d19e72d3813475c315536a605f5706f1c8f7c6a2f8b5d3"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/CRTTV_Albedo_png.png",
+      "size": 317223,
+      "sha256": "f57bbf6dfd951ebd1786a16aa92e20a335406cbfb8fc477a5a6da235b9c07ed7"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/CRTTV_Metalness_png.png",
+      "size": 67478,
+      "sha256": "6781983065cb9e7ddc6995c97b73238dc2f5d34329ab53483aa98d14761bf835"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/CRTTV_Normal_png.png",
+      "size": 229882,
+      "sha256": "e95561f50da4bc96c918b1247dee2e91555d0df6daf46475a219a0220a9523b1"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/CRTTV_Roughness_png.png",
+      "size": 264213,
+      "sha256": "aff13f02ad9c4ba1b44dcee1185b61bf52ee60529b43bbeb16160d7b4fd7a83b"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/CRTV_UnityMetalSmooth.png",
+      "size": 198102,
+      "sha256": "492cce3dc1c737b1e2fcdb49199379899ecdd10ae517b8fef745dcfa2a3ce405"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/CRTVHS_UnityMetalSmooth.png",
+      "size": 206852,
+      "sha256": "4ae2d64f90c0b9874b0378c552f57584fdce57e2d1d719bff02de029b0569fc9"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/CRTVHSTV_Albedo_png.png",
+      "size": 356879,
+      "sha256": "ffd3cd86f704acfd04e90ba1e6ce6aaaca02ced461579c265f709122d3c95efe"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/CRTVHSTV_Metalness_png.png",
+      "size": 62329,
+      "sha256": "1533d81ca320e7728bd0477c60f4ecd7893b6c1e4f9565c00c1ffccb25e408b3"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/CRTVHSTV_Normal_png.png",
+      "size": 197946,
+      "sha256": "855518828add7b365a4323110323e854b9e063a17ac99eb7e4e253ce232cb506"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/CRTVHSTV_Roughness_png.png",
+      "size": 268697,
+      "sha256": "137ed5f893084f346e362f3dfc4e4570db4da92f9811dcc69f39a3a5acb95ed3"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/Paint_Edge_Chips_png.png",
+      "size": 396655,
+      "sha256": "ce7363d8bf072fa355c4e6948813a58d46d87aa2f7d8108b4e95117e5490a2ef"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/Paint_fine_wear_sRGB.png",
+      "size": 376993,
+      "sha256": "65ec3a36b2807c7ec20455889fa0208c863f9f950f8ddaedd024472ba8765f0d"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/PHConcrete_diff.png",
+      "size": 5336333,
+      "sha256": "7bc6fb17758cfd2f7b297af0d168f308fe36bdfdfc7b2ff1a2a72eabb472a6e1"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/PHConcrete_nor_gl.png",
+      "size": 5725557,
+      "sha256": "008cb9cd6b712788645bcfad8c9bb442c86f9c9112a403535ae83520cf5c5585"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/PHConcrete_rough.png",
+      "size": 2100492,
+      "sha256": "5bf1ed5d66ec697f50bdf4a690f596eca00d3cb77d3b75bfec9f5c6d17a1f781"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/PHConcrete_UnityMetalSmooth.png",
+      "size": 342142,
+      "sha256": "f846fd3b90401eb9a1207f46943680d692921060cdade93c5324fd1c3bd143f3"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/Powdercoat_Micro_Normal_png.png",
+      "size": 1985893,
+      "sha256": "51ac8c0158dd4d2be2d8eb723403ca91af3fe6faa2f263106761298a7abd43f1"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/Powdercoat_Roughness_png.png",
+      "size": 722201,
+      "sha256": "9b1637da75184013b995e5dfecac8bf5deb9ca8eb95d3910b4933f6d9104dad4"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/Powdercoat_Tone_png.png",
+      "size": 757786,
+      "sha256": "c8645b58703a9662621b5ba6836d993fb07109aad7901fefe8defeadc4737816"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/static_noise_17_png.png",
+      "size": 391026,
+      "sha256": "87eb07fcba045346158cd13446dca6d9c3e47cc7f08004a08fcd33c5534c77a5"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/static_noise_31_png.png",
+      "size": 390954,
+      "sha256": "353eaf7675fb887e3c2dd4da6a4a23a5c8f7d413f33caaa8d9cb8484b1a84105"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/Television_01_diff_png.png",
+      "size": 7548809,
+      "sha256": "aaa210a1cc45acb01c67cf8f2df81ffe375823e958470f42123e7b84258d4a7d"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/Television_01_metallic_png.png",
+      "size": 2820402,
+      "sha256": "63894bdab21bc4e5653d0c1de186fba6402b6100c7419db381128a0e6193f0a1"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/Television_01_nor_gl_png.png",
+      "size": 36299201,
+      "sha256": "b9850869eacb645297e34e331253a5974b04eebfa02e5bd517ceed257ceddaa3"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/Television_01_roughness_png.png",
+      "size": 9338567,
+      "sha256": "4f5823d7467c438f7ede735156dfc1822f5f76d189fec90731f8f6126bfd0007"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/Television_01_UnityMetalSmooth.png",
+      "size": 13600795,
+      "sha256": "0ab385d36e5641a3074f49777c20d23a1c7d3f2af3466eee81175bd8be830926"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/television_02_diff.png",
+      "size": 12296333,
+      "sha256": "c23a2a0834efd5ff14caae717b150f46362b26b1b5b77a24a1a7b5f9e017c90f"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/television_02_metal-television_02_rough.png",
+      "size": 13180230,
+      "sha256": "42266a5c6bb9fea95dd2f539bc791cfaa3775381cb52c5fed67d45c535d01e96"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/television_02_nor_gl.png",
+      "size": 5675873,
+      "sha256": "5bbbbd2ea10d6dc2ac5dbccb8510b47698f556800df22988b01e43f9dbad2fd9"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/television_02_UnityMetalSmooth.png",
+      "size": 9743965,
+      "sha256": "acf97641d096352787d52fc365317a61993f37973754a429be6fe837cabba0ad"
+    },
+    {
+      "path": "Prototype/Assets/Parking/Generated/scene.json",
+      "size": 3545292,
+      "sha256": "20b641641ff6f301c33e6f679c72ddf0d3c8899ae9428038328352958a6a56e5"
+    }
+  ]
+}

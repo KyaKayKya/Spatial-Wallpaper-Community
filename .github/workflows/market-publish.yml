@@ -1,0 +1,63 @@
+name: Publish admitted wallpaper market
+
+on:
+  push:
+    branches: ['dev/v*']
+    paths:
+      - 'market/**'
+      - 'tools/market/**'
+      - '.github/workflows/market-publish.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '17 3 * * *'
+
+permissions: {}
+
+concurrency:
+  group: market-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: startsWith(github.ref, 'refs/heads/dev/v') && vars.MARKET_PUBLICATION_ENABLED == 'true'
+    environment: market-publish
+    runs-on: windows-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Install reviewed publisher dependencies
+        run: python -m pip install --requirement market/requirements.txt
+      - name: Verify native validator distribution
+        env:
+          MARKET_REPOSITORY: KyaKayKya/Spatial-Wallpaper-Community
+          GITHUB_TOKEN: ${{ github.token }}
+          VALIDATOR_ZIP_SHA256: ${{ vars.MARKET_VALIDATOR_SHA256 }}
+        run: python -m tools.market.publish prepare-validator --sha256 "$env:VALIDATOR_ZIP_SHA256" --output Validation/Market/validator
+      - name: Recollect, admit, sign and publish exact bytes
+        env:
+          GITHUB_TOKEN: ${{ secrets.MARKET_DEPLOY_TOKEN || github.token }}
+          MARKET_SIGNING_PEM: ${{ secrets.MARKET_SIGNING_PEM }}
+          MARKET_KEY_ID: ${{ vars.MARKET_KEY_ID }}
+          SOURCE_SHA: ${{ github.sha }}
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $keyPath = Join-Path $env:RUNNER_TEMP 'market-signing.pem'
+          try {
+            [IO.File]::WriteAllText($keyPath, $env:MARKET_SIGNING_PEM, [Text.UTF8Encoding]::new($false))
+            python -m tools.market.publish build --validator-config Validation/Market/validator/validator-config.json --private-key $keyPath --key-id "$env:MARKET_KEY_ID" --source-sha "$env:SOURCE_SHA" --output Validation/Market/published --upload
+            if ($LASTEXITCODE -ne 0) { throw 'Market publication failed; retain the previous signed client cache.' }
+          } finally {
+            if (Test-Path -LiteralPath $keyPath) { Remove-Item -LiteralPath $keyPath -Force -ErrorAction Stop }
+          }
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: signed-market-publication
+          path: Validation/Market/published/
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,17 @@
+using System;using System.IO;using System.Reflection;using Newtonsoft.Json.Linq;using SpatialWallpaper.Sdk;using SpatialWallpaper.Sdk.Hosting;using SpatialWallpaper.Sdk.Capabilities;using SpatialWallpaper.Supervision;using SpatialWallpaper.Supervision.Broker;
+static class SoundEndpointChecks {
+ static int checks;static void Need(bool value,string message){if(!value)throw new Exception(message);checks++;}
+ static BrokerSession Session(bool allowed){var receipt=(AttemptReceipt)Activator.CreateInstance(typeof(AttemptReceipt),BindingFlags.Instance|BindingFlags.NonPublic,null,new object[]{Guid.NewGuid(),Guid.NewGuid(),Guid.NewGuid(),new string('a',64),Guid.NewGuid(),1u},null);return new BrokerSession(receipt,false,allowed?new[]{"sound-playback"}:new string[0]);}
+ static byte[] Header(BrokerSession session,int request,long sequence,int length){var bytes=new byte[64];CapabilityWire.Encode(bytes,new WorkerIdentity(session.Attempt,session.Instance,session.Generation),CapabilityOperation.SoundPcm,false,false,request,sequence,length);return bytes;}
+ static void Main(string[] args){var storage=new StorageBroker(Path.Combine(args[0],"store"));storage.Initialized.GetAwaiter().GetResult();try{
+  var packet=new byte[SoundFormat.PacketBytes];var allowed=Session(true);var endpoint=new CapabilityEndpoint(allowed,storage);Need(endpoint.Receive(Header(allowed,1,1,packet.Length),packet,packet.Length),"valid-PCM-request");Need(endpoint.TryTake(out var reply)&&reply.Error&&(string)JObject.Parse(System.Text.Encoding.UTF8.GetString(reply.Payload))["error"]=="Unavailable","missing-output-is-unavailable");endpoint.Close();
+  var denied=Session(false);endpoint=new CapabilityEndpoint(denied,storage);Need(!endpoint.Receive(Header(denied,1,1,packet.Length),packet,packet.Length)&&endpoint.Faulted,"undeclared-sound-rejected");
+  var shortSession=Session(true);endpoint=new CapabilityEndpoint(shortSession,storage);Need(!endpoint.Receive(Header(shortSession,1,1,packet.Length-1),packet,packet.Length-1),"malformed-PCM-size");
+  var a=Session(true);var b=Session(true);endpoint=new CapabilityEndpoint(a,storage);Need(!endpoint.Receive(Header(b,1,1,packet.Length),packet,packet.Length),"foreign-session-PCM");
+  var capacity=Session(true);endpoint=new CapabilityEndpoint(capacity,storage);for(int i=1;i<=8;i++)Need(endpoint.Receive(Header(capacity,i,i,packet.Length),packet,packet.Length),"bounded-credit-"+i);Need(!endpoint.Receive(Header(capacity,9,9,packet.Length),packet,packet.Length),"ninth-credit-refused");
+  var good=new SoundMix(.3f,.7f,true,false);Need(SoundMix.Parse(good.Json).MusicGain==0&&SoundMix.Parse(good.Json).EffectsGain==.7f,"mix-roundtrip-and-mute");
+  foreach(string mutation in new[]{"extra","negative","over","nan","string","bool"}){var value=good.Json;if(mutation=="extra")value["x"]=1;else if(mutation=="negative")value["music"]=-.01f;else if(mutation=="over")value["effects"]=1.01;else if(mutation=="nan")value["effects"]=float.NaN;else if(mutation=="string")value["music"]=".3";else value["music_muted"]=1;bool refused=false;try{SoundMix.Parse(value);}catch(InvalidDataException){refused=true;}Need(refused,"invalid-mix-"+mutation);}
+  using(var sound=new SoundOutput()){sound.Configure(1,1,true);Need(!sound.Submit(packet,packet.Length),"paused-output-refuses-packets");sound.Close();Need(!sound.Submit(packet,packet.Length),"closed-output-refuses-packets");}
+  Console.WriteLine("passed "+checks+" sound endpoint/mix checks");
+ }finally{storage.Close();storage.Completion.GetAwaiter().GetResult();}}
+}

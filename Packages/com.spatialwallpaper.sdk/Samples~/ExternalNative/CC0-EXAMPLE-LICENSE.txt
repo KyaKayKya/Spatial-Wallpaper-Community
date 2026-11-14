@@ -1,0 +1,6 @@
+Original CC0 Triangle example
+
+The newly authored geometry, OriginalNativeAnimation/OriginalNativeExample source, and OriginalColor.shader are dedicated to the public domain under CC0 1.0 Universal.
+https://creativecommons.org/publicdomain/zero/1.0/
+
+This dedication covers only these newly authored example portions. Unity engine, URP libraries, runtime dependencies, the five original platform artworks, and other third-party materials retain their own licenses. No rights in those dependencies are re-granted here.

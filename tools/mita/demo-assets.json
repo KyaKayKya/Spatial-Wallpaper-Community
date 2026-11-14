@@ -1,0 +1,78 @@
+{
+  "commit": "099f7412301dd62370e4d85e4e06b50ef8706e4f",
+  "text_normalization": "LF",
+  "files": {
+    "Body.mat": {
+      "source": "Assets/Material/Body.mat",
+      "sha256": "2a2150b94fb1c3099276c7f882cbc7d965ff02a2d38f555375a9a01ec7d36fd5"
+    },
+    "Body.shader": {
+      "source": "Assets/Shader/Hidden_Locked_.poiyomi_Poiyomi 8.1_Poiyomi Toon Outline_1436817d9deab8f4192950b53b0466fd.shader",
+      "sha256": "c54d2090e70dcc1fdc9163dd4dc94d16748e95973171237d2c1072b3d5ab8579"
+    },
+    "SkinLUT.png": {
+      "source": "Assets/Texture2D/SkinLUT.png",
+      "sha256": "6007add25f7b163f6767e35ecd4d0c5f6bc979bede1c0b9f6c1cd40aea457ac7"
+    },
+    "SkinLUT.png.meta": {
+      "source": "Assets/Texture2D/SkinLUT.png.meta",
+      "sha256": "a00fcfaa4326a59658736b4c129cfdce549dd30b444d47a3dba62f3c5b808a5e"
+    },
+    "Body.mat.meta": {
+      "source": "Assets/Material/Body.mat.meta",
+      "sha256": "2cb5c7f3ec59d629f11db167026fb36e2de2b4a181f871622dd54b2166054e62"
+    },
+    "Cloth.mat": {
+      "source": "Assets/Material/Cloth.mat",
+      "sha256": "c3eae3f76f468c7bb435cbea9191aa2526b7b0852fd9f114cf01d3592ce77ec2"
+    },
+    "Cloth.shader": {
+      "source": "Assets/Shader/Hidden_Locked_.poiyomi_Poiyomi 8.1_Poiyomi Toon Outline_8d931f416d0314e439cced3fb5f78132.shader",
+      "sha256": "e2fed4f8b859cc767e388f108e212e7a163c5bc0257d0224d04a6fafd233c998"
+    },
+    "Cloth.mat.meta": {
+      "source": "Assets/Material/Cloth.mat.meta",
+      "sha256": "e76ce914267321dd307ebf20307b15f984602fadb3e97e4b59f524927a55f5cc"
+    },
+    "Face_0.mat": {
+      "source": "Assets/Material/Face_0.mat",
+      "sha256": "623bb9c0be083d3c832dd4c38cbebc07817fc15ad0856b2e5fd85ccff7a69728"
+    },
+    "Face_0.shader": {
+      "source": "Assets/Shader/Hidden_Locked_.poiyomi_Poiyomi 8.1_Poiyomi Toon Outline_e7782a9c1cafb524f89cf8ea1bd6152c.shader",
+      "sha256": "4e05cfd7367ec25ed4223dd1164e957e02d48bac3d93ffd92795f832d17fa0cf"
+    },
+    "Face_0.mat.meta": {
+      "source": "Assets/Material/Face_0.mat.meta",
+      "sha256": "c41e3801547f5a49065044db61f67131a2afc9b7fe78d5aec1b170f15020bee2"
+    },
+    "Hair_0.mat": {
+      "source": "Assets/Material/Hair_0.mat",
+      "sha256": "6fcdfe1ff8bb968ecab2dbab91580a2467b0d8da236c9cccf6308095eab1cee9"
+    },
+    "Hair_0.shader": {
+      "source": "Assets/Shader/Hidden_Locked_.poiyomi_Poiyomi 8.1_Poiyomi Toon Outline_895d8218bc765ba449225183063ab3a0.shader",
+      "sha256": "6047e928179d183cb65f7c06717035e9df0a53fe7343f1a05b86be3f9e3a1d38"
+    },
+    "Hair_0.mat.meta": {
+      "source": "Assets/Material/Hair_0.mat.meta",
+      "sha256": "df4335d2c3f57219ab44b4700fdf63242e3a7e7a5aecca6cb092afea51c9aaec"
+    },
+    "Blink.anim": {
+      "source": "Assets/AnimationClip/Blink.anim",
+      "sha256": "b26e4f483b5954128e9c51ab7e27f3fd5655982ab26ba63a3292ee64c335fbe1"
+    },
+    "Blink.anim.meta": {
+      "source": "Assets/AnimationClip/Blink.anim.meta",
+      "sha256": "40d2e5ff2be10bab56c5bf740c38412357d9e2450908135a879c6b068dcf0b51"
+    },
+    "Background Menu.png": {
+      "source": "Assets/Texture2D/Background Menu.png",
+      "sha256": "e49417b0b07aa9dade0f5becf46ef7b45aa08e2768a59ef1725c0aa7cb055fd8"
+    },
+    "Background Menu.png.meta": {
+      "source": "Assets/Texture2D/Background Menu.png.meta",
+      "sha256": "25ca44a045a728426dfe9b8c288662f5a03ac223c4b41cadc5b8814976a72870"
+    }
+  }
+}

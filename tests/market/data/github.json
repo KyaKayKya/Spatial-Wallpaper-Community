@@ -1,0 +1,28 @@
+{
+  "license": "CC0-1.0; synthetic API records and base64 of inert text safe only",
+  "searchPages": [{"items": [{"id":101}], "total_count":1, "incomplete_results":false, "has_next":false}],
+  "repositories": [
+    {
+      "repository": {"id":101,"full_name":"alice/windows","owner":{"id":11,"login":"alice","type":"User"},"default_branch":"main","private":false},
+      "manifest": {"schemaVersion":1,"repositoryId":101,"listingConsent":true,"works":[{"id":"rain","title":"Rain","version":"1.0.0","releaseTag":"v1","sdk":"declared-only","capabilities":["static"],"assets":["rain.zip"],"attribution":[{"name":"Alice","githubUserId":11,"license":"CC0-1.0"}]}]},
+      "releases": [{"id":301,"tag_name":"v1","draft":false,"prerelease":false,"assets":[{"id":401,"name":"rain.zip","size":4,"download_count":10,"browser_download_url":"https://github.com/alice/windows/releases/download/v1/rain.zip"}]}],
+      "attachments": {"401":"c2FmZQ=="}
+    },
+    {
+      "repository": {"id":202,"full_name":"bob/windows","owner":{"id":22,"login":"bob","type":"User"},"default_branch":"main","private":false},
+      "manifest": {"schemaVersion":1,"repositoryId":202,"listingConsent":true,"works":[{"id":"sun","title":"Sun","version":"1.0.0","releaseTag":"v1","sdk":"declared-only","capabilities":["static"],"assets":["sun.zip"],"attribution":[{"name":"Bob","githubUserId":22,"license":"CC0-1.0"}]}]},
+      "releases": [{"id":501,"tag_name":"v1","draft":false,"prerelease":false,"assets":[{"id":601,"name":"sun.zip","size":4,"download_count":5,"browser_download_url":"https://github.com/bob/windows/releases/download/v1/sun.zip"}]}],
+      "attachments": {"601":"c2FmZQ=="}
+    }
+  ],
+  "registrations": [{
+    "pull":{"number":9,"state":"open","draft":false,"head":{"sha":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"},"base":{"ref":"main","repo":{"full_name":"KyaKayKya/Spatial-Wallpaper"}},"user":{"id":22}},
+    "checked_head":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "current_head":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "files":[{"filename":"market/registry/202.json","status":"added"}],
+    "registration":{"schemaVersion":1,"repositoryId":202,"repository":"bob/windows"},
+    "repositoryId":202
+  }],
+  "categoryId":"DIC_offline_fixture", "discussionActorId":33, "discussions":[],
+  "identities":{"11":{"id":11,"login":"alice"},"22":{"id":22,"login":"bob"}},
+  "featured":[], "revocations":{"works":[],"builds":[]}
+}

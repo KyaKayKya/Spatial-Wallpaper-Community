@@ -1,0 +1,6 @@
+# Existing local versions verified; no dependencies installed by this task.
+# cryptography: Apache-2.0 OR BSD-3-Clause; jsonschema: MIT.
+cryptography==45.0.5
+jsonschema==4.25.1
+# Workflow test parser, MIT; already present locally.
+PyYAML==6.0.2
