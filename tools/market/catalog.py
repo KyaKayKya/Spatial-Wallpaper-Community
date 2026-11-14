@@ -13,6 +13,14 @@ from .registry import validate_manifest
 CDN_HOSTS = {"release-assets.githubusercontent.com", "objects.githubusercontent.com"}
 
 
+def require_work_bindings(entries, previous=()):
+    """A local work/storage GUID retains its numeric repository, even revoked."""
+    bindings = {}
+    for entry in [*previous, *entries]:
+        repository = bindings.setdefault(entry["workId"], entry["repositoryId"])
+        require(repository == entry["repositoryId"], "work GUID belongs to another repository; explicit maintainer transfer required")
+
+
 def asset_binding(asset):
     # URLs are display/transport metadata and change on repository rename.
     return {key: asset[key] for key in ["id", "name", "size", "sha256"]}
@@ -50,6 +58,7 @@ def build_snapshot(repository, manifest, releases, fetch_asset, previous, genera
         validate("catalog", previous)
         require(generation > previous["generation"], "generation must advance")
     old = {entry["key"]: entry for entry in previous["entries"]} if previous else {}
+    require_work_bindings([{"workId": work["id"], "repositoryId": repository["id"]} for work in manifest["works"]], old.values())
     entries = {k: copy.deepcopy(v) for k, v in old.items() if v["repositoryId"] != repository["id"]}
     for work in manifest["works"]:
         key = work_key(repository["id"], work["id"])

@@ -3,9 +3,9 @@ namespace SpatialWallpaper.Supervision.Broker {
  public sealed class StoreQuotaException:InvalidOperationException{public StoreQuotaException():base("private-store-quota"){}}
  public sealed class StoreConflictException:InvalidOperationException{public StoreConflictException():base("private-store-version-conflict"){}}
  public sealed class StoreSnapshot {
-  readonly Dictionary<string,byte[]> values;public long Version{get;}public long ChargedBytes{get;}
+  readonly Dictionary<string,byte[]> values;public long Version{get;}public long ChargedBytes{get;}public string FileSha256{get;}
   internal Dictionary<string,byte[]> Values=>values;
-  internal StoreSnapshot(long version,Dictionary<string,byte[]> data,long charged){Version=version;values=data;ChargedBytes=charged;}
+  internal StoreSnapshot(long version,Dictionary<string,byte[]> data,long charged,string fileSha256=null){Version=version;values=data;ChargedBytes=charged;FileSha256=fileSha256;}
   public string[] Keys=>values.Keys.ToArray();
   internal int ValueBytes(string key)=>values.TryGetValue(key,out var data)?data.Length:0;
   public byte[] Get(string key){if(!values.TryGetValue(key,out var data))return null;return (byte[])data.Clone();}
@@ -43,7 +43,7 @@ namespace SpatialWallpaper.Supervision.Broker {
   static byte[] Key(string key){if(string.IsNullOrEmpty(key)||key.Length>MaxKeyBytes)throw new ArgumentException("private-store-key");byte[] bytes=Utf8.GetBytes(key);if(bytes.Length>MaxKeyBytes)throw new ArgumentException("private-store-key-size");return bytes;}
   static long Charge(Dictionary<string,byte[]> values){if(values.Count>MaxKeys)throw new StoreQuotaException();long size=0;foreach(var pair in values){if(pair.Value==null)throw new InvalidDataException("private-store-null-value");size=checked(size+Key(pair.Key).Length+pair.Value.LongLength);if(size>QuotaBytes)throw new StoreQuotaException();}return size;}
   static byte[] Exact(BinaryReader reader,int count){if(count<0||count>reader.BaseStream.Length-reader.BaseStream.Position)throw new InvalidDataException("private-store-truncated");var value=reader.ReadBytes(count);if(value.Length!=count)throw new EndOfStreamException();return value;}
-  StoreSnapshot Load(string directory){
+  static StoreSnapshot Load(string directory){
    string path=Path.Combine(directory,"state.bin");if(!File.Exists(path))return new StoreSnapshot(0,new Dictionary<string,byte[]>(StringComparer.Ordinal),0);NoLink(path);
    byte[] bytes;using(var file=new FileStream(path,FileMode.Open,FileAccess.Read,FileShare.Read)){if(file.Length<52||file.Length>MaxFileBytes)throw new InvalidDataException("private-store-file-size");bytes=new byte[(int)file.Length];int position=0;while(position<bytes.Length){int count=file.Read(bytes,position,bytes.Length-position);if(count==0)throw new EndOfStreamException();position+=count;}}
    using(var sha=SHA256.Create()){var digest=sha.ComputeHash(bytes,0,bytes.Length-32);int different=0;for(int i=0;i<32;i++)different|=digest[i]^bytes[bytes.Length-32+i];if(different!=0)throw new InvalidDataException("private-store-checksum");}
@@ -51,8 +51,15 @@ namespace SpatialWallpaper.Supervision.Broker {
     if(reader.ReadUInt64()!=Magic)throw new InvalidDataException("private-store-format");long version=reader.ReadInt64();int count=reader.ReadInt32();if(version<1||count<0||count>MaxKeys)throw new InvalidDataException("private-store-header");
     var values=new Dictionary<string,byte[]>(StringComparer.Ordinal);long total=0;
     for(int i=0;i<count;i++){int keyLength=reader.ReadInt32(),valueLength=reader.ReadInt32();if(keyLength<1||keyLength>MaxKeyBytes||valueLength<0||valueLength>QuotaBytes||(total+=keyLength+(long)valueLength)>QuotaBytes)throw new InvalidDataException("private-store-record-size");string key=Utf8.GetString(Exact(reader,keyLength));if(values.ContainsKey(key))throw new InvalidDataException("private-store-duplicate-key");values.Add(key,Exact(reader,valueLength));}
-    if(stream.Position!=stream.Length)throw new InvalidDataException("private-store-tail");return new StoreSnapshot(version,values,total);
+    if(stream.Position!=stream.Length)throw new InvalidDataException("private-store-tail");using(var sha=SHA256.Create())return new StoreSnapshot(version,values,total,BitConverter.ToString(sha.ComputeHash(bytes)).Replace("-","").ToLowerInvariant());
    }
+  }
+  // Trusted migration reads one complete checksum-verified snapshot without opening the writer lock or changing old ACL/files.
+  public static StoreSnapshot ReadMigrationSnapshot(string directory){
+   directory=Path.GetFullPath(directory);string name=Path.GetFileName(directory);if(!name.StartsWith("live-",StringComparison.Ordinal)||!Guid.TryParseExact(name.Substring(5),"N",out var id)||id==Guid.Empty||name!="live-"+id.ToString("N"))throw new InvalidDataException("migration-source-namespace");
+   for(string path=directory;path!=null;path=Path.GetDirectoryName(path))if(File.Exists(path)||Directory.Exists(path))NoLink(path);
+   string marker=Path.Combine(Path.GetDirectoryName(directory),".sdk-private-store");if(File.Exists(marker))NoLink(marker);if(!File.Exists(marker)||new FileInfo(marker).Length>64||File.ReadAllText(marker)!="SpatialWallpaper.PrivateStore.1")throw new InvalidDataException("migration-source-owner");
+   if(!File.Exists(Path.Combine(directory,"state.bin")))throw new InvalidDataException("migration-source-save-missing");return Load(directory);
   }
   public StoreSnapshot Read(BrokerSession session){lock(gate){Live();return Load(Namespace(session,false));}}
   public long Commit(BrokerSession session,long expectedVersion,IDictionary<string,byte[]> changes){

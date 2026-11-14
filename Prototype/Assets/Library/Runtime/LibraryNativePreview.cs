@@ -10,6 +10,7 @@ using UnityEngine;
 
 public sealed partial class LibraryPreviewController {
  NativePreviewTarget nativePreview;
+ string nativePreviewWork;
  int[] nativePreviewRegion;
  bool nativePreviewMeasured;
  double nativeDragX,nativeDragY;long nativeEscapes;
@@ -23,9 +24,11 @@ public sealed partial class LibraryPreviewController {
 #endif
  }
  public bool NativePreview=>UseNativePreview(Selected)&&(Loading||Loaded!=null&&UseNativePreview(Loaded));
+ // Client.Sound reads memory only; the sidebar refreshes this cache after a saved mix.
+ SpatialWallpaper.Sdk.Capabilities.SoundMix NativePreviewSound()=>GetComponent<DesktopManager>()?.Client?.Sound(nativePreviewWork??Selected.Id,TargetDisplayId)??new SpatialWallpaper.Sdk.Capabilities.SoundMix();
  JObject NativePreviewPose(){
   var projection=Runtime.projection;var eye=projection.EyeScreen;
-  return new JObject{{"width",projection.displayWidth},{"height",projection.displayHeight},{"keep_height",KeepHeight},{"eye",new JArray(eye.x,eye.y,eye.z)},{"fresh",CameraMode&&projection.TrackingFresh},{"paused",!nativePreviewMeasured||closeRequested},{"tracking",DesktopTrackingState.Pack(Runtime.CurrentRaw,QpcClock.Now)},{"presentation",new JObject{{"numerator",nativePreviewDisplay?.RefreshNumerator??0},{"denominator",nativePreviewDisplay?.RefreshDenominator??0}}}};
+  return new JObject{{"sound",NativePreviewSound().Json},{"width",projection.displayWidth},{"height",projection.displayHeight},{"keep_height",KeepHeight},{"eye",new JArray(eye.x,eye.y,eye.z)},{"fresh",CameraMode&&projection.TrackingFresh},{"paused",!nativePreviewMeasured||closeRequested},{"tracking",DesktopTrackingState.Pack(Runtime.CurrentRaw,QpcClock.Now)},{"presentation",new JObject{{"numerator",nativePreviewDisplay?.RefreshNumerator??0},{"denominator",nativePreviewDisplay?.RefreshDenominator??0}}}};
  }
  public void MeasureNativePreview(Rect aperture){
   try{MeasureNativePreviewCore(aperture);}catch(Exception failure){nativePreviewMeasured=false;nativePreview?.Suspend();SetNativePreviewError(failure.GetBaseException().Message);}
@@ -53,11 +56,11 @@ public sealed partial class LibraryPreviewController {
  }
  async Task LoadNativePreview(Artwork artwork){
   float until=Time.realtimeSinceStartup+10;while(!nativePreviewMeasured&&!closeRequested){if(Time.realtimeSinceStartup>until)throw new TimeoutException("native-preview-viewport-unavailable");await Task.Yield();}
-  if(closeRequested)return;Runtime.ExternalExhibitRoot=transform;Runtime.MousePreview=!CameraMode;Runtime.SetExhibit(true);framingKey=PreferencePrefix+"Framing."+artwork.Id+"."+Runtime.DisplayId;KeepHeight=PlayerPrefs.GetInt(framingKey,0)==0;MouseEye=Vector2.zero;nativeDragX=nativeDragY=0;nativeEscapes=0;
+  if(closeRequested)return;nativePreviewWork=artwork.Id;Runtime.ExternalExhibitRoot=transform;Runtime.MousePreview=!CameraMode;Runtime.SetExhibit(true);framingKey=PreferencePrefix+"Framing."+artwork.Id+"."+Runtime.DisplayId;KeepHeight=PlayerPrefs.GetInt(framingKey,0)==0;MouseEye=Vector2.zero;nativeDragX=nativeDragY=0;nativeEscapes=0;
   if(!CameraMode){Runtime.projection.SetEye(new Vector3(0,0,-.67f));Runtime.projection.SetExternalFreshness(false);}
   var config=new JObject{{"artwork",artwork.Id},{"session",Guid.NewGuid().ToString("N")},{"generation",1},{"desktop",false},{"preview_ui",true},{"pose",NativePreviewPose()}};
   string player;using(var self=System.Diagnostics.Process.GetCurrentProcess())player=self.MainModule.FileName;
-  if(artwork.Source==ArtworkSource.SdkNative){var store=new SpatialWallpaper.Content.ContentStore(Path.Combine(DesktopRuntime.ContentRoot,"library"),Path.Combine(DesktopRuntime.ContentRoot,"staging"));SpatialWallpaper.Content.NativeContentConfiguration.Configure(config,store,artwork.Id,artwork.RevisionId,DesktopRuntime.DataRoot,true);config["pose"]["sound"]=GetComponent<DesktopManager>().Client.Sound(artwork.Id).Json;}
+  if(artwork.Source==ArtworkSource.SdkNative){var store=new SpatialWallpaper.Content.ContentStore(Path.Combine(DesktopRuntime.ContentRoot,"library"),Path.Combine(DesktopRuntime.ContentRoot,"staging"));SpatialWallpaper.Content.NativeContentConfiguration.Configure(config,store,artwork.Id,artwork.RevisionId,DesktopRuntime.DataRoot,true);}
   await SpatialWallpaper.Content.NativeContentConfiguration.PrepareInputAsync(config,DesktopRuntime.DataRoot,nativePreviewRegion);
   nativePreview=new NativePreviewTarget(player,Path.Combine(DesktopRuntime.DataRoot,"native-preview"),DisplayViewport.RegisteredRenderWindow,config);
   until=Time.realtimeSinceStartup+35;while(!nativePreview.Ready.IsCompleted&&!closeRequested){if(Time.realtimeSinceStartup>until)throw new TimeoutException("native-preview-ready-deadline");await Task.Yield();}
@@ -66,7 +69,7 @@ public sealed partial class LibraryPreviewController {
  }
  async Task ReleaseNativePreview(){
   nativePreviewMeasured=false;nativePreviewRegion=null;nativePreviewDisplay=null;nativePreviewDisplayRevision=-1;
-  if(nativePreview==null)return;try{await nativePreview.CloseAsync();}catch(Exception failure){if(!nativePreview.ResourcesReleased)throw;Debug.LogWarning("Native preview ended: "+failure.GetBaseException().Message);}
-  if(!nativePreview.ResourcesReleased)throw new InvalidOperationException("native-preview-cleanup-unproven");nativePreview=null;
+  if(nativePreview==null){nativePreviewWork=null;return;}try{await nativePreview.CloseAsync();}catch(Exception failure){if(!nativePreview.ResourcesReleased)throw;Debug.LogWarning("Native preview ended: "+failure.GetBaseException().Message);}
+  if(!nativePreview.ResourcesReleased)throw new InvalidOperationException("native-preview-cleanup-unproven");nativePreview=null;nativePreviewWork=null;
  }
 }

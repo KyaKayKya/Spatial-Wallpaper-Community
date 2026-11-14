@@ -103,9 +103,10 @@ namespace SpatialWallpaper.Content {
    var o=ParseObject(new UTF8Encoding(false,true).GetString(bytes));Require((int?)o["schemaVersion"]==2&&(string)o["kind"]=="published","不是已审核发布目录");long generation=Number(o,"generation");Require(generation>=watermark&&(generation!=watermark||priorDigest==null||digest==priorDigest),"目录倒退或同代目录冲突");
    var generated=Date(Text(o,"generatedAt"));var expires=Date(Text(o,"expiresAt"));Require(generated<=now&&expires>generated&&expires-generated<=TimeSpan.FromDays(8),"目录时间范围无效");if(!offline)Require(now<expires,"市场目录已过期，请稍后刷新");
    Require(o["entries"] is JArray entries&&entries.Count<=10000&&o["revocations"] is JObject rev&&rev["works"] is JArray&&rev["builds"] is JArray,"目录条目或撤回信息无效");
-   var keys=new HashSet<string>();foreach(var token in (JArray)o["entries"]) {
+   var keys=new HashSet<string>();var works=new HashSet<string>(StringComparer.Ordinal);foreach(var token in (JArray)o["entries"]) {
     Require(token is JObject,"市场条目无效");var e=(JObject)token;long repoId=Number(e,"repositoryId");Number(e,"ownerId");string repo=Text(e,"repository",200);RepositoryName(repo);
     string work=Text(e,"workId",64);Require(Regex.IsMatch(work,"\\A[a-z0-9][a-z0-9-]{0,63}\\z"),"作品身份无效");string key=Text(e,"key",100);Require(key==repoId.ToString(CultureInfo.InvariantCulture)+":"+work&&keys.Add(key),"作品身份冲突");
+    Require(works.Add(work),"作品 GUID 不得跨仓库重复，包括已撤回作品");
     Text(e,"title",200);Text(e,"sdk",100);Date(Text(e,"firstListedAt"));Require(e["capabilities"] is JArray&&e["attribution"] is JArray attr&&attr.Count>0&&attr.Count<=100,"署名或能力无效");
     foreach(var t in (JArray)e["capabilities"])Require(t.Type==JTokenType.String&&((string)t).Length<=64,"能力字段无效");
     foreach(var t in (JArray)e["attribution"]){Require(t is JObject,"署名无效");Text((JObject)t,"name",200);Text((JObject)t,"license",200);Number((JObject)t,"githubUserId");}

@@ -42,6 +42,8 @@ PUBLIC_DOCS = {
     "docs/guides/场景固定窗口规范.md",
     "docs/guides/壁纸市场创作者入门.md",
     "docs/guides/壁纸市场维护.md",
+    "docs/guides/外来原生作品导出.md",
+    "docs/guides/SDK0.4发行与体验.md",
 }
 PRIVATE_PARTS = {
     ".git", ".worktrees", ".codex", ".agents", ".aws", ".ssh",
@@ -123,7 +125,7 @@ def category(name: str) -> str | None:
                    or (path.parent.as_posix() == "market" and path.suffix == ".json")
                    or (path.parent.as_posix() == ".github/workflows"
                        and path.name.startswith("market") and path.suffix in {".yml", ".yaml"})
-                   or name in PUBLIC_DOCS or name in {"market/requirements.txt"})
+                   or name in PUBLIC_DOCS or name in {"market/requirements.txt", ".github/PULL_REQUEST_TEMPLATE/market.md", "LICENSE", "PROJECT_LICENSE_SCOPE.md"})
     if not allowed:
         return "outside-source-allowlist"
     if path.suffix == ".meta":
@@ -242,10 +244,12 @@ def prepare(repo: Path, commit: str, output: Path) -> dict:
             if target not in selected and not any(p.startswith(target + "/") for p in selected):
                 del selected[name]
                 excluded["orphan-unity-meta"] += 1
+    project_license = "MIT" if "LICENSE" in selected and selected["LICENSE"][1].startswith(b"MIT License") and "PROJECT_LICENSE_SCOPE.md" in selected else None
+    license_notice = "Project-authored source is licensed under MIT; see LICENSE and PROJECT_LICENSE_SCOPE.md. Third-party inputs and separately marked CC0 examples keep their own terms." if project_license else "No project-wide license is selected; source availability alone grants no additional reuse rights."
     output.mkdir(parents=True, exist_ok=False)
     manifest = {"format": 1, "profile": PROFILE, "source_commit": commit,
                 "public_repository": PUBLIC_REPOSITORY,
-                "history_included": False, "project_license_selected": False,
+                "history_included": False, "project_license_selected": bool(project_license), "project_license": project_license,
                 "excluded_counts": dict(sorted(excluded.items())), "files": []}
     licenses = []
     for name, (entry, data) in sorted(selected.items()):
@@ -264,20 +268,14 @@ def prepare(repo: Path, commit: str, output: Path) -> dict:
     (output / "OMITTED_INPUTS.json").write_text(json.dumps({"format": 1, "source_commit": commit,
         "notice": "Omitted assets must be obtained separately with their own distribution rights. No LFS fetching is performed.",
         "inputs": omissions}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (output / "SOURCE_LICENSE_STATUS.md").write_text(
-        "# Source license status\n\nNo repository-wide open-source license is selected by this export tool. "
-        "Public source availability alone does not grant reuse rights for project-owned code. "
-        "The copyright owner must approve a license before describing this snapshot as open source.\n\n"
-        "Existing scoped third-party licenses remain attached to their files. "
-        "The license under tools/sdk/experiments does not license unrelated project directories. "
-        "Excluded artwork and separately acquired Unity packages retain their own terms.\n", encoding="utf-8")
+    (output / "SOURCE_LICENSE_STATUS.md").write_text("# Source license status\n\n" + license_notice + "\n", encoding="utf-8")
     (output / "THIRD_PARTY_NOTICES.md").write_text("# Retained license notices\n\n"
         "These notices are preserved from the frozen tree; inclusion is not a claim that omitted assets are distributed here.\n\n"
         + "".join("- [" + path + "](" + path.replace(" ", "%20") + ")\n" for path in licenses), encoding="utf-8")
     (output / "README.md").write_text(
         "# Spatial Wallpaper source snapshot\n\nPublic repository: " + PUBLIC_REPOSITORY + "\n\n"
         "Frozen source commit: `" + commit + "`. This directory contains no private Git history.\n\n"
-        "For normal use, obtain the complete Windows distribution from this repository's Releases. "
+        "Runtime distributions are delivered separately when their redistribution rights are verified; current public Releases include the SDK validator and original CC0 example. "
         "This source-only snapshot is for code review and development; it is not an installer or a complete Unity artwork project.\n\n"
         "SDK and authoring sources are under `Packages/com.spatialwallpaper.sdk`; shared project sources, "
         "tools and tests keep their original paths. Start with the SDK `Documentation~` directory. "
@@ -289,7 +287,7 @@ def prepare(repo: Path, commit: str, output: Path) -> dict:
         "Verify `SHA256SUMS` and `SOURCE_MANIFEST.json` before reviewing or publishing. "
         "Some source documentation links refer to private development evidence intentionally absent from this snapshot.\n\n"
         "See `SOURCE_LICENSE_STATUS.md` and `THIRD_PARTY_NOTICES.md` for the license boundary. "
-        "The snapshot does not grant a new license for project-owned code.\n", encoding="utf-8")
+        + license_notice + "\n", encoding="utf-8")
     sums = []
     for path in sorted(output.rglob("*")):
         if path.is_file():
@@ -299,7 +297,7 @@ def prepare(repo: Path, commit: str, output: Path) -> dict:
             "source_files": len(selected), "source_bytes": sum(len(v[1]) for v in selected.values()),
             "retained_licenses": len(licenses), "excluded_counts": dict(sorted(excluded.items())),
             "sha256sums": hashlib.sha256((output / "SHA256SUMS").read_bytes()).hexdigest(),
-            "publication": "not-published", "license": "project-license-not-selected"}
+            "publication": "not-published", "license": project_license or "project-license-not-selected"}
 
 
 def main() -> int:

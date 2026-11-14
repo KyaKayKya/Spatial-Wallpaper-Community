@@ -29,14 +29,14 @@ namespace SpatialWallpaper.Desktop {
   }
   bool NativeSelected=>active!=null&&UsesNative(ArtworkCatalog.Find(active.ArtworkId));
   bool NativeApplied(DesktopAppliedSelection selected)=>(selected.Source==ArtworkSource.BuiltinNative||selected.Source==ArtworkSource.SdkNative)&&UsesNative(ArtworkCatalog.Find(selected.ArtworkId));
-  bool HasPlayback=>nativePlaybacks.Count>0||active!=null&&!NativeSelected;
+  bool HasPlayback=>nativePlaybacks.Count>0||active!=null&&!NativeSelected&&!legacyTargetOffline;
   void InitializeAppliedStore(){
    if(appliedStore==null)appliedStore=new DesktopAppliedStore(AppliedPath,(work,rev)=>(string)contentService.Store.Revision(work,rev)["build_id"],work=>Guid.TryParseExact(work,"D",out var ignored)?contentService.Sound(work):new SoundMix());
   }
   DesktopAppliedSelection AppliedSelection(WallpaperRequest request,CalibrationProfile profile,string contentRevision){
    var artwork=ArtworkCatalog.Find(request.ArtworkId);string build=artwork.IsContent?(string)contentService.Store.Revision(request.ArtworkId,contentRevision)["build_id"]:null;
-   bool paused=appliedStore!=null&&appliedStore.Snapshot.Targets.TryGetValue(request.DisplayId,out var previous)?previous.Paused:policy.Manual;
-   return new DesktopAppliedSelection(request.ArtworkId,artwork.Source,contentRevision,build,profile,artwork.IsContent?contentService.Sound(request.ArtworkId):new SoundMix(),paused);
+   DesktopAppliedSelection previous=null;if(appliedStore!=null)appliedStore.Snapshot.Targets.TryGetValue(request.DisplayId,out previous);bool paused=previous!=null?previous.Paused:policy.Manual;
+   return new DesktopAppliedSelection(request.ArtworkId,artwork.Source,contentRevision,build,profile,artwork.IsContent?(previous!=null&&previous.ArtworkId==request.ArtworkId?previous.Sound:contentService.Sound(request.ArtworkId,request.DisplayId)):new SoundMix(),paused);
   }
   async Task<NativePlayback> OpenNative(DesktopAppliedSelection selected){
    if(nativePlaybacks.ContainsKey(selected.DisplayId))throw new InvalidOperationException("native-target-original-owner-retained");

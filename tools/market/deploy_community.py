@@ -261,7 +261,8 @@ def asset_plan(args):
 def upload_release(api, args):
     plan = asset_plan(args)
     endpoint = api.base + '/releases'
-    existing_commit = api.request('GET', api.base + '/commits/' + quote(args.tag, safe=''))
+    existing_tag = api.request('GET', api.base + '/git/ref/tags/' + quote(args.tag, safe=''))
+    existing_commit = api.request('GET', api.base + '/commits/' + quote(args.tag, safe='')) if existing_tag else None
     need(not existing_commit or existing_commit['sha'] == args.source_commit, 'existing tag points to a different source commit')
     source = api.request('GET', api.base + '/commits/' + args.source_commit)
     need(source and source['sha'] == args.source_commit, 'exact source commit is not present in the selected public repository')

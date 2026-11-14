@@ -72,9 +72,9 @@ public sealed partial class CalibrationDemoView {
   var client=ContentClient;if(client?.ContentState==null)return y;
   var state=client.ContentState["state"];var build=state["builds"]?[artwork.BuildId];
   contentPlayingStatus=ui.Text(detail,"",20,y,width-40,32,14,CalibrationWidgets.Muted);RefreshContentPlaying();y+=40;
-  if((build?["capabilities"] as JArray)?.Any(t=>(string)t=="sound-playback")==true){
-   ui.Text(detail,"声音",20,y,width-40,28,16);y+=36;var controls=ui.Rect(detail,"Work sound owner",0,0,0,0).gameObject.AddComponent<LibraryWorkSoundControls>();controls.Client=client;controls.Work=artwork.Id;controls.Gesture=value=>{librarySoundGesture=value;if(!value&&libraryDetailsPending){libraryDetailsPending=false;LibraryChanged();}};
-   var mix=client.Sound(artwork.Id);controls.Music=mix.Music;controls.Effects=mix.Effects;controls.MuteMusic=mix.MusicMuted;controls.MuteEffects=mix.EffectsMuted;
+  if((string)build?["kind"]=="native-v5"||(build?["capabilities"] as JArray)?.Any(t=>(string)t=="sound-playback")==true){
+   ui.Text(detail,"当前目标声音",20,y,width-40,28,16);y+=36;var controls=ui.Rect(detail,"Work sound owner",0,0,0,0).gameObject.AddComponent<LibraryWorkSoundControls>();controls.Client=client;controls.Work=artwork.Id;controls.Display=library.TargetDisplayId;controls.Gesture=value=>{librarySoundGesture=value;if(!value&&libraryDetailsPending){libraryDetailsPending=false;LibraryChanged();}};
+   var mix=client.Sound(artwork.Id,controls.Display);controls.Music=mix.Music;controls.Effects=mix.Effects;controls.MuteMusic=mix.MusicMuted;controls.MuteEffects=mix.EffectsMuted;
    controls.MusicLabel=ui.Text(detail,"配乐 "+Mathf.RoundToInt(mix.Music*100)+"%",20,y,width-40,24,14);y+=28;
    controls.MusicSlider=ui.Slider(detail,20,y,width-128,0,1,mix.Music,value=>{controls.Music=value;controls.RefreshLabels();controls.Queue();},()=>controls.Gesture(true),()=>controls.Gesture(false));controls.MusicSlider.name="作品配乐音量";
    controls.MusicMute=ui.Button(detail,mix.MusicMuted?"取消静音":"静音",width-96,y,76,()=>{controls.MuteMusic=!controls.MuteMusic;controls.RefreshLabels();controls.Queue();});y+=48;
@@ -83,11 +83,18 @@ public sealed partial class CalibrationDemoView {
    controls.EffectsMute=ui.Button(detail,mix.EffectsMuted?"取消静音":"静音",width-96,y,76,()=>{controls.MuteEffects=!controls.MuteEffects;controls.RefreshLabels();controls.Queue();});y+=44;
    controls.Feedback=ui.Text(detail,"",20,y,width-40,44,12,CalibrationWidgets.Muted);controls.Feedback.enableWordWrapping=true;y+=52;
   }
+  if(artwork.Id==SpatialWallpaper.Sdk.Capabilities.LegacyMiniShotIdentity.NativeWork&&(string)build?["kind"]=="native-v5"){ui.Button(detail,"导入旧版先行者存档",20,y,width-40,()=>ImportLegacyMiniShotSave(artwork.Id));y+=48;ui.Text(detail,"先停止原生桌面目标。仅导入可信旧版存档；已有原生进度不覆盖。",20,y,width-40,52,12,CalibrationWidgets.Muted).enableWordWrapping=true;y+=60;}
   ui.Button(detail,"更新作品包",20,y,width-40,()=>ChooseLibraryContent(true));y+=48;
   ui.Button(detail,"卸载作品",20,y,width-40,()=>ConfirmLibraryRemoval(artwork.Id));y+=48;
   if((string)build?["kind"]!="sandbox-v4"){ui.Button(detail,"导出授权作品包",20,y,width-40,()=>ExportLibraryContent(artwork.Id,artwork.RevisionId));y+=48;}
   if(artwork.CoverId!=null){ui.Button(detail,"使用原版回退",20,y,width-40,()=>library.Select(ArtworkCatalog.Find(artwork.CoverId)));y+=48;}
   ui.Text(detail,"参数编辑、历史修订选择和 SDK 再分享授权尚未提供。",20,y,width-40,60,12,CalibrationWidgets.Muted).enableWordWrapping=true;return y+76;
+ }
+ async void ImportLegacyMiniShotSave(string work){
+  if(contentOperation||ContentClient==null)return;contentOperation=true;
+  try{var result=await ContentClient.ContentCall("MigrateMiniShotSave",new JObject{{"work_id",work}});libraryActionError="已导入旧版先行者存档（"+(int)result["hit_count"]+" 个命中）。旧存档保留；应用原生作品后读取。来源记录："+((string)result["receipt_file"]??"目标存档内迁移标记");}
+  catch(Exception failure){libraryActionError="存档导入结果未确认："+failure.GetBaseException().Message+"。超时可能已提交，请核对目标迁移标记或 receipt；已有原生存档不覆盖，旧版文件保留。";}
+  finally{contentOperation=false;LibraryChanged();}
  }
  void RefreshContentPlaying(){
   if(!contentPlayingStatus||ContentClient==null||!library.Selected.IsContent)return;
@@ -96,14 +103,14 @@ public sealed partial class CalibrationDemoView {
 }
 
 public sealed class LibraryWorkSoundControls:MonoBehaviour {
- public DesktopHostClient Client;public string Work;public float Music,Effects;public bool MuteMusic,MuteEffects;public Action<bool> Gesture;
+ public DesktopHostClient Client;public string Work,Display;public float Music,Effects;public bool MuteMusic,MuteEffects;public Action<bool> Gesture;
  public TMP_Text MusicLabel,EffectsLabel,Feedback;public Evo.UI.Slider MusicSlider,EffectsSlider;public Evo.UI.Button MusicMute,EffectsMute;
  bool writing;JObject pending;
  void Update(){if(Client?.ActiveArtworkId!=Work||!Feedback)return;string failure=(string)Client.ContentState?["sound_error"];if(failure!=null)Feedback.text="设置已保存，播放声音暂不可用："+failure;else if(Feedback.text.StartsWith("设置已保存，播放声音暂不可用：",StringComparison.Ordinal))Feedback.text="已保存";}
  public void RefreshLabels(){if(!this)return;MusicLabel.text="配乐 "+Mathf.RoundToInt(Music*100)+"%";EffectsLabel.text="音效 "+Mathf.RoundToInt(Effects*100)+"%";MusicMute.GetComponentInChildren<TMP_Text>().text=MuteMusic?"取消静音":"静音";EffectsMute.GetComponentInChildren<TMP_Text>().text=MuteEffects?"取消静音":"静音";}
  public async void Queue(){pending=new SoundMix(Music,Effects,MuteMusic,MuteEffects).Json;if(writing)return;writing=true;
-  try{while(pending!=null){await Task.Delay(60);var mix=pending;pending=null;await Client.ContentCall("SetSoundMix",new JObject{{"work_id",Work},{"mix",mix}});if(this)Feedback.text="已保存";}}
-  catch(Exception failure){pending=null;try{await Client.RefreshContent();if(this){var actual=Client.Sound(Work);Music=actual.Music;Effects=actual.Effects;MuteMusic=actual.MusicMuted;MuteEffects=actual.EffectsMuted;MusicSlider.SetValueWithoutNotify(Music);EffectsSlider.SetValueWithoutNotify(Effects);RefreshLabels();}}catch(Exception refresh){Debug.LogWarning(refresh);}if(this)Feedback.text="声音设置保存失败，请重试。";Debug.LogWarning(failure);}
+  try{while(pending!=null){await Task.Delay(60);var mix=pending;pending=null;var payload=new JObject{{"work_id",Work},{"mix",mix}};if(Display!=null)payload["display_id"]=Display;await Client.ContentCall("SetSoundMix",payload);await Client.RefreshContent();await Client.Refresh();if(this)Feedback.text="已保存";}}
+  catch(Exception failure){pending=null;try{await Client.RefreshContent();if(this){var actual=Client.Sound(Work,Display);Music=actual.Music;Effects=actual.Effects;MuteMusic=actual.MusicMuted;MuteEffects=actual.EffectsMuted;MusicSlider.SetValueWithoutNotify(Music);EffectsSlider.SetValueWithoutNotify(Effects);RefreshLabels();}}catch(Exception refresh){Debug.LogWarning(refresh);}if(this)Feedback.text="声音设置保存失败，请重试。";Debug.LogWarning(failure);}
   finally{writing=false;}
  }
 }

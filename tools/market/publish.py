@@ -70,8 +70,9 @@ def verify_bytes(raw, envelope, trusted_keys, now, watermark=None, allow_expired
     return snapshot
 
 
-def validate_published(snapshot):
+def validate_published(snapshot, previous=None):
     validate("published", snapshot)
+    catalog.require_work_bindings(snapshot["entries"], previous["entries"] if previous else ())
     keys = set()
     for entry in snapshot["entries"]:
         require(entry["key"] == str(entry["repositoryId"]) + ":" + entry["workId"] and entry["key"] not in keys, "duplicate/mismatched published work identity")
@@ -182,7 +183,7 @@ def promote(candidate, fetch_asset, admit, directory, details=None, previous=Non
             require(set(metadata).issubset({"description", "preview", "discussion", "comments"}), "unknown reviewed detail field")
             entry.update(copy.deepcopy(metadata))
         reports.append({"key": entry["key"], "buildIdentity": entry["build"]["identity"], "assetId": asset["id"], "report": report})
-    return validate_published(result), reports
+    return validate_published(result, previous), reports
 
 
 def validate_previews(snapshot, fetch=None):
@@ -298,6 +299,7 @@ def collect(gh, previous, now, revocations):
     presentation = {k: {f: v[f] for f in ("description", "preview") if f in v} for k, v in entries.items()}
     for entry in entries.values():
         entry.pop("description", None); entry.pop("preview", None)
+    catalog.require_work_bindings(entries.values(), old["entries"] if old else ())
     return validate("catalog", {"schemaVersion": 1, "kind": "candidate", "generation": generation, "generatedAt": now,
             "expiresAt": (instant(now) + timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "entries": [entries[k] for k in sorted(entries)], "revocations": copy.deepcopy(revocations)}), observations, presentation

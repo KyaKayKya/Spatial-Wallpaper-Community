@@ -1,22 +1,30 @@
 {
   "format": 1,
   "profile": "spatial-public-source/1",
-  "source_commit": "c22ad3f6f012615452657e0aa419edb37dc5d756",
+  "source_commit": "a8ffade608f850a56b393fad3cfce3219f99af04",
   "public_repository": "https://github.com/KyaKayKya/Spatial-Wallpaper-Community",
   "history_included": false,
-  "project_license_selected": false,
+  "project_license_selected": true,
+  "project_license": "MIT",
   "excluded_counts": {
     "artwork-resource-metadata": 3,
     "asset-or-binary-input": 283,
     "original-artwork": 7,
     "original-or-third-party-asset-input": 353,
     "orphan-unity-meta": 410,
-    "outside-source-allowlist": 10,
-    "private-documentation": 271,
+    "outside-source-allowlist": 9,
+    "private-documentation": 273,
     "private-or-generated-directory": 954,
     "third-party-input-not-authorized": 144
   },
   "files": [
+    {
+      "path": ".github/PULL_REQUEST_TEMPLATE/market.md",
+      "git_blob": "0b68ac6eeb1000b0c0d7c0e4cf2734b940c30d60",
+      "sha256": "c6e89d85734175b9fa187c65f55c9075ef3bad464151a46848bc6bcd7a401b18",
+      "bytes": 1033,
+      "git_mode": "100644"
+    },
     {
       "path": ".github/workflows/market-check.yml",
       "git_blob": "3c9c8823e55907323e66d3e5e3058f249a8e259e",
@@ -36,6 +44,20 @@
       "git_blob": "49d4e1efb4f8c35c180ae34d7af6855fa4104b22",
       "sha256": "9a50513e3767483f41208c6dd585d0a25384cfd2c52e32920bb7f647cbbe65ff",
       "bytes": 2577,
+      "git_mode": "100644"
+    },
+    {
+      "path": "LICENSE",
+      "git_blob": "d9201351687f1e5675e6623e5121c4e000ed145b",
+      "sha256": "5fc464515532d72409f8f81d483cdf71a9efaacb1f9f080236317ebd96daf346",
+      "bytes": 1087,
+      "git_mode": "100644"
+    },
+    {
+      "path": "PROJECT_LICENSE_SCOPE.md",
+      "git_blob": "14b0b2d77f30ed53dd4b2a573e55e0c6ee4524ff",
+      "sha256": "21fed47b37602cc31dce4089b5f7a54488c2979416070b76eab7254d2c2b6258",
+      "bytes": 591,
       "git_mode": "100644"
     },
     {
@@ -445,6 +467,34 @@
       "git_mode": "100644"
     },
     {
+      "path": "Packages/com.spatialwallpaper.sdk/LICENSE.md",
+      "git_blob": "d9201351687f1e5675e6623e5121c4e000ed145b",
+      "sha256": "5fc464515532d72409f8f81d483cdf71a9efaacb1f9f080236317ebd96daf346",
+      "bytes": 1087,
+      "git_mode": "100644"
+    },
+    {
+      "path": "Packages/com.spatialwallpaper.sdk/LICENSE.md.meta",
+      "git_blob": "75b4779998194e127c567e14c3eab6706f6b93f9",
+      "sha256": "7791211f72b7bcb7c6800dc4dde916f3b18e61a4f9ba91be3f8aaf7ba235a09b",
+      "bytes": 99,
+      "git_mode": "100644"
+    },
+    {
+      "path": "Packages/com.spatialwallpaper.sdk/PROJECT_LICENSE_SCOPE.md",
+      "git_blob": "14b0b2d77f30ed53dd4b2a573e55e0c6ee4524ff",
+      "sha256": "21fed47b37602cc31dce4089b5f7a54488c2979416070b76eab7254d2c2b6258",
+      "bytes": 591,
+      "git_mode": "100644"
+    },
+    {
+      "path": "Packages/com.spatialwallpaper.sdk/PROJECT_LICENSE_SCOPE.md.meta",
+      "git_blob": "2af44dad060c0e130b64c5166cada3f3de923b2a",
+      "sha256": "025f1a3c80a36e202fa778788461ccedc2c0c5db672089ab80f7247e3c8d270a",
+      "bytes": 99,
+      "git_mode": "100644"
+    },
+    {
       "path": "Packages/com.spatialwallpaper.sdk/README.md",
       "git_blob": "a2e6f9d7fe0a1951f91968ffdfad06dea5db7b15",
       "sha256": "c9f9810d288d1b5b44fa76b74c4ce70d48703e844736a166d821b08f4aeb04ba",
@@ -630,6 +680,20 @@
       "path": "Packages/com.spatialwallpaper.sdk/Runtime/Capabilities/InputSnapshot.cs.meta",
       "git_blob": "8899c24d4f0d6051fb2e6b9060d2d3b02e2f78b5",
       "sha256": "598264fdac10a5e6ef62834d1237cdd41cfb06029bd9846669c6b9d23c8de195",
+      "bytes": 60,
+      "git_mode": "100644"
+    },
+    {
+      "path": "Packages/com.spatialwallpaper.sdk/Runtime/Capabilities/LegacyMiniShotIdentity.cs",
+      "git_blob": "a80566311dacbe3504edb4db9330bd4f0f2e4a71",
+      "sha256": "96e4bcc2e3c3a1816f345391f441e2a52b5e4ca61e6a59cdd19e6a8b342cbb57",
+      "bytes": 477,
+      "git_mode": "100644"
+    },
+    {
+      "path": "Packages/com.spatialwallpaper.sdk/Runtime/Capabilities/LegacyMiniShotIdentity.cs.meta",
+      "git_blob": "b8f1350c4a40747a2574729c3fe8fe37488800ed",
+      "sha256": "12644ec108f2c8f84f2106c9c42f9412f614a68133fb7187bc47b5f3c37beca3",
       "bytes": 60,
       "git_mode": "100644"
     },
@@ -2658,9 +2722,9 @@
     },
     {
       "path": "Packages/com.spatialwallpaper.sdk/package.json",
-      "git_blob": "c96777160f6a9c2ab65e0a9900d656ab02788134",
-      "sha256": "7a60c41d088681982cc43fd3a0fd307b39873f7e220def326662ab5b8b0e47ac",
-      "bytes": 1134,
+      "git_blob": "10453919d216cc8873401dd38a09cb3ec9e0cde0",
+      "sha256": "5f72d54f3874db43d3687322f7811173e3693602fa6f24db352ab3788d334dbd",
+      "bytes": 1154,
       "git_mode": "100644"
     },
     {
@@ -4177,9 +4241,9 @@
     },
     {
       "path": "Prototype/Assets/ContentRuntime/Core/ContentStore.Native.cs",
-      "git_blob": "733369d2804f2fc9afe5f6c0a138ea07d66212de",
-      "sha256": "74a92e2362f3d74c6887ce1bf8631a026e7dbea0e978fd4e4015ded75055558d",
-      "bytes": 3825,
+      "git_blob": "493c1f92f68d7226cbfda09df02f798446e11111",
+      "sha256": "5b06dc1f42453db207b0ee9729a6485a439aac184b0502ecf4a77afc9342a45b",
+      "bytes": 3919,
       "git_mode": "100644"
     },
     {
@@ -4204,10 +4268,24 @@
       "git_mode": "100644"
     },
     {
+      "path": "Prototype/Assets/ContentRuntime/Core/ContentTargetSoundStore.cs",
+      "git_blob": "7070b4c25aec36e080cdb40a5bc4cef03e625f19",
+      "sha256": "9a26fd631758eb6abe3a9b2c9f82a0a6f8fc6c989c129d9d620d7fb5451b8e81",
+      "bytes": 3900,
+      "git_mode": "100644"
+    },
+    {
+      "path": "Prototype/Assets/ContentRuntime/Core/ContentTargetSoundStore.cs.meta",
+      "git_blob": "6385cfbebf3e23e137d463c776be881a6c846641",
+      "sha256": "43c322df12ede651ae093ab91ebd8a6811fe87d260def6d912b1a8567bc986a4",
+      "bytes": 60,
+      "git_mode": "100644"
+    },
+    {
       "path": "Prototype/Assets/ContentRuntime/Core/GitHubMarket.cs",
-      "git_blob": "8f0cd27f806b4bab6ed0ba8cb8f2766f1955a3c4",
-      "sha256": "65b833d279c2f4176409edc8e6915afa2a7874235816928926d52a8e1fb42f30",
-      "bytes": 13601,
+      "git_blob": "58dbf21fc6c416e5579e3e4dd5a4c0b077d18a6d",
+      "sha256": "af989e184d778a82abc00fbe21506441cf3d406f0a29c664a1ec82446757a880",
+      "bytes": 13745,
       "git_mode": "100644"
     },
     {
@@ -4268,9 +4346,9 @@
     },
     {
       "path": "Prototype/Assets/ContentRuntime/Runtime/ContentHostClient.cs",
-      "git_blob": "d92323a1d6581fb2deb9cacf842bb628c4510d79",
-      "sha256": "908d9a8262998f1bbd317d2b74beb5abde64df444a0eadf038fbd22403172c29",
-      "bytes": 4037,
+      "git_blob": "6f61217f7ec763d47ebb16be069aace78d0ffe35",
+      "sha256": "575023f39bdc77f4b66bf9ccb3c0f1ff0e4ec450185fae82b94f2b8d5e6ec393",
+      "bytes": 4301,
       "git_mode": "100644"
     },
     {
@@ -4282,9 +4360,9 @@
     },
     {
       "path": "Prototype/Assets/ContentRuntime/Runtime/ContentLibraryService.cs",
-      "git_blob": "756cdcff19b8b83c7723fe48a9406d1502cceb58",
-      "sha256": "d514335f9792aaa202498d62ba5b0ee7fbe811a5ecbe19b6526ff485eaaa9f98",
-      "bytes": 12203,
+      "git_blob": "e809bba37489943b5056d2d3d04d6464ba1f49f3",
+      "sha256": "6bcbe812a63bc93de44d8593d17447552b174a70b82eb09bd3f78fe5df07c4a8",
+      "bytes": 13654,
       "git_mode": "100644"
     },
     {
@@ -4320,6 +4398,34 @@
       "git_blob": "6b2a4a0e350e6ccc2a6b8b7cf11a996e11a4091b",
       "sha256": "f17cb8771dbd9bfd1491c68362558998c39aaccae2afb19e0a5c9d5d1b0b3d16",
       "bytes": 163,
+      "git_mode": "100644"
+    },
+    {
+      "path": "Prototype/Assets/ContentRuntime/Runtime/MiniShotMigrationProcess.cs",
+      "git_blob": "5320bd79c7b9f5f0e18c71296621cdd9487ef457",
+      "sha256": "cc687c7856c577f2df68e911db38bc4c9870327039b4dc6f8f7a8bf5b0a6cfef",
+      "bytes": 1298,
+      "git_mode": "100644"
+    },
+    {
+      "path": "Prototype/Assets/ContentRuntime/Runtime/MiniShotMigrationProcess.cs.meta",
+      "git_blob": "b90d1f7ce026df2f0247eece6addc5505d7f2736",
+      "sha256": "8b2668246953185e877aa30849d2fb5352d7662e332e28894abaaa846e85a6c8",
+      "bytes": 60,
+      "git_mode": "100644"
+    },
+    {
+      "path": "Prototype/Assets/ContentRuntime/Runtime/MiniShotSaveMigration.cs",
+      "git_blob": "bbab2a1ee3a2d66b4537396dc54bddf13867bdd6",
+      "sha256": "a7594c5e91c54a04877f3d75e0540775f2983a5ece70f9715a465020ca651b97",
+      "bytes": 4374,
+      "git_mode": "100644"
+    },
+    {
+      "path": "Prototype/Assets/ContentRuntime/Runtime/MiniShotSaveMigration.cs.meta",
+      "git_blob": "62184976564b2e342e149a15b0d9d25ce6be5e4b",
+      "sha256": "2bf9aa62c394dc836195fc9645dcb65bc0c06b7ea45b00d5e6fee754d2c157b2",
+      "bytes": 60,
       "git_mode": "100644"
     },
     {
@@ -4548,9 +4654,9 @@
     },
     {
       "path": "Prototype/Assets/Desktop/Core/DesktopAppliedStore.cs",
-      "git_blob": "a6035b6a948069cc6c50a76a00bf58f7cab64768",
-      "sha256": "da25de32edf94f0133520f9c2f338913bf56b501d8b793973a83aaeaf0ff9f3e",
-      "bytes": 12871,
+      "git_blob": "fefd8b63888debb1e44b6e4d6549015ebefccf3c",
+      "sha256": "c3bb1543475196fb84f560a34c7c30b896a1bbc3958a1bb999bfb3b5622a0067",
+      "bytes": 13513,
       "git_mode": "100644"
     },
     {
@@ -4618,9 +4724,9 @@
     },
     {
       "path": "Prototype/Assets/Desktop/Core/DesktopPolicy.cs",
-      "git_blob": "ecbd3943ea1b08b1f8e1b370d8733d2e62b9e621",
-      "sha256": "52adb07cb9c43f442e9a6ab37b72e2d4241b9d1f67f59ee69c5bf004d78a31fb",
-      "bytes": 536,
+      "git_blob": "9545ccebaa80fc48dfaa9a84f5f8e135c88c7f7f",
+      "sha256": "3497f8d034b29e70ae254ac10b49000b8eb0427f56ce44798e55f0762a1c8871",
+      "bytes": 648,
       "git_mode": "100644"
     },
     {
@@ -4716,9 +4822,9 @@
     },
     {
       "path": "Prototype/Assets/Desktop/DesktopContentAdapter.cs",
-      "git_blob": "ef6387f8712f3e3dc0a41c3c4cc934821a6c3843",
-      "sha256": "2d5fa955ed939c3ac31a9ae5824dae28dd61dd4f11d17756b515f1423d31006c",
-      "bytes": 10679,
+      "git_blob": "b276bc5b86c6a9e9db9b4c60da6bbd6fad7a9a4d",
+      "sha256": "bef06c77ecc020e4fda5cf37e10fa0ec5245210b2e6118a7f3838ea58ef5f1eb",
+      "bytes": 12829,
       "git_mode": "100644"
     },
     {
@@ -4730,9 +4836,9 @@
     },
     {
       "path": "Prototype/Assets/Desktop/DesktopHostClient.cs",
-      "git_blob": "f5b1eb16c64d5e4077bc2b1700e5cd4d0b073719",
-      "sha256": "48aa99f628e7f3b69760bbc705ad4d71f16f65527c0ff58e87140fafb246458a",
-      "bytes": 5616,
+      "git_blob": "8ea3f337f51aae337bf120ab962d6480754da9f6",
+      "sha256": "e7e78ff000f97223d57649c6484db8bbc4db35c8f560b50cb12d89162393a511",
+      "bytes": 6099,
       "git_mode": "100644"
     },
     {
@@ -4758,9 +4864,9 @@
     },
     {
       "path": "Prototype/Assets/Desktop/DesktopNativeAdapter.cs",
-      "git_blob": "a7f4318f611575926d962ed46881af5ece9ef740",
-      "sha256": "48ec4e9e9825c0eb4899e6df6ecb4b03216639fe694aef036c8f87ff99f63209",
-      "bytes": 12702,
+      "git_blob": "b75328bcb8caf34aeb4dc63c8141df9d9cc4d4e1",
+      "sha256": "c6313119ead3714425084c1d7e16442c9628b2a8776aa7eca4b6975c4b0a55bd",
+      "bytes": 12864,
       "git_mode": "100644"
     },
     {
@@ -4772,9 +4878,9 @@
     },
     {
       "path": "Prototype/Assets/Desktop/DesktopRuntime.cs",
-      "git_blob": "683048d5bd0de1e89410444573480660086f7140",
-      "sha256": "08f5b34ac6d51c14525d701ff7a04240a5c5617d171dfa63db6eecc715fba541",
-      "bytes": 22643,
+      "git_blob": "23b0a4781c8539085900fecc17125a330e27836f",
+      "sha256": "190fe58810e5547c5028b81f42fbe521ef2b4dbc14c8884a19b8436159f40236",
+      "bytes": 22477,
       "git_mode": "100644"
     },
     {
@@ -5374,9 +5480,9 @@
     },
     {
       "path": "Prototype/Assets/Library/Runtime/LibraryNativePreview.cs",
-      "git_blob": "8d7ac90a3535ee42cef7c89b74b1eb22ee831781",
-      "sha256": "d62d3e17ebb8c818eb231a99800fefe0767ca71be53c90064ff8486a2de67912",
-      "bytes": 6709,
+      "git_blob": "68b04e4b3890ff150063becb7b1402390aa7a93b",
+      "sha256": "ccaa31ff41543da018ea0656d50f340716d56aa75285266905e7fa1b5b0617af",
+      "bytes": 7063,
       "git_mode": "100644"
     },
     {
@@ -5458,9 +5564,9 @@
     },
     {
       "path": "Prototype/Assets/Library/UI/LibraryContentOperations.cs",
-      "git_blob": "0b0cb3f1c41299a07c0a5df41fa91bfa89e0f577",
-      "sha256": "d968cf30af11db85ab40bb0fa8f9ad6c698fa22addb1ae58137e8e35dd5a7f96",
-      "bytes": 13187,
+      "git_blob": "cf4f2bb0df14fd1e57da6b74fdbcc4fabc8fb411",
+      "sha256": "2e90c7419a059a5572171805622d03fbd6670741208f68cdb4a9fe70719c033a",
+      "bytes": 14595,
       "git_mode": "100644"
     },
     {
@@ -5997,9 +6103,9 @@
     },
     {
       "path": "Prototype/Assets/NativeArtworks/Editor/OriginalNativeExample.cs",
-      "git_blob": "71efa9ea190df3abe6bff796a3399c6257cb77e5",
-      "sha256": "5a52bc17aa1e5ee5e97d3165f244ffaf90700a9ccd163c5a94b8fe61b0b5e18e",
-      "bytes": 5011,
+      "git_blob": "1371bdea6dbbe30ea33b31913160828f9a14ccac",
+      "sha256": "8482ee19dacc21114505521b2f112b09dd1492d9cf6714ac8c6da7e809f9ca19",
+      "bytes": 5061,
       "git_mode": "100644"
     },
     {
@@ -6032,9 +6138,9 @@
     },
     {
       "path": "Prototype/Assets/NativeArtworks/Runtime/MiniShotNative.cs",
-      "git_blob": "80b591b4fc4c756dea3060e25330a3f21588e541",
-      "sha256": "cea8eb1a310722313b895ce080510f774a37eebc5bc3eae2bfa22ed797d2f08a",
-      "bytes": 2714,
+      "git_blob": "e7e0a5547e8a3046a980631f53abc572079b9871",
+      "sha256": "426359a82ba9fe602cdd3e2791a316b93bccbb8f31677d9a45296c180b3e648a",
+      "bytes": 2738,
       "git_mode": "100644"
     },
     {
@@ -7810,9 +7916,9 @@
     },
     {
       "path": "Supervisor/Broker/PrivateStore.cs",
-      "git_blob": "e28a9e7019073898ce15183102feff55b80c302d",
-      "sha256": "4983a17cd8c1ea9743ec65825c1a07bb3c69abc136f4dc15beba2d2d2048e8c3",
-      "bytes": 12850,
+      "git_blob": "081b8f9b34bc432653683d40d6e73ab6acccb3a8",
+      "sha256": "598171f0116aca28ae912264812d9158f2f62c01fec8a2b92ea1088857852fab",
+      "bytes": 14120,
       "git_mode": "100644"
     },
     {
@@ -7901,9 +8007,9 @@
     },
     {
       "path": "Supervisor/Host.cs",
-      "git_blob": "5022d95e2012444ff409e53249187394e2b579ac",
-      "sha256": "2aee7f68026c810a28c9530ca13e0321c91cc2608f7053e96b0698e226f0d654",
-      "bytes": 39634,
+      "git_blob": "982f616a215969dcb7c137564a652d992fec06bb",
+      "sha256": "48b23964b81b3c3155f72646678b9cf0204950f5462cf144ccfeda4106297dfc",
+      "bytes": 39724,
       "git_mode": "100644"
     },
     {
@@ -7911,6 +8017,13 @@
       "git_blob": "71bf58b627b76f3b4a7129a4df002eaa8b973198",
       "sha256": "1b36019aabe835bed958460c901ca8e95eedbda908a65eb65264365ce1f54989",
       "bytes": 5553,
+      "git_mode": "100644"
+    },
+    {
+      "path": "Supervisor/Hosting/MiniShotSaveMigrationHost.cs",
+      "git_blob": "866de4dbcf28a407ee6780381107a636ded0cbd5",
+      "sha256": "4f6ba3048ac8bfd1feee4e5a8cb274105aef37e21bf1e96f20064b12e3e62663",
+      "bytes": 5031,
       "git_mode": "100644"
     },
     {
@@ -9720,10 +9833,17 @@
       "git_mode": "100644"
     },
     {
+      "path": "docs/guides/SDK0.4发行与体验.md",
+      "git_blob": "2dc958685777e6d3f24b434b416f9793eecedc95",
+      "sha256": "4a43743554d7033938f0473e5af688aaa67f6693c8bbbbb46717959b7b394deb",
+      "bytes": 5058,
+      "git_mode": "100644"
+    },
+    {
       "path": "docs/guides/公开源码快照.md",
-      "git_blob": "a6224aeaa817a757b94e55d306c3bbf4dd681a21",
-      "sha256": "edf648c627cf2583e8d7388aea38caee0682fcaae573a46fc36199fdaefe2b10",
-      "bytes": 7828,
+      "git_blob": "46436491481a60ea62288910323619635935b467",
+      "sha256": "056beb617ee8cd11246387ba733fe7501c1d6700aa410265f9aa7af861664f42",
+      "bytes": 8063,
       "git_mode": "100644"
     },
     {
@@ -9735,9 +9855,9 @@
     },
     {
       "path": "docs/guides/壁纸市场创作者入门.md",
-      "git_blob": "12b02d1a2939533508895c2e545bca4a14f79668",
-      "sha256": "4206f020e697215b773f87035589a2cff2558ae42b767205aa749742005fd896",
-      "bytes": 7425,
+      "git_blob": "d9b687c77c3a64eadfe48856e3cd6ed30ca35c55",
+      "sha256": "072009ec43bbc1fe34efdddf993163182c7e3ada5cb78416056f677c931441f1",
+      "bytes": 8155,
       "git_mode": "100644"
     },
     {
@@ -9745,6 +9865,13 @@
       "git_blob": "25d0f6fe418c53418f4a9a2ea391f2f12fced49e",
       "sha256": "a68aa15855a558332b9f66c66849aca9f68091d3b49030d16cb16f4545579cd6",
       "bytes": 10738,
+      "git_mode": "100644"
+    },
+    {
+      "path": "docs/guides/外来原生作品导出.md",
+      "git_blob": "85a5f0c7cc3133fd8f2e732d5cbe9e8b7a00bd1b",
+      "sha256": "e7535af4daa3519d62b1c18cb3e891c8c9b7c79fc7cc87ec312b030d8b20b9d0",
+      "bytes": 9952,
       "git_mode": "100644"
     },
     {
@@ -9804,6 +9931,13 @@
       "git_mode": "100644"
     },
     {
+      "path": "tests/desktop/test_finalizer.py",
+      "git_blob": "a29ff4633a3a99af353070b9f69fea8397f8afcc",
+      "sha256": "bbef8092c0540b4984f6e35c447a4002584041cd494d9668c6d80b05e9acf642",
+      "bytes": 8040,
+      "git_mode": "100644"
+    },
+    {
       "path": "tests/market/client/.gitignore",
       "git_blob": "cd42ee34e873b4ddf17cdeeed2e6c0d4e094c62b",
       "sha256": "6c5082c7e6de3e350189c67a1aacf757485ecc26e0a3cf96683528565f3e5f12",
@@ -9812,9 +9946,9 @@
     },
     {
       "path": "tests/market/client/MarketClientTests.cs",
-      "git_blob": "65e94f4114033a73916b34f7c90bdf7e73be0b43",
-      "sha256": "31351d30ea69e932623f7a5b3254111fa078d5cb752190b7237fd50ea8e38035",
-      "bytes": 9195,
+      "git_blob": "b3665f7a5cc4e30184dbc3ed39ae162afc56a6fd",
+      "sha256": "5893c222d40319b22390a435eaceacd7230a251ec8e0ce1b03882a49b4adaef6",
+      "bytes": 9729,
       "git_mode": "100644"
     },
     {
@@ -9874,6 +10008,20 @@
       "git_mode": "100644"
     },
     {
+      "path": "tests/market/test_public_source_profile.py",
+      "git_blob": "c42c3f6baa66ef33b0ba4b3c085038c136ffe81d",
+      "sha256": "790e46a794ea8b6586d2bb6abbd071954a9c77ddc8f09afe136b5e53ac75bfc3",
+      "bytes": 610,
+      "git_mode": "100644"
+    },
+    {
+      "path": "tests/market/test_publish_revocations.py",
+      "git_blob": "7b6b22a6df99e33b6839127f2d21028ec08e43c6",
+      "sha256": "f00d8f79617b88f447e055facb9d64935492500be88c86eadf8b31257e476f63",
+      "bytes": 2973,
+      "git_mode": "100644"
+    },
+    {
       "path": "tests/market/test_published.py",
       "git_blob": "6f68ee67c0d6b457a25c940d2da5a30494d8a1b5",
       "sha256": "bac773288e8876a2b24e9b61a30c748eaec118fbfa8b4135b248fe8c30ec300f",
@@ -9892,6 +10040,13 @@
       "git_blob": "b9e7353eaf63cf4b52ac155d7bf9f22b93a30d16",
       "sha256": "a3d9e9fc0c223c694e62ec30efda3c498963892506726a96c9b2c69b042ae3a3",
       "bytes": 3911,
+      "git_mode": "100644"
+    },
+    {
+      "path": "tests/market/test_work_binding.py",
+      "git_blob": "999473672994481d7b55ee6ba3dbda43975aa8d2",
+      "sha256": "3bd19809d37cdba1d8fa2edf00e9fec8c2f010dc1cba102a42850da5cf2b9a6d",
+      "bytes": 4149,
       "git_mode": "100644"
     },
     {
@@ -9920,6 +10075,20 @@
       "git_blob": "59fff0869ab3509e430cd14e6a4120299a454bdb",
       "sha256": "c60dfd5017d6c7647ad438348cf10d487dad54d5eecd93f1bf6cfdbdf8814984",
       "bytes": 465,
+      "git_mode": "100644"
+    },
+    {
+      "path": "tests/native-store/NativeSceneIdentityTests.cs",
+      "git_blob": "0324401cf5da35f5eca4eca010d19f446f26e7b7",
+      "sha256": "11c14afe7362ce94045b70f5f5587e2d679c9506b7a58a23a2db5b76c9440264",
+      "bytes": 4993,
+      "git_mode": "100644"
+    },
+    {
+      "path": "tests/wallpapers/test_prepare_shared_external.py",
+      "git_blob": "3b744bffe58415740976b5f9fb9631f5c27a59ea",
+      "sha256": "f920ff986be9a94f37c6319982f8ac9ed6d1b93997d8749c87e3a4d3f2eb2fe8",
+      "bytes": 9059,
       "git_mode": "100644"
     },
     {
@@ -10532,6 +10701,20 @@
       "git_mode": "100644"
     },
     {
+      "path": "tools/desktop/MiniShotMigrationProcessChecks.cs",
+      "git_blob": "2f16c04810004e0393c66cc953b348c58906b0ed",
+      "sha256": "58bf38c9e5e6d6a0a421cc656e8eedfc8c713fc4fe2bc1ff7c9b14a4b95c3ae9",
+      "bytes": 2083,
+      "git_mode": "100644"
+    },
+    {
+      "path": "tools/desktop/MiniShotSaveMigrationChecks.cs",
+      "git_blob": "6a9ca69704216661d4ffd584b3b559de5a1d9275",
+      "sha256": "47581540d6c45d909a56fb9e7d1ab2fd9f7b55f92c285759d66afa4b3c7574d8",
+      "bytes": 5686,
+      "git_mode": "100644"
+    },
+    {
       "path": "tools/desktop/NativeBridgeTimingChecks.cs",
       "git_blob": "a1a02c6e94bf3915c2ca96613ebbacd8f3c8b373",
       "sha256": "a8787243d501f3e8b24b4e00f95e634f282c6962977176343b2e418a26178548",
@@ -10672,6 +10855,13 @@
       "git_mode": "100644"
     },
     {
+      "path": "tools/desktop/TargetSoundRecoveryChecks.cs",
+      "git_blob": "bd908daa67845882b8e283ba05e0d80aeebe5d15",
+      "sha256": "ae0f3bfe27ecf998e0032b1b9c32e85fe4f283f9a8fec79c697c82de72c3a6ae",
+      "bytes": 12620,
+      "git_mode": "100644"
+    },
+    {
       "path": "tools/desktop/analyze_native_baseline.py",
       "git_blob": "965a72ad70a5eb8de9548b76d1a883aac1b271d9",
       "sha256": "7ca9757e4fb30da07683e540be0619b86ee5072bb092304dd6fa3cc8956fac3e",
@@ -10701,9 +10891,9 @@
     },
     {
       "path": "tools/desktop/assemble_native_release.py",
-      "git_blob": "3eeec69834fde19e40284652c38002b1f8ae6161",
-      "sha256": "b8e615c23f3f0b9a21b2b1ee8710c4a1f8efa1efcf8cf46afd990292a3faf6b5",
-      "bytes": 29441,
+      "git_blob": "dc204f1228945906eb80b7d174648f43a7519d05",
+      "sha256": "a2e381e7035c0a640dab4dcabb4efa42916a1233c88a5355c4c754455ba62344",
+      "bytes": 29595,
       "git_mode": "100644"
     },
     {
@@ -10770,6 +10960,13 @@
       "git_mode": "100644"
     },
     {
+      "path": "tools/desktop/check_external_native_release.py",
+      "git_blob": "95b4785b1e39d44684c7b8b0a0c326d30987b900",
+      "sha256": "d88cb5dd4b987307e6d86a4dffab9373cc3fd024e2c785d595ca534140d03050",
+      "bytes": 9523,
+      "git_mode": "100644"
+    },
+    {
       "path": "tools/desktop/check_library_native_preview.py",
       "git_blob": "873ea02929acce0fbe1fd7fb05f4d085cdbadb46",
       "sha256": "c08b9ad2a905331677797a2290efcc68b3e41dec142e931cc17de26c91675c9c",
@@ -10781,6 +10978,20 @@
       "git_blob": "194dc15f4caa7274326226a473d385f91f3a3c24",
       "sha256": "aec69a5af971f09e5a0936fcb95d794774f896fa572c365542b0d40dc21e6cd2",
       "bytes": 15150,
+      "git_mode": "100644"
+    },
+    {
+      "path": "tools/desktop/check_minishot_migration_process.py",
+      "git_blob": "5fb3b70b8a479e5559ad5ac73cf735aacc52b798",
+      "sha256": "493685594995d31fd9c17df6fa1b705b67cfb36035f0fb435aa51d387a4b9257",
+      "bytes": 1621,
+      "git_mode": "100644"
+    },
+    {
+      "path": "tools/desktop/check_minishot_save_migration.py",
+      "git_blob": "f8e070ca14abd44a0e400ed4dbfc7d124f477044",
+      "sha256": "0cf156a34e4baee0ef3877020d3f6bef6ae4d4b05a20ac6e26cfcc17c1a79106",
+      "bytes": 2841,
       "git_mode": "100644"
     },
     {
@@ -10952,10 +11163,24 @@
       "git_mode": "100644"
     },
     {
+      "path": "tools/desktop/check_target_sound_recovery.py",
+      "git_blob": "a343efd3da3e859e751877b49bb3d60f08c047d2",
+      "sha256": "31ba2ac70288fb30e682a3bffea26b7a721507fe27c5a7ad25ee04f38c6051a5",
+      "bytes": 2331,
+      "git_mode": "100644"
+    },
+    {
       "path": "tools/desktop/collect.py",
       "git_blob": "267b9ba78e252de256408b194eb2c8dc310a91ed",
       "sha256": "5470609d5971f1b3db40844d4152583175d5fa6bf71c7fa29661a31e1c89427c",
       "bytes": 4933,
+      "git_mode": "100644"
+    },
+    {
+      "path": "tools/desktop/finalize_native_release.py",
+      "git_blob": "0396289c6ba81a5873df0dec11dea3651624aea5",
+      "sha256": "497f3a24571c0623fcaf378659b9d67de91203c5aeb1dcae890abe8f106054a1",
+      "bytes": 29819,
       "git_mode": "100644"
     },
     {
@@ -11884,9 +12109,9 @@
     },
     {
       "path": "tools/market/README.md",
-      "git_blob": "5d9c218de82bd03dcfd75555b6c1f28044388d0d",
-      "sha256": "5973b1b2aac348f3bfa39bc55290e00a42a6abcd3b72a064a7eecd5bd7f9b1b5",
-      "bytes": 825,
+      "git_blob": "fb0fcfd35cc424850b35c592ccce93e870bc9649",
+      "sha256": "41e2f565d706760cee37d564184a158d1f524031a746d88abc836c5b1cbf7e91",
+      "bytes": 1078,
       "git_mode": "100644"
     },
     {
@@ -11905,9 +12130,9 @@
     },
     {
       "path": "tools/market/catalog.py",
-      "git_blob": "e842105be5e46b51af72875db16556e0138aa614",
-      "sha256": "45938c69bb79e34169322c57ffae4d7865599d61bba9f94f5dd1bc6dbb96ff51",
-      "bytes": 7567,
+      "git_blob": "4529a2601234a2c6aeebe39d96a145934454d772",
+      "sha256": "137574a0315c03b2ccb13df32e604a6ca39a89e2b6ab69f5bae20b18a9da3650",
+      "bytes": 8104,
       "git_mode": "100644"
     },
     {
@@ -11926,9 +12151,9 @@
     },
     {
       "path": "tools/market/deploy_community.py",
-      "git_blob": "935a64b66285b5ac6877049f818b5a37cc682710",
-      "sha256": "763198772d0edd7f74e81b10dfb4d3b04f0221a2801542c32b6d3a6a76e9e845",
-      "bytes": 24337,
+      "git_blob": "838085f1955b96a6c1411bc80f7adac251503265",
+      "sha256": "631f730d4bfae9f4a77982292b74594a68e8f99ec93742643bafea6e958e3c61",
+      "bytes": 24457,
       "git_mode": "100644"
     },
     {
@@ -11954,16 +12179,16 @@
     },
     {
       "path": "tools/market/prepare_public_source.py",
-      "git_blob": "f6183b84c995797b0e0842b548dd6cb026a8f6ac",
-      "sha256": "f2fd60864542707210d25e0f4fc91d49563be9256cd942032ac0cfedb4118788",
-      "bytes": 16892,
+      "git_blob": "d1e2a20aa92eaf3804666837a1ba6ce558b2d0e1",
+      "sha256": "007152b683f48165dadce5b6c739bfb26c36b5f3a5a1deccbe6ce881428d2779",
+      "bytes": 17113,
       "git_mode": "100644"
     },
     {
       "path": "tools/market/publish.py",
-      "git_blob": "dbd74b8b15626868f897c3a673d0536f34cf03a1",
-      "sha256": "0580ae6e5243755cc094fc11c66b85c6b164ff00785af68cf6b83c1f3198bb86",
-      "bytes": 34608,
+      "git_blob": "a4baf8b9458280cba3e529185141a494bcce6fdd",
+      "sha256": "312efe0e7cc28a4141557929f99b19366b8e0f9b863c7bd752b501893e4ad715",
+      "bytes": 35849,
       "git_mode": "100644"
     },
     {
@@ -13059,6 +13284,13 @@
       "git_mode": "100644"
     },
     {
+      "path": "tools/sdk/MiniShotNativeChecks.cs",
+      "git_blob": "be47760d4ff5b56629c180f17f0b98548337b51c",
+      "sha256": "7351066a194d2b25a065c7b4e68896d7535ef1c666b51cf5c6a98f28fe8921e4",
+      "bytes": 13514,
+      "git_mode": "100644"
+    },
+    {
       "path": "tools/sdk/NativeCapabilitiesChecks.cs",
       "git_blob": "2999b9208d6e8f18af97924e78c063721120db79",
       "sha256": "25b89c63dab1b8aaa5a3dea95fa8e51a46618cc3b640ca6d4e9f677903f67320",
@@ -13098,6 +13330,13 @@
       "git_blob": "5a36c657fa118efd56d6845bf46b0baa57c1c1cc",
       "sha256": "65a07d40bf5161bc38efdcb71d8fa8f0ca7c7045817b17ffd81cf381c67c61cf",
       "bytes": 3915,
+      "git_mode": "100644"
+    },
+    {
+      "path": "tools/sdk/NativePreviewSoundChecks.cs",
+      "git_blob": "f66f0cfb8835b59f34929f43fd13a8ba867d542f",
+      "sha256": "f0752ed90f8ea871d8c7136044bea68360ce0259b6031c9c43dc73c2c657f446",
+      "bytes": 7522,
       "git_mode": "100644"
     },
     {
@@ -13591,6 +13830,13 @@
       "git_mode": "100644"
     },
     {
+      "path": "tools/sdk/check_minishot_native.py",
+      "git_blob": "05ff48713929fdc2754092822fa2dbbfb930f0dc",
+      "sha256": "5e766d45182c41474a490b9576091273ab5c2901023fcba6e18590e34a62f1d4",
+      "bytes": 2220,
+      "git_mode": "100644"
+    },
+    {
       "path": "tools/sdk/check_modern_lighting.py",
       "git_blob": "1a43b5d1ce2072265c4a9e89a86b1bf6b4dc0672",
       "sha256": "a8a5d894fbe0d6c5845c336df1b48c3f6d3f61d179c35d33712911e3a39f329e",
@@ -13665,6 +13911,13 @@
       "git_blob": "345027075c96e14c343de1e6f50816d92ae17cfb",
       "sha256": "5da325e8d98e65073be5cc8369c87b9cdf10d7babe1c4d900de2127b35efff55",
       "bytes": 2185,
+      "git_mode": "100644"
+    },
+    {
+      "path": "tools/sdk/check_native_preview_sound.py",
+      "git_blob": "3ef4bc67580053c406b3bae1b7c341e2d714105b",
+      "sha256": "a8a52ee122c7d9ea71f1cf6550dd6cd3b90893a666528f95fb038fc490c1640a",
+      "bytes": 2266,
       "git_mode": "100644"
     },
     {
@@ -15520,6 +15773,13 @@
       "git_blob": "b60d5be91106b1670212f0e52b4b12482cfa27fc",
       "sha256": "9be04d4a035a755f507963a32528ba1265234ed36df1ae17e2aecbdcfc8b9c2f",
       "bytes": 1668,
+      "git_mode": "100644"
+    },
+    {
+      "path": "tools/wallpapers/prepare_shared_external.py",
+      "git_blob": "d3f9f0b712e0d922e8c5913417077cef7dd63c4d",
+      "sha256": "07aa7961bdcbe0748743df9607f72ec0cf0eefae435f29552a2a0a85b00434af",
+      "bytes": 13428,
       "git_mode": "100644"
     },
     {

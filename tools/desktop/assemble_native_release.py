@@ -158,6 +158,9 @@ def component(source, directory, filenames, target):
 
 
 def package_source(source, out):
+    for name in ('LICENSE', 'PROJECT_LICENSE_SCOPE.md'):
+        if name in source.paths:
+            source.write(name, out / 'Licenses/Project' / name)
     sdk = 'Packages/com.spatialwallpaper.sdk/'
     package = source.json(sdk + 'package.json')
     archive = out / 'Authoring' / ('com.spatialwallpaper.sdk-' + package['version'] + '.tgz')

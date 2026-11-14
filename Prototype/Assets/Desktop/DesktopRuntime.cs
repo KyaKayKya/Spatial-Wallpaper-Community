@@ -94,7 +94,7 @@ namespace SpatialWallpaper.Desktop {
      case "StopDesktop":if(payload["display_id"]?.Type==JTokenType.String)return await StopAppliedTarget((string)payload["display_id"]);await CloseNativeTargets();await CloseScene();SaveApplied(null,null,null);foreach(var entry in ((JObject)contentService.Store.Snapshot["applied"]).Properties())contentService.Store.ClearApplied(entry.Name);active=null;activeProfile=null;activeContentRevision=null;policy.Manual=false;native.Detach();native.Hide();await SetPaused();revision++;error=null;return Result(true,null);
      case "PauseDesktop":await PauseAppliedTargets(payload);revision++;return Snapshot();
      case "BeginDesktopPreview":managerSeen=Time.realtimeSinceStartup;policy.Preview=true;PublishNativePoses();await CloseScene();await contentPresentation.RetireViewportAsync();native.Hide();revision++;return Snapshot();
-     case "EndDesktopPreview":policy.Preview=false;if(active!=null&&!NativeSelected)await Present(active,activeProfile,activeContentRevision);PublishNativePoses();revision++;return Snapshot();
+     case "EndDesktopPreview":policy.Preview=false;if(active!=null&&!NativeSelected&&!legacyTargetOffline)await Present(active,activeProfile,activeContentRevision);PublishNativePoses();revision++;return Snapshot();
      case "ConfigureDesktopCamera":
       if(policy.Locked||policy.Suspended)throw new InvalidOperationException("会话锁定或休眠时无法启用摄像头");
       cameraId=(string)payload["camera_id"];cameraName=(string)payload["camera_name"];cameraMode=(string)payload["mode_id"];useSimulation=(bool?)payload["simulate"]==true;
@@ -125,7 +125,7 @@ namespace SpatialWallpaper.Desktop {
   async Task Present(WallpaperRequest request,CalibrationProfile profile,string fixedContentRevision=null){
    await CloseScene();Time.timeScale=1;AudioListener.pause=false;int initialErrors=renderErrors;
    var display=DesktopPlatform.Displays().SingleOrDefault(d=>d.Id==request.DisplayId);if(display==null)throw new InvalidOperationException("desktop-display-offline");
-   native.Attach(request.DisplayId);
+   legacyTargetOffline=false;native.Attach(request.DisplayId);
    // Embedded Windows Players resize through their owned HWND (WM_SIZE), not
    // Screen.SetResolution, which attempts an unsupported DX mode switch here.
    await Frames(3);
@@ -167,16 +167,13 @@ namespace SpatialWallpaper.Desktop {
    if(busy||Time.realtimeSinceStartup<nextCheck)return;nextCheck=Time.realtimeSinceStartup+1;busy=true;
    try{
     if(trackingResetRequested){trackingResetRequested=false;await runtime.ReleaseTracking();}
-    if(policy.Preview&&Time.realtimeSinceStartup-managerSeen>4){policy.Preview=false;if(active!=null&&!NativeSelected)await Present(active,activeProfile,activeContentRevision);}
-    await ReconcileNativeTargets();
-    if(active!=null&&!NativeSelected&&!policy.Preview){
-     if(!DesktopPlatform.Displays().Any(d=>d.Id==active.DisplayId)){error="目标显示器离线，已停止空间壁纸";await CloseScene();ClearContentApplied();SaveApplied(null,null,null);active=null;activeProfile=null;activeContentRevision=null;native.Detach();native.Hide();revision++;}
-     else{
+    if(policy.Preview&&Time.realtimeSinceStartup-managerSeen>4){policy.Preview=false;if(active!=null&&!NativeSelected&&!legacyTargetOffline)await Present(active,activeProfile,activeContentRevision);}
+    await ReconcileNativeTargets();await ReconcileLegacyTarget();
+    if(active!=null&&!NativeSelected&&!legacyTargetOffline&&!policy.Preview){
       MeasureContentDesktop();if(contentPresentation.ViewportRecoveryRequired){await contentPresentation.RetireViewportAsync();await Present(active,activeProfile,activeContentRevision);revision++;}
       if(!native.Verify()){try{native.Attach(active.DisplayId);await Frames(3);Measure();if(runtime.DisplayId!=active.DisplayId)throw new InvalidOperationException("desktop-display-measurement-mismatch");revision++;}catch(Exception e){error=e.Message;await CloseScene();native.Detach();native.Hide();active=null;activeProfile=null;revision++;}}
-     }
     }
-    policy.PauseWhenCovered=runtime.PauseWhenInvisible;policy.Covered=nativePlaybacks.Count>0?nativePlaybacks.Values.All(p=>p.Target.Covered()):active!=null&&!NativeSelected&&native.Covered();await SetPaused();
+    policy.PauseWhenCovered=runtime.PauseWhenInvisible;policy.Covered=nativePlaybacks.Count>0?nativePlaybacks.Values.All(p=>p.Target.Covered()):active!=null&&!NativeSelected&&!legacyTargetOffline&&native.Covered();await SetPaused();
    }catch(Exception e){error=e.Message;Debug.LogWarning(e);}finally{busy=false;}
   }
   void LateUpdate(){(shell as IDesktopShellState)?.SetWallpaperState(HasPlayback,policy.Manual);if(ready){PublishNativePoses();if(!busy&&library.Loaded!=null)Measure();}}

@@ -45,6 +45,7 @@ public sealed class MiniShotNative:MonoBehaviour {
  public int Pick(float x,float y,Vector3 eye,Vector3 size){
   float sx=(x-.5f)*size.x,sy=(.5f-y)*size.y;float nearest=100000;int selected=-1;
   for(int i=0;i<centers.Length;i++){
+   if(hits[i])continue;
    var center=centers[i];float t=(center.z-eye.z)/(-eye.z);
    float dx=eye.x+(sx-eye.x)*t-center.x,dy=eye.y+(sy-eye.y)*t-center.y;
    if(t>0&&t<nearest&&dx*dx+dy*dy<=radii[i]*radii[i]){nearest=t;selected=i;}
