@@ -1,7 +1,7 @@
 {
   "format": 1,
   "profile": "spatial-public-source/1",
-  "source_commit": "408710a1fc4d2ba19f905610edb8e579168c2679",
+  "source_commit": "3ea8e44dfad455f1b193ef7730b38ff3e6373651",
   "public_repository": "https://github.com/KyaKayKya/Spatial-Wallpaper-Community",
   "history_included": false,
   "project_license_selected": true,
@@ -16813,9 +16813,9 @@
     },
     {
       "path": "tools/sdk/experiments/build_unity.py",
-      "git_blob": "a5932ebbbe1539fcf115d38532da817b849608f5",
-      "sha256": "ab1c582bc0dbc4ea90f71485d9a6836b7839aa56e3f12bf56c289d4bd899509a",
-      "bytes": 4201,
+      "git_blob": "bf2ac97de8ddc471437db0c0affca0c68d1f918e",
+      "sha256": "646d96244586cc03c64a786325a8c732c21eed968bb0722f2e0c27d63b44d4fc",
+      "bytes": 4242,
       "git_mode": "100644",
       "source_path": "tools/sdk/experiments/build_unity.py"
     },
