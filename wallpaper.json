@@ -6,8 +6,8 @@
     {
       "id": "577c5307-5be9-49b2-96db-e7b5c11151ba",
       "title": "Original CC0 Triangle",
-      "version": "1.0.0",
-      "releaseTag": "original-cc0-1.0.0",
+      "version": "1.0.2",
+      "releaseTag": "original-cc0-1.0.2",
       "sdk": "0.4.0-preview.1",
       "capabilities": [
         "view-data",
