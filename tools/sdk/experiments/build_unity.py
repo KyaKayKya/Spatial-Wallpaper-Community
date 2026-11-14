@@ -4,7 +4,7 @@ import argparse,shutil,json,os,subprocess,hashlib,sys,uuid
 ROOT=Path(__file__).resolve().parents[3]
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from evidence import require_source_bytes,require_build_result
-UPSTREAM=Path('C:/Project/GameAI/sdk-research/Basis-reuse-kit-acfca6b')
+UPSTREAM=Path('C:/Project/GameAI/Spatial Wallpaper/.local-assets/research/sdk-research/Basis-reuse-kit-acfca6b')
 OUT=ROOT/'Validation/Content/sdk-runtime/A/unity'
 def main():
  parser=argparse.ArgumentParser();parser.add_argument('--source',type=Path,default=UPSTREAM);args=parser.parse_args()
