@@ -13,10 +13,13 @@ from pathlib import Path, PurePosixPath
 import re
 import subprocess
 import sys
+import struct
+import xml.etree.ElementTree as ET
 
 PROFILE = "spatial-public-source/1"
 PUBLIC_REPOSITORY = "https://github.com/KyaKayKya/Spatial-Wallpaper-Community"
 MAX_FILE_BYTES = 2 * 1024 * 1024
+MAX_IMAGE_BYTES = 4 * 1024 * 1024
 MAX_TOTAL_BYTES = 64 * 1024 * 1024
 TEXT_SUFFIXES = {
     ".cs", ".c", ".cc", ".cpp", ".h", ".hpp", ".m", ".mm", ".py",
@@ -38,6 +41,12 @@ LICENSED_SOURCE_ROOTS = (
     "Prototype/Assets/Blueprint/ThirdParty/fNbt/",
 )
 PUBLIC_DOCS = {
+    "docs/public/repository.json",
+    "docs/public/README.md",
+    "docs/public/README.en.md",
+    "docs/public/CONTRIBUTING.md",
+    "docs/public/DEVELOPMENT.md",
+    "docs/public/assets/README.md",
     "docs/guides/公开源码快照.md",
     "docs/guides/场景固定窗口规范.md",
     "docs/guides/壁纸市场创作者入门.md",
@@ -45,6 +54,8 @@ PUBLIC_DOCS = {
     "docs/guides/外来原生作品导出.md",
     "docs/guides/SDK0.4发行与体验.md",
 }
+PUBLIC_ASSETS = "docs/public/assets/"
+IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".svg"}
 PRIVATE_PARTS = {
     ".git", ".worktrees", ".codex", ".agents", ".aws", ".ssh",
     "validation", "builds", "temp", "obj", "bin", "logs",
@@ -70,7 +81,7 @@ def git(repo: Path, *args: str) -> bytes:
 
 def safe_path(name: str) -> None:
     parts = PurePosixPath(name).parts
-    if (not parts or name.startswith("/") or "\\" in name or ":" in name
+    if (not parts or PurePosixPath(name).as_posix() != name or name.startswith("/") or "\\" in name or ":" in name
             or any(ord(c) < 32 or c in '<>"|?*' for c in name)
             or any(p in {"", ".", ".."} or p.lower() == ".git"
                    or p.endswith((".", " "))
@@ -92,13 +103,16 @@ def category(name: str) -> str | None:
     """Return an exclusion reason, or None for an eligible text source."""
     path = PurePosixPath(name)
     parts = path.parts
+    if name in {"market/featured.json", "market/revocations.json"}:
+        return "public-market-operational-state"
     # Library is also a real product/tools module; only the Unity cache path is private.
     if (name.startswith("Prototype/Library/")
             or any(p.lower() in PRIVATE_PARTS for p in parts)):
         return "private-or-generated-directory"
     if any(SECRET_NAME.search(p) for p in parts):
         return "credential-filename"
-    if name.startswith("docs/") and name not in PUBLIC_DOCS:
+    public_image = name.startswith(PUBLIC_ASSETS) and path.suffix.lower() in IMAGE_SUFFIXES
+    if name.startswith("docs/") and name not in PUBLIC_DOCS and not public_image:
         return "private-documentation"
     if name.startswith("art/"):
         return "original-artwork"
@@ -125,18 +139,58 @@ def category(name: str) -> str | None:
                    or (path.parent.as_posix() == "market" and path.suffix == ".json")
                    or (path.parent.as_posix() == ".github/workflows"
                        and path.name.startswith("market") and path.suffix in {".yml", ".yaml"})
-                   or name in PUBLIC_DOCS or name in {"market/requirements.txt", ".github/PULL_REQUEST_TEMPLATE/market.md", "LICENSE", "PROJECT_LICENSE_SCOPE.md"})
+                   or public_image or name in PUBLIC_DOCS or name in {"market/requirements.txt", ".github/PULL_REQUEST_TEMPLATE/market.md", "LICENSE", "PROJECT_LICENSE_SCOPE.md"})
     if not allowed:
         return "outside-source-allowlist"
     if path.suffix == ".meta":
         return None  # Retained later only with an included file or directory.
     if name.startswith("Prototype/ProjectSettings/") and path.suffix == ".asset":
         return None
+    if public_image:
+        return None
     if path.suffix.lower() not in TEXT_SUFFIXES and path.name not in {
             "LICENSE", "COPYING", "NOTICE", "Makefile", "CMakeLists.txt",
             ".gitignore", ".python-version"}:
         return "asset-or-binary-input"
     return None
+
+
+def validate_public_image(name: str, data: bytes) -> None:
+    """Accept only declared passive image formats, never HTML or active SVG."""
+    suffix = PurePosixPath(name).suffix.lower()
+    if suffix == ".png":
+        if len(data) < 33 or not data.startswith(b"\x89PNG\r\n\x1a\n") or data[12:16] != b"IHDR":
+            raise ValueError("invalid public PNG")
+        width, height = struct.unpack(">II", data[16:24])
+        if not 0 < width <= 8192 or not 0 < height <= 8192 or width * height > 32_000_000:
+            raise ValueError("public image dimensions exceed budget")
+    elif suffix in {".jpg", ".jpeg"}:
+        if not data.startswith(b"\xff\xd8\xff") or not data.endswith(b"\xff\xd9"):
+            raise ValueError("invalid public JPEG")
+    elif suffix == ".webp":
+        if len(data) < 20 or data[:4] != b"RIFF" or data[8:12] != b"WEBP" or int.from_bytes(data[4:8], "little") + 8 != len(data):
+            raise ValueError("invalid public WebP")
+    elif suffix == ".svg":
+        text = data.decode("utf-8-sig", "strict")
+        if any(pattern.search(text) for pattern in SECRET_CONTENT):
+            raise ValueError("public SVG credential-content-review-required")
+        if re.search(r"<!|<\?", text):
+            raise ValueError("SVG declarations are not allowed")
+        root = ET.fromstring(text)
+        tags = {"svg", "g", "path", "rect", "circle", "ellipse", "line", "polyline", "polygon", "text", "tspan", "title", "desc", "defs", "linearGradient", "radialGradient", "stop", "clipPath"}
+        if root.tag not in {"svg", "{http://www.w3.org/2000/svg}svg"}:
+            raise ValueError("invalid SVG root")
+        for element in root.iter():
+            if element.tag.split("}")[-1] not in tags:
+                raise ValueError("active or unsupported SVG element")
+            for key, value in element.attrib.items():
+                attr = key.split("}")[-1].lower()
+                if attr.startswith("on") or attr in {"href", "src", "style"} or re.search(r"(?:https?:|data:|javascript:|//|@import)", value, re.I):
+                    raise ValueError("active or external SVG attribute")
+                if "url(" in value.lower() and not re.fullmatch(r"url\(#[A-Za-z0-9_-]+\)", value):
+                    raise ValueError("external SVG reference")
+    else:
+        raise ValueError("unsupported public image")
 
 
 def tree(repo: Path, commit: str) -> list[dict]:
@@ -207,12 +261,15 @@ def prepare(repo: Path, commit: str, output: Path) -> dict:
             reason = category(name)
             if entry["mode"] not in {"100644", "100755"} or entry["kind"] != "blob":
                 reason = "symlink-or-submodule"
-            if reason is None and entry["size"] > MAX_FILE_BYTES:
+            image = name.startswith(PUBLIC_ASSETS) and PurePosixPath(name).suffix.lower() in IMAGE_SUFFIXES
+            if reason is None and entry["size"] > (MAX_IMAGE_BYTES if image else MAX_FILE_BYTES):
                 reason = "text-file-size-budget"
             if reason is None:
                 data = reader.read(entry)
                 if data.startswith(b"version https://git-lfs.github.com/spec/v1"):
                     reason = "lfs-pointer-not-a-source-file"
+                elif name.startswith(PUBLIC_ASSETS) and PurePosixPath(name).suffix.lower() in IMAGE_SUFFIXES:
+                    validate_public_image(name, data)
                 elif b"\0" in data:
                     reason = "binary-content"
                 else:
@@ -244,6 +301,12 @@ def prepare(repo: Path, commit: str, output: Path) -> dict:
             if target not in selected and not any(p.startswith(target + "/") for p in selected):
                 del selected[name]
                 excluded["orphan-unity-meta"] += 1
+    if "docs/public/README.md" not in selected:
+        raise ValueError("frozen source must include reviewed docs/public/README.md")
+    for source, target in {"docs/public/README.md": "README.md", "docs/public/README.en.md": "README.en.md"}.items():
+        if source in selected:
+            entry, data = selected.pop(source)
+            selected[target] = ({**entry, "source_path": source}, data)
     project_license = "MIT" if "LICENSE" in selected and selected["LICENSE"][1].startswith(b"MIT License") and "PROJECT_LICENSE_SCOPE.md" in selected else None
     license_notice = "Project-authored source is licensed under MIT; see LICENSE and PROJECT_LICENSE_SCOPE.md. Third-party inputs and separately marked CC0 examples keep their own terms." if project_license else "No project-wide license is selected; source availability alone grants no additional reuse rights."
     output.mkdir(parents=True, exist_ok=False)
@@ -260,39 +323,24 @@ def prepare(repo: Path, commit: str, output: Path) -> dict:
             target.chmod(0o755)
         manifest["files"].append({"path": name, "git_blob": entry["blob"],
                                   "sha256": hashlib.sha256(data).hexdigest(),
-                                  "bytes": len(data), "git_mode": entry["mode"]})
+                                  "bytes": len(data), "git_mode": entry["mode"],
+                                  "source_path": entry.get("source_path", name)})
         if is_license(name):
             licenses.append(name)
-    (output / "SOURCE_MANIFEST.json").write_text(json.dumps(manifest, ensure_ascii=False,
-                                                         indent=2) + "\n", encoding="utf-8")
-    (output / "OMITTED_INPUTS.json").write_text(json.dumps({"format": 1, "source_commit": commit,
+    (output / "SOURCE_MANIFEST.json").write_bytes((json.dumps(manifest, ensure_ascii=False,
+                                                         indent=2) + "\n").encode("utf-8"))
+    (output / "OMITTED_INPUTS.json").write_bytes((json.dumps({"format": 1, "source_commit": commit,
         "notice": "Omitted assets must be obtained separately with their own distribution rights. No LFS fetching is performed.",
-        "inputs": omissions}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (output / "SOURCE_LICENSE_STATUS.md").write_text("# Source license status\n\n" + license_notice + "\n", encoding="utf-8")
-    (output / "THIRD_PARTY_NOTICES.md").write_text("# Retained license notices\n\n"
+        "inputs": omissions}, ensure_ascii=False, indent=2) + "\n").encode("utf-8"))
+    (output / "SOURCE_LICENSE_STATUS.md").write_bytes(("# Source license status\n\n" + license_notice + "\n").encode("utf-8"))
+    (output / "THIRD_PARTY_NOTICES.md").write_bytes(("# Retained license notices\n\n"
         "These notices are preserved from the frozen tree; inclusion is not a claim that omitted assets are distributed here.\n\n"
-        + "".join("- [" + path + "](" + path.replace(" ", "%20") + ")\n" for path in licenses), encoding="utf-8")
-    (output / "README.md").write_text(
-        "# Spatial Wallpaper source snapshot\n\nPublic repository: " + PUBLIC_REPOSITORY + "\n\n"
-        "Frozen source commit: `" + commit + "`. This directory contains no private Git history.\n\n"
-        "Runtime distributions are delivered separately when their redistribution rights are verified; current public Releases include the SDK validator and original CC0 example. "
-        "This source-only snapshot is for code review and development; it is not an installer or a complete Unity artwork project.\n\n"
-        "SDK and authoring sources are under `Packages/com.spatialwallpaper.sdk`; shared project sources, "
-        "tools and tests keep their original paths. Start with the SDK `Documentation~` directory. "
-        "Creators need Unity 2022.3 and the required development toolchain. Runtime users do not need Unity.\n\n"
-        "Original scenes, models, materials, textures, audio, licensed external packages and binary caches "
-        "are intentionally omitted. See `OMITTED_INPUTS.json`; import each required dependency only after "
-        "obtaining its license. Missing project assets and references must be restored before building the full artwork library. "
-        "The exporter does not download LFS objects or install dependencies.\n\n"
-        "Verify `SHA256SUMS` and `SOURCE_MANIFEST.json` before reviewing or publishing. "
-        "Some source documentation links refer to private development evidence intentionally absent from this snapshot.\n\n"
-        "See `SOURCE_LICENSE_STATUS.md` and `THIRD_PARTY_NOTICES.md` for the license boundary. "
-        + license_notice + "\n", encoding="utf-8")
+        + "".join("- [" + path + "](" + path.replace(" ", "%20") + ")\n" for path in licenses)).encode("utf-8"))
     sums = []
     for path in sorted(output.rglob("*")):
         if path.is_file():
             sums.append(hashlib.sha256(path.read_bytes()).hexdigest() + "  " + path.relative_to(output).as_posix())
-    (output / "SHA256SUMS").write_text("\n".join(sums) + "\n", encoding="utf-8")
+    (output / "SHA256SUMS").write_bytes(("\n".join(sums) + "\n").encode("utf-8"))
     return {"source_commit": commit, "profile": PROFILE, "output": str(output),
             "source_files": len(selected), "source_bytes": sum(len(v[1]) for v in selected.values()),
             "retained_licenses": len(licenses), "excluded_counts": dict(sorted(excluded.items())),

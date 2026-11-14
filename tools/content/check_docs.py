@@ -18,7 +18,15 @@ def main():
    for match in re.finditer(r'!?\[[^\]]*\]\(([^\n]+?)\)',path.read_text(encoding='utf-8-sig')):
     href=match[1].strip().strip('<>')
     if re.match(r'^[a-z]+:',href):continue
-    target,_,anchor=href.partition('#');dest=(path.parent/target).resolve() if target else path;links+=1
+    target,_,anchor=href.partition('#')
+    # Public README templates are rendered at the exported repository root.
+    template=name in {'docs/public/README.md','docs/public/README.en.md'}
+    link_base=ROOT if template else path.parent
+    dest=(link_base/target).resolve() if target else path;links+=1
+    public_doc=template or name.startswith('docs/public/')
+    if template and target in {'README.md','README.en.md'}:dest=ROOT/'docs/public'/target
+    generated={'SOURCE_MANIFEST.json','SHA256SUMS','OMITTED_INPUTS.json','SOURCE_LICENSE_STATUS.md','THIRD_PARTY_NOTICES.md'}
+    if public_doc and dest.parent==ROOT and dest.name in generated:continue
     if not dest.exists() or anchor and dest.suffix=='.md' and anchor not in anchors(dest):errors.append(name+': '+href)
   if path.is_file() and (name.startswith('Prototype/Assets/') or name.startswith('Packages/com.spatialwallpaper.sdk/')) and path.suffix in ['.cs','.shader','.asset','.mat']:
    if not Path(str(path)+'.meta').is_file():errors.append('Missing meta: '+name)
@@ -33,7 +41,7 @@ def main():
   # input owner may start owned services. Input only starts the pinned trusted
   # client role and authenticates its private control peer; it runs no authors.
   # Runtime author code remains governed by the exact admission member catalog.
-  if 'Process.Start' in text:assert path in [ROOT/'Packages/com.spatialwallpaper.sdk/Editor/PlayCapabilities.cs',ROOT/'Packages/com.spatialwallpaper.sdk/Editor/SandboxPreviewRun.cs',ROOT/'Packages/com.spatialwallpaper.sdk/Runtime/Native/Windows/ScriptProcessClient.cs',ROOT/'Packages/com.spatialwallpaper.sdk/Runtime/Native/Windows/NativeInputProcess.cs'],str(path)
+  if 'Process.Start' in text:assert path in [ROOT/'Packages/com.spatialwallpaper.sdk/Runtime/Hosting/Windows/PreviewHostLease.cs',ROOT/'Packages/com.spatialwallpaper.sdk/Editor/PlayCapabilities.cs',ROOT/'Packages/com.spatialwallpaper.sdk/Editor/SandboxPreviewRun.cs',ROOT/'Packages/com.spatialwallpaper.sdk/Runtime/Native/Windows/ScriptProcessClient.cs',ROOT/'Packages/com.spatialwallpaper.sdk/Runtime/Native/Windows/NativeInputProcess.cs'],str(path)
  editor=json.loads((ROOT/'Packages/com.spatialwallpaper.sdk/Editor/SpatialWallpaper.Sdk.Editor.asmdef').read_text())
  assert editor['includePlatforms']==['Editor'],'Play broker launcher must stay Editor-only'
  if errors:raise SystemExit('\n'.join(errors))
