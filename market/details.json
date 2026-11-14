@@ -5,7 +5,7 @@
       "url": "https://github.com/KyaKayKya/Spatial-Wallpaper-Community/issues/3",
       "number": 3
     },
-    "preview": "https://github.com/KyaKayKya/Spatial-Wallpaper-Community/releases/download/original-cc0-1.0.0/original-cc0-triangle.png",
+    "preview": "https://raw.githubusercontent.com/KyaKayKya/Spatial-Wallpaper-Community/6d7194e5a200a6b21ae2bab7ca5c3253c9f1a9a7/market/previews/original-cc0-triangle.png",
     "description": "Original CC0 geometry and shader with isolated transform animation and real View access. The thumbnail is an author illustration of the triangle silhouette, not a screenshot or visual acceptance claim. Requires SDK 0.4 preview."
   }
 }
