@@ -23,6 +23,11 @@ namespace SpatialWallpaper.Desktop {
   public event Action ContentChanged;
   DateTime nextContentPoll=DateTime.MinValue;
   public SpatialWallpaper.Sdk.Capabilities.SoundMix Sound(string work)=>ContentState?["sound_mixes"]?[work]==null?new SpatialWallpaper.Sdk.Capabilities.SoundMix():SpatialWallpaper.Sdk.Capabilities.SoundMix.Parse(ContentState["sound_mixes"][work]);
+  public SpatialWallpaper.Sdk.Capabilities.SoundMix Sound(string work,string display){
+   if(display==null)return Sound(work);
+   var selected=(state["applied_state"]?["targets"] as JArray)?.FirstOrDefault(item=>(string)item["display_id"]==display);var value=(string)selected?["artwork_id"]==work?selected?["sound"]:null;
+   value=value??ContentState?["target_sound_mixes"]?[work]?[display];return value==null?Sound(work):SpatialWallpaper.Sdk.Capabilities.SoundMix.Parse(value);
+  }
   public async Task RefreshContent(){
    var next=await client.Library();bool changed=!JToken.DeepEquals(ContentState?["state"]?["works"],next["state"]["works"]);ContentState=next;
    ArtworkCatalog.Content=()=>((JObject)ContentState["state"]["works"]).Properties().Select(p=>{string rev=(string)p.Value["latest_revision"];var alias=(ContentState["bundled_catalog"] as JObject)?.Properties().FirstOrDefault(entry=>(string)entry.Value["work_id"]==p.Name);string cover=alias==null?null:(string)alias.Value["cover_id"]??alias.Name;return Artwork.FromContent(p.Name,(string)p.Value["name"],rev,(string)ContentState["state"]["revisions"][rev]["build_id"],cover,(string)ContentState["state"]["builds"][(string)ContentState["state"]["revisions"][rev]["build_id"]]?["kind"]=="native-v5");}).ToArray();

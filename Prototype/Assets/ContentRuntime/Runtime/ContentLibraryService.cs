@@ -14,7 +14,7 @@ namespace SpatialWallpaper.Content {
   readonly RuntimeContentPresentation presentation;
   readonly ContentCoordinator coordinator;
   public ContentStore Store {get;}
-  JObject mixes=new JObject();
+  JObject mixes=new JObject();readonly ContentTargetSoundStore targetMixes;
   JObject bundled=new JObject();
   string BundledPath=>Path.Combine(root,"bundled-catalog.json");
   public string SoundError {get;private set;}
@@ -28,7 +28,7 @@ namespace SpatialWallpaper.Content {
     mixes=JObject.Parse(File.ReadAllText(MixPath));if(mixes.Count>4096)throw new InvalidDataException("sound-settings-count");
     foreach(var item in mixes.Properties()){ContentStore.Id(item.Name);SoundMix.Parse(item.Value);}
    }
-   presentation.SoundForWork=Sound;
+   targetMixes=new ContentTargetSoundStore(Path.Combine(root,"target-sound-mixes.json"));presentation.SoundForWork=Sound;
    string audio=Path.Combine(root,"audio-source.json");if(File.Exists(audio)){if(new FileInfo(audio).Length>1024)throw new InvalidDataException("audio-selection-settings-size");presentation.RestoreAudioSource(JObject.Parse(File.ReadAllText(audio)));}
    if(File.Exists(BundledPath))bundled=JObject.Parse(File.ReadAllText(BundledPath));
   }
@@ -70,6 +70,9 @@ namespace SpatialWallpaper.Content {
   void SaveBundled(){string temporary=BundledPath+".tmp";File.WriteAllText(temporary,bundled.ToString());if(File.Exists(BundledPath))File.Replace(temporary,BundledPath,null);else File.Move(temporary,BundledPath);}
   public string Cover(string work){var alias=bundled.Properties().FirstOrDefault(p=>(string)p.Value["work_id"]==work);return alias==null?null:(string)alias.Value["cover_id"]??alias.Name;}
   public SoundMix Sound(string work)=>mixes[work]==null?new SoundMix():SoundMix.Parse(mixes[work]);
+  public SoundMix Sound(string work,string display)=>display==null?Sound(work):targetMixes.Find(work,display)??Sound(work);
+  public JObject CaptureSoundSettings()=>new JObject{{"mixes",mixes.DeepClone()},{"targets",targetMixes.Snapshot}};
+  public void RestoreSoundSettings(JObject previous){JsonData.Fields(previous,"mixes","targets");targetMixes.Restore((JObject)previous["targets"]);SaveMixes((JObject)previous["mixes"].DeepClone());}
   void SaveMixes(JObject next){
    string temporary=MixPath+"."+Guid.NewGuid().ToString("N")+".tmp";
    try{using(var stream=new FileStream(temporary,FileMode.CreateNew,FileAccess.Write,FileShare.None))using(var writer=new StreamWriter(stream)){writer.Write(next.ToString(Newtonsoft.Json.Formatting.None));writer.Flush();stream.Flush(true);}if(File.Exists(MixPath))File.Replace(temporary,MixPath,null);else File.Move(temporary,MixPath);mixes=next;SoundError=null;}
@@ -82,16 +85,15 @@ namespace SpatialWallpaper.Content {
    if(payload.Count==0)JsonData.Fields(payload);else JsonData.Fields(payload,"after","snapshot");
    var page=Store.Page(presentation.DisplayId,payload.Count==0?null:JsonData.Text(payload["after"],36),payload.Count==0?null:JsonData.Text(payload["snapshot"],32));
    page["runtime_ready"]=true;page["display_id"]=presentation.DisplayId;page["presentation_ready"]=presentation.Ready;page["presentation_metrics"]=presentation.Metrics;page["sound_error"]=presentation.SoundError??SoundError;page["audio_source"]=presentation.SelectedAudioSource;
-   var selected=new JObject();foreach(var item in ((JObject)page["state"]["works"]).Properties())selected[item.Name]=Sound(item.Name).Json;page["sound_mixes"]=selected;page["bundled_catalog"]=bundled.DeepClone();return page;
+   var selected=new JObject();foreach(var item in ((JObject)page["state"]["works"]).Properties())selected[item.Name]=Sound(item.Name).Json;page["sound_mixes"]=selected;page["target_sound_mixes"]=targetMixes.Page(((JObject)page["state"]["works"]).Properties().Select(p=>p.Name));page["bundled_catalog"]=bundled.DeepClone();return page;
   }
   public async Task<JObject> ExecuteAsync(string type,JObject payload,CancellationToken token){
    token.ThrowIfCancellationRequested();switch(type){
     case "GetContentState":await presentation.RefreshSoundStateAsync();return Page(payload);
     case "SetSoundMix":
-     JsonData.Fields(payload,"work_id","mix");string work=ContentStore.Id((string)payload["work_id"]);Store.Latest(work);var mix=SoundMix.Parse(payload["mix"]);var next=(JObject)mixes.DeepClone();
-     foreach(var item in mixes.Properties())if(Store.Snapshot["works"][item.Name]==null)next.Remove(item.Name);
-     if(next[work]==null&&next.Count>=4096)throw new InvalidDataException("sound-settings-count");next[work]=mix.Json;SaveMixes(next);
-     await presentation.SetSoundMixAsync(work,mix);return new JObject{{"work_id",work},{"mix",mix.Json},{"sound_error",presentation.SoundError}};
+     bool scoped=payload.ContainsKey("display_id");if(scoped)JsonData.Fields(payload,"work_id","display_id","mix");else JsonData.Fields(payload,"work_id","mix");string work=ContentStore.Id((string)payload["work_id"]);Store.Latest(work);var mix=SoundMix.Parse(payload["mix"]);string display=scoped?JsonData.Text(payload["display_id"],256):null;if(scoped)ContentTargetSoundStore.Display(display);
+     if(scoped)targetMixes.Set(work,display,mix);else{var next=(JObject)mixes.DeepClone();foreach(var item in mixes.Properties())if(Store.Snapshot["works"][item.Name]==null)next.Remove(item.Name);if(next[work]==null&&next.Count>=4096)throw new InvalidDataException("sound-settings-count");next[work]=mix.Json;SaveMixes(next);targetMixes.SetGlobal(work,mix);}
+     if(!scoped||presentation.DisplayId==display)await presentation.SetSoundMixAsync(work,mix);var saved=new JObject{{"work_id",work},{"mix",mix.Json},{"sound_error",presentation.SoundError}};if(scoped)saved["display_id"]=display;return saved;
     case "ImportContent":case "UpdateContent":
      bool updating=type=="UpdateContent";
      if(updating)JsonData.Fields(payload,"staging_id","work_id","expected_revision");else if(payload.ContainsKey("name"))JsonData.Fields(payload,"staging_id","name");else JsonData.Fields(payload,"staging_id");
@@ -107,10 +109,10 @@ namespace SpatialWallpaper.Content {
     case "ExportContent":JsonData.Fields(payload,"work_id","revision_id");return await Task.Run(()=>Store.Export((string)payload["work_id"],(string)payload["revision_id"]));
     case "RemoveContent":
      JsonData.Fields(payload,"work_id");string removedWork=ContentStore.Id((string)payload["work_id"]);
-     if(Store.IsNativeBuild((string)Store.Revision(removedWork,Store.Latest(removedWork))["build_id"])){var removedNative=await Task.Run(()=>Store.Remove(removedWork));removedNative["succeeded"]=true;removedNative["presentation_stopped"]=false;removedNative["storage_deleted"]=false;removedNative["private_saves_retained"]=true;if(mixes[removedWork]!=null){var remainingNative=(JObject)mixes.DeepClone();remainingNative.Remove(removedWork);SaveMixes(remainingNative);}return removedNative;}
+     if(Store.IsNativeBuild((string)Store.Revision(removedWork,Store.Latest(removedWork))["build_id"])){var removedNative=await Task.Run(()=>Store.Remove(removedWork));removedNative["succeeded"]=true;removedNative["presentation_stopped"]=false;removedNative["storage_deleted"]=false;removedNative["private_saves_retained"]=true;if(mixes[removedWork]!=null){var remainingNative=(JObject)mixes.DeepClone();remainingNative.Remove(removedWork);SaveMixes(remainingNative);}try{targetMixes.Remove(removedWork);}catch(Exception failure){SoundError=failure.GetBaseException().Message;removedNative["sound_settings_cleanup_error"]=SoundError;}return removedNative;}
      var removed=await coordinator.RemoveAsync(presentation.DisplayId,removedWork,presentation.UninstallInstallationAsync,token);
      if((bool?)removed["succeeded"]==true&&mixes[removedWork]!=null){var remaining=(JObject)mixes.DeepClone();remaining.Remove(removedWork);try{SaveMixes(remaining);}catch(Exception failure){SoundError=failure.GetBaseException().Message;removed["sound_settings_cleanup_error"]=SoundError;}}
-     return removed;
+     if((bool?)removed["succeeded"]==true)try{targetMixes.Remove(removedWork);}catch(Exception failure){SoundError=failure.GetBaseException().Message;removed["sound_settings_cleanup_error"]=SoundError;}return removed;
     default:throw new InvalidDataException("unsupported-content-command");
    }
   }

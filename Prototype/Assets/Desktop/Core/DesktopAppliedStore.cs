@@ -49,6 +49,11 @@ namespace SpatialWallpaper.Desktop {
    if(display!=null&&!Targets.ContainsKey(display))throw new ArgumentException("desktop-target-not-applied");
    return new DesktopAppliedState(SelectedDisplayId,Targets.Values.Select(s=>display!=null&&s.DisplayId!=display?s:new DesktopAppliedSelection(s.ArtworkId,s.Source,s.RevisionId,s.BuildId,s.Profile,s.Sound,paused)));
   }
+  public DesktopAppliedState WithSound(string work,string display,SoundMix mix){
+   if(mix==null)throw new ArgumentNullException(nameof(mix));if(display!=null)ContentTargetSoundStoreDisplay(display);
+   return new DesktopAppliedState(SelectedDisplayId,Targets.Values.Select(s=>s.ArtworkId==work&&(display==null||s.DisplayId==display)?new DesktopAppliedSelection(s.ArtworkId,s.Source,s.RevisionId,s.BuildId,s.Profile,mix,s.Paused):s));
+  }
+  static void ContentTargetSoundStoreDisplay(string display){if(string.IsNullOrWhiteSpace(display)||display.Length>256||display.Any(char.IsControl))throw new ArgumentException("desktop-sound-display");}
   public void RequireRouting(string display,bool native,Func<DesktopAppliedSelection,bool> nativePeer){
    if(string.IsNullOrEmpty(display)||nativePeer==null)throw new ArgumentException("desktop-routing-arguments");
    if(Targets.Values.Any(s=>s.DisplayId!=display&&(!native||!nativePeer(s))))throw new InvalidDataException("旧 SDK 或蓝图目前不能占用多个活动目标；已应用的其他目标保持不变。");

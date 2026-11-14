@@ -44,6 +44,10 @@ static class Tests {
   var wrong=Trust();wrong.KeyId="wrong";Reject(()=>MarketCatalog.Verify(Bytes(o),Sign(Bytes(o)),wrong,0,null,Now),"untrusted key");
   Reject(()=>Verify(o,3),"rollback");Reject(()=>Verify(o,2,new string('b',64)),"same generation equivocation");
   var x=(JObject)o.DeepClone();x["kind"]="candidate";Reject(()=>Verify(x),"candidate not installable");
+  foreach(bool tombstone in new[]{false,true}){
+   var collision=(JObject)o.DeepClone();var foreign=(JObject)collision["entries"][0].DeepClone();foreign["repositoryId"]=124;foreign["repository"]="other/repo";foreign["key"]="124:work";foreign["build"]["assets"][0]["url"]="https://github.com/other/repo/releases/download/v1/work.spatial";
+   if(tombstone)collision["entries"][0]["status"]="revoked";((JArray)collision["entries"]).Add(foreign);Reject(()=>Verify(collision),"cross-repository work GUID including revoked tombstone");
+  }
   x=(JObject)o.DeepClone();x["generatedAt"]=Time(Now.AddDays(1));Reject(()=>Verify(x),"future catalog");
   x=(JObject)o.DeepClone();x["generatedAt"]=Time(Now.AddDays(-3));x["expiresAt"]=Time(Now.AddDays(-1));Reject(()=>Verify(x),"expired online");var expired=Verify(x,0,null,true);Check(!expired.Installable(expired.Entries[0],Now),"expired offline browse only");
   x=(JObject)o.DeepClone();x["entries"][0]["admission"]["schemaVersion"]=4;Reject(()=>Verify(x),"schema4 cannot relabel");

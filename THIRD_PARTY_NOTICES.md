@@ -2,6 +2,10 @@
 
 These notices are preserved from the frozen tree; inclusion is not a claim that omitted assets are distributed here.
 
+- [LICENSE](LICENSE)
+- [PROJECT_LICENSE_SCOPE.md](PROJECT_LICENSE_SCOPE.md)
+- [Packages/com.spatialwallpaper.sdk/LICENSE.md](Packages/com.spatialwallpaper.sdk/LICENSE.md)
+- [Packages/com.spatialwallpaper.sdk/PROJECT_LICENSE_SCOPE.md](Packages/com.spatialwallpaper.sdk/PROJECT_LICENSE_SCOPE.md)
 - [Packages/com.spatialwallpaper.sdk/Samples~/ExternalNative/CC0-EXAMPLE-LICENSE.txt](Packages/com.spatialwallpaper.sdk/Samples~/ExternalNative/CC0-EXAMPLE-LICENSE.txt)
 - [Packages/com.spatialwallpaper.sdk/ThirdParty/Cilbox/LICENSE](Packages/com.spatialwallpaper.sdk/ThirdParty/Cilbox/LICENSE)
 - [Packages/com.spatialwallpaper.sdk/ThirdParty/PlanarReflections-LICENSE.txt](Packages/com.spatialwallpaper.sdk/ThirdParty/PlanarReflections-LICENSE.txt)
