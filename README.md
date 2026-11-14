@@ -1,7 +1,15 @@
-# Spatial Wallpaper Community
+# Spatial Wallpaper source snapshot
 
-Spatial Wallpaper 的公开源码、正式发行和作品共创入口。私有开发仓库与此公开发行仓库分别维护。
+Public repository: https://github.com/KyaKayKya/Spatial-Wallpaper-Community
 
-本仓库正在建立原生 SDK 0.4.0-preview.1 的公开投稿、审核索引与 GitHub Issues 反馈流程；发行物仅在完整构建、相关检查和独立审查后发布。main 等待用户版本验收。
+Frozen source commit: `f64cc14bfb2c5559c298a7ea579b7a5bdf26be36`. This directory contains no private Git history.
 
-原始第三方美术、音乐、凭据和开发缓存不会作为源码历史提交。各项许可证按来源分别保留。
+For normal use, obtain the complete Windows distribution from this repository's Releases. This source-only snapshot is for code review and development; it is not an installer or a complete Unity artwork project.
+
+SDK and authoring sources are under `Packages/com.spatialwallpaper.sdk`; shared project sources, tools and tests keep their original paths. Start with the SDK `Documentation~` directory. Creators need Unity 2022.3 and the required development toolchain. Runtime users do not need Unity.
+
+Original scenes, models, materials, textures, audio, licensed external packages and binary caches are intentionally omitted. See `OMITTED_INPUTS.json`; import each required dependency only after obtaining its license. Missing project assets and references must be restored before building the full artwork library. The exporter does not download LFS objects or install dependencies.
+
+Verify `SHA256SUMS` and `SOURCE_MANIFEST.json` before reviewing or publishing. Some source documentation links refer to private development evidence intentionally absent from this snapshot.
+
+See `SOURCE_LICENSE_STATUS.md` and `THIRD_PARTY_NOTICES.md` for the license boundary. The snapshot does not grant a new license for project-owned code.

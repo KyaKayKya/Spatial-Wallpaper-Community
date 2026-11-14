@@ -1,0 +1,2614 @@
+{
+  "id": "spatial-rules-1",
+  "schema": 4,
+  "sdk": "0.3.0-preview.3",
+  "vm": "cilbox-acfca6b-normalized-4",
+  "engine": "2022.3.62f3",
+  "pipeline": "14.0.12",
+  "backend": "d3d11",
+  "platforms": [
+    "windows-x86_64"
+  ],
+  "callbacks": [
+    "Start",
+    "Update"
+  ],
+  "types": [
+    "void",
+    "bool",
+    "i32",
+    "f32",
+    "string",
+    "node",
+    "prefab",
+    "material",
+    "mesh",
+    "texture",
+    "light",
+    "vector3",
+    "color",
+    "cubemap",
+    "list_i32",
+    "list_f32",
+    "sound"
+  ],
+  "members": [
+    {
+      "id": "UnityEngine.CoreModule::UnityEngine.Transform::Rotate(System.Single,System.Single,System.Single)->System.Void",
+      "arguments": [
+        "f32",
+        "f32",
+        "f32"
+      ],
+      "returns": "void",
+      "receiver": "node",
+      "capability": "",
+      "cost": 1,
+      "argument_constraints": [
+        {
+          "type": "f32",
+          "nullable": false,
+          "min": -100000,
+          "max": 100000,
+          "ownership": "value"
+        },
+        {
+          "type": "f32",
+          "nullable": false,
+          "min": -100000,
+          "max": 100000,
+          "ownership": "value"
+        },
+        {
+          "type": "f32",
+          "nullable": false,
+          "min": -100000,
+          "max": 100000,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "node",
+        "nullable": true,
+        "ownership": "instance-and-generation"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "UnityEngine.CoreModule::UnityEngine.Transform::get_localPosition()->UnityEngine.Vector3",
+      "arguments": [],
+      "returns": "vector3",
+      "receiver": "node",
+      "capability": "",
+      "cost": 1,
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "node",
+        "nullable": true,
+        "ownership": "instance-and-generation"
+      },
+      "return_constraint": {
+        "type": "vector3",
+        "nullable": false,
+        "length": 3,
+        "min": -100000,
+        "max": 100000,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "UnityEngine.CoreModule::UnityEngine.Transform::set_localPosition(UnityEngine.Vector3)->System.Void",
+      "arguments": [
+        "vector3"
+      ],
+      "returns": "void",
+      "receiver": "node",
+      "capability": "",
+      "cost": 1,
+      "argument_constraints": [
+        {
+          "type": "vector3",
+          "nullable": false,
+          "length": 3,
+          "min": -100000,
+          "max": 100000,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "node",
+        "nullable": true,
+        "ownership": "instance-and-generation"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "UnityEngine.CoreModule::UnityEngine.Light::get_intensity()->System.Single",
+      "arguments": [],
+      "returns": "f32",
+      "receiver": "light",
+      "capability": "",
+      "cost": 1,
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "light",
+        "nullable": true,
+        "ownership": "instance-and-generation"
+      },
+      "return_constraint": {
+        "type": "f32",
+        "nullable": false,
+        "min": -100000,
+        "max": 100000,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "UnityEngine.CoreModule::UnityEngine.Light::set_intensity(System.Single)->System.Void",
+      "arguments": [
+        "f32"
+      ],
+      "returns": "void",
+      "receiver": "light",
+      "capability": "",
+      "cost": 1,
+      "argument_constraints": [
+        {
+          "type": "f32",
+          "nullable": false,
+          "min": -100000,
+          "max": 100000,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "light",
+        "nullable": true,
+        "ownership": "instance-and-generation"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "UnityEngine.CoreModule::UnityEngine.Material::SetFloat(System.String,System.Single)->System.Void",
+      "arguments": [
+        "string",
+        "f32"
+      ],
+      "returns": "void",
+      "receiver": "material",
+      "capability": "",
+      "cost": 1,
+      "argument_constraints": [
+        {
+          "type": "string",
+          "nullable": false,
+          "max_chars": 128,
+          "ownership": "value"
+        },
+        {
+          "type": "f32",
+          "nullable": false,
+          "min": -100000,
+          "max": 100000,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "material",
+        "nullable": true,
+        "ownership": "instance-and-generation"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "UnityEngine.CoreModule::UnityEngine.Material::SetColor(System.String,UnityEngine.Color)->System.Void",
+      "arguments": [
+        "string",
+        "color"
+      ],
+      "returns": "void",
+      "receiver": "material",
+      "capability": "",
+      "cost": 1,
+      "argument_constraints": [
+        {
+          "type": "string",
+          "nullable": false,
+          "max_chars": 128,
+          "ownership": "value"
+        },
+        {
+          "type": "color",
+          "nullable": false,
+          "length": 4,
+          "min": -100000,
+          "max": 100000,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "material",
+        "nullable": true,
+        "ownership": "instance-and-generation"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "UnityEngine.CoreModule::UnityEngine.Mesh::Clear()->System.Void",
+      "arguments": [],
+      "returns": "void",
+      "receiver": "mesh",
+      "capability": "",
+      "cost": 1,
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "mesh",
+        "nullable": true,
+        "ownership": "instance-and-generation"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "UnityEngine.CoreModule::UnityEngine.Texture2D::SetPixel(System.Int32,System.Int32,UnityEngine.Color)->System.Void",
+      "arguments": [
+        "i32",
+        "i32",
+        "color"
+      ],
+      "returns": "void",
+      "receiver": "texture",
+      "capability": "",
+      "cost": 1,
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": 0,
+          "max": 8191,
+          "ownership": "value"
+        },
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": 0,
+          "max": 8191,
+          "ownership": "value"
+        },
+        {
+          "type": "color",
+          "nullable": false,
+          "length": 4,
+          "min": -100000,
+          "max": 100000,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "texture",
+        "nullable": false,
+        "ownership": "instance-and-generation"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "UnityEngine.CoreModule::UnityEngine.Texture2D::Apply()->System.Void",
+      "arguments": [],
+      "returns": "void",
+      "receiver": "texture",
+      "capability": "",
+      "cost": 1,
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "texture",
+        "nullable": true,
+        "ownership": "instance-and-generation"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Input::GetButtonDown(System.String)->System.Boolean",
+      "arguments": [
+        "string"
+      ],
+      "returns": "bool",
+      "receiver": "",
+      "capability": "input",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "string",
+          "nullable": true,
+          "max_chars": 4096,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "bool",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Objects::Instantiate(Prefab)->Node",
+      "arguments": [
+        "prefab"
+      ],
+      "returns": "node",
+      "receiver": "",
+      "capability": "",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "prefab",
+          "nullable": true,
+          "ownership": "instance-and-generation"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "node",
+        "nullable": true,
+        "ownership": "instance-and-generation"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Objects::Destroy(Node)->System.Void",
+      "arguments": [
+        "node"
+      ],
+      "returns": "void",
+      "receiver": "",
+      "capability": "",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "node",
+          "nullable": true,
+          "ownership": "instance-and-generation"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Resources::CreateMesh()->Mesh",
+      "arguments": [],
+      "returns": "mesh",
+      "receiver": "",
+      "capability": "",
+      "cost": 4,
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "mesh",
+        "nullable": true,
+        "ownership": "instance-and-generation"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Resources::CreateTexture(System.Int32,System.Int32)->Texture",
+      "arguments": [
+        "i32",
+        "i32"
+      ],
+      "returns": "texture",
+      "receiver": "",
+      "capability": "",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": 1,
+          "max": 8192,
+          "ownership": "value"
+        },
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": 1,
+          "max": 8192,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "texture",
+        "nullable": true,
+        "ownership": "instance-and-generation"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Resources::CreateMaterial(Material)->Material",
+      "arguments": [
+        "material"
+      ],
+      "returns": "material",
+      "receiver": "",
+      "capability": "",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "material",
+          "nullable": true,
+          "ownership": "instance-and-generation"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "material",
+        "nullable": true,
+        "ownership": "instance-and-generation"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Audio::GetBand(System.Int32)->System.Single",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "f32",
+      "receiver": "",
+      "capability": "audio-features",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "f32",
+        "nullable": false,
+        "min": -100000,
+        "max": 100000,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "mscorlib::System.Collections.Generic.List<System.Int32>::Add(System.Int32)->System.Void",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "void",
+      "receiver": "list_i32",
+      "capability": "",
+      "cost": 2,
+      "cost_status": "candidate-unmeasured",
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "list_i32",
+        "nullable": true,
+        "ownership": "instance-and-generation",
+        "max_elements": 4096
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "binding": "core"
+    },
+    {
+      "id": "mscorlib::System.Collections.Generic.List<System.Int32>::get_Count()->System.Int32",
+      "arguments": [],
+      "returns": "i32",
+      "receiver": "list_i32",
+      "capability": "",
+      "cost": 2,
+      "cost_status": "candidate-unmeasured",
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "list_i32",
+        "nullable": true,
+        "ownership": "instance-and-generation",
+        "max_elements": 4096
+      },
+      "return_constraint": {
+        "type": "i32",
+        "nullable": false,
+        "min": -2147483648,
+        "max": 2147483647,
+        "ownership": "value"
+      },
+      "binding": "core"
+    },
+    {
+      "id": "mscorlib::System.Collections.Generic.List<System.Int32>::get_Item(System.Int32)->System.Int32",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "i32",
+      "receiver": "list_i32",
+      "capability": "",
+      "cost": 2,
+      "cost_status": "candidate-unmeasured",
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "list_i32",
+        "nullable": true,
+        "ownership": "instance-and-generation",
+        "max_elements": 4096
+      },
+      "return_constraint": {
+        "type": "i32",
+        "nullable": false,
+        "min": -2147483648,
+        "max": 2147483647,
+        "ownership": "value"
+      },
+      "binding": "core"
+    },
+    {
+      "id": "mscorlib::System.Collections.Generic.List<System.Int32>::set_Item(System.Int32,System.Int32)->System.Void",
+      "arguments": [
+        "i32",
+        "i32"
+      ],
+      "returns": "void",
+      "receiver": "list_i32",
+      "capability": "",
+      "cost": 2,
+      "cost_status": "candidate-unmeasured",
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        },
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "list_i32",
+        "nullable": true,
+        "ownership": "instance-and-generation",
+        "max_elements": 4096
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "binding": "core"
+    },
+    {
+      "id": "mscorlib::System.Collections.Generic.List<System.Int32>::Clear()->System.Void",
+      "arguments": [],
+      "returns": "void",
+      "receiver": "list_i32",
+      "capability": "",
+      "cost": 2,
+      "cost_status": "candidate-unmeasured",
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "list_i32",
+        "nullable": true,
+        "ownership": "instance-and-generation",
+        "max_elements": 4096
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "binding": "core"
+    },
+    {
+      "id": "mscorlib::System.Collections.Generic.List<System.Single>::Add(System.Single)->System.Void",
+      "arguments": [
+        "f32"
+      ],
+      "returns": "void",
+      "receiver": "list_f32",
+      "capability": "",
+      "cost": 2,
+      "cost_status": "candidate-unmeasured",
+      "argument_constraints": [
+        {
+          "type": "f32",
+          "nullable": false,
+          "min": -100000,
+          "max": 100000,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "list_f32",
+        "nullable": true,
+        "ownership": "instance-and-generation",
+        "max_elements": 4096
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "binding": "core"
+    },
+    {
+      "id": "mscorlib::System.Collections.Generic.List<System.Single>::get_Count()->System.Int32",
+      "arguments": [],
+      "returns": "i32",
+      "receiver": "list_f32",
+      "capability": "",
+      "cost": 2,
+      "cost_status": "candidate-unmeasured",
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "list_f32",
+        "nullable": true,
+        "ownership": "instance-and-generation",
+        "max_elements": 4096
+      },
+      "return_constraint": {
+        "type": "i32",
+        "nullable": false,
+        "min": -2147483648,
+        "max": 2147483647,
+        "ownership": "value"
+      },
+      "binding": "core"
+    },
+    {
+      "id": "mscorlib::System.Collections.Generic.List<System.Single>::get_Item(System.Int32)->System.Single",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "f32",
+      "receiver": "list_f32",
+      "capability": "",
+      "cost": 2,
+      "cost_status": "candidate-unmeasured",
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "list_f32",
+        "nullable": true,
+        "ownership": "instance-and-generation",
+        "max_elements": 4096
+      },
+      "return_constraint": {
+        "type": "f32",
+        "nullable": false,
+        "min": -100000,
+        "max": 100000,
+        "ownership": "value"
+      },
+      "binding": "core"
+    },
+    {
+      "id": "mscorlib::System.Collections.Generic.List<System.Single>::set_Item(System.Int32,System.Single)->System.Void",
+      "arguments": [
+        "i32",
+        "f32"
+      ],
+      "returns": "void",
+      "receiver": "list_f32",
+      "capability": "",
+      "cost": 2,
+      "cost_status": "candidate-unmeasured",
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        },
+        {
+          "type": "f32",
+          "nullable": false,
+          "min": -100000,
+          "max": 100000,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "list_f32",
+        "nullable": true,
+        "ownership": "instance-and-generation",
+        "max_elements": 4096
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "binding": "core"
+    },
+    {
+      "id": "mscorlib::System.Collections.Generic.List<System.Single>::Clear()->System.Void",
+      "arguments": [],
+      "returns": "void",
+      "receiver": "list_f32",
+      "capability": "",
+      "cost": 2,
+      "cost_status": "candidate-unmeasured",
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "list_f32",
+        "nullable": true,
+        "ownership": "instance-and-generation",
+        "max_elements": 4096
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "binding": "core"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Resources::Release(Mesh)->System.Void",
+      "arguments": [
+        "mesh"
+      ],
+      "returns": "void",
+      "receiver": "",
+      "capability": "",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "mesh",
+          "nullable": false,
+          "ownership": "instance-and-generation"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Resources::Release(Texture)->System.Void",
+      "arguments": [
+        "texture"
+      ],
+      "returns": "void",
+      "receiver": "",
+      "capability": "",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "texture",
+          "nullable": false,
+          "ownership": "instance-and-generation"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Resources::Release(Material)->System.Void",
+      "arguments": [
+        "material"
+      ],
+      "returns": "void",
+      "receiver": "",
+      "capability": "",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "material",
+          "nullable": false,
+          "ownership": "instance-and-generation"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "UnityEngine.CoreModule::UnityEngine.Mesh::set_vertices(UnityEngine.Vector3[])->System.Void",
+      "arguments": [
+        "vector3[]"
+      ],
+      "returns": "void",
+      "receiver": "mesh",
+      "capability": "",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "max_elements": 4096,
+          "nullable": false,
+          "ownership": "recursive-instance-and-generation",
+          "type": "vector3[]"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "mesh",
+        "nullable": false,
+        "ownership": "instance-and-generation"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "UnityEngine.CoreModule::UnityEngine.Mesh::set_triangles(System.Int32[])->System.Void",
+      "arguments": [
+        "i32[]"
+      ],
+      "returns": "void",
+      "receiver": "mesh",
+      "capability": "",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "max_elements": 4096,
+          "nullable": false,
+          "ownership": "recursive-instance-and-generation",
+          "type": "i32[]"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "mesh",
+        "nullable": false,
+        "ownership": "instance-and-generation"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "UnityEngine.CoreModule::UnityEngine.Mesh::RecalculateNormals()->System.Void",
+      "arguments": [],
+      "returns": "void",
+      "receiver": "mesh",
+      "capability": "",
+      "cost": 4,
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "mesh",
+        "nullable": false,
+        "ownership": "instance-and-generation"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "UnityEngine.CoreModule::UnityEngine.Mesh::RecalculateBounds()->System.Void",
+      "arguments": [],
+      "returns": "void",
+      "receiver": "mesh",
+      "capability": "",
+      "cost": 4,
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "mesh",
+        "nullable": false,
+        "ownership": "instance-and-generation"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Resources::BindMesh(Node,Mesh)->System.Void",
+      "arguments": [
+        "node",
+        "mesh"
+      ],
+      "returns": "void",
+      "receiver": "",
+      "capability": "",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "node",
+          "nullable": false,
+          "ownership": "instance-and-generation"
+        },
+        {
+          "type": "mesh",
+          "nullable": true,
+          "ownership": "instance-and-generation"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Storage::BeginRead(System.String)->System.Int32",
+      "arguments": [
+        "string"
+      ],
+      "returns": "i32",
+      "receiver": "",
+      "capability": "private-storage",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "string",
+          "nullable": true,
+          "max_chars": 4096,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "i32",
+        "nullable": false,
+        "min": -2147483648,
+        "max": 2147483647,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Storage::BeginWriteText(System.String,System.String,System.String)->System.Int32",
+      "arguments": [
+        "string",
+        "string",
+        "string"
+      ],
+      "returns": "i32",
+      "receiver": "",
+      "capability": "private-storage",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "string",
+          "nullable": true,
+          "max_chars": 4096,
+          "ownership": "value"
+        },
+        {
+          "type": "string",
+          "nullable": true,
+          "max_chars": 4096,
+          "ownership": "value"
+        },
+        {
+          "type": "string",
+          "nullable": true,
+          "max_chars": 4096,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "i32",
+        "nullable": false,
+        "min": -2147483648,
+        "max": 2147483647,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Storage::State(System.Int32)->System.Int32",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "i32",
+      "receiver": "",
+      "capability": "private-storage",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "i32",
+        "nullable": false,
+        "min": -2147483648,
+        "max": 2147483647,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Storage::Version(System.Int32)->System.String",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "string",
+      "receiver": "",
+      "capability": "private-storage",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "string",
+        "nullable": true,
+        "max_chars": 4096,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Storage::Error(System.Int32)->System.String",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "string",
+      "receiver": "",
+      "capability": "private-storage",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "string",
+        "nullable": true,
+        "max_chars": 4096,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Storage::TakeText(System.Int32)->System.String",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "string",
+      "receiver": "",
+      "capability": "private-storage",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "string",
+        "nullable": true,
+        "max_chars": 4096,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Storage::Release(System.Int32)->System.Boolean",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "bool",
+      "receiver": "",
+      "capability": "private-storage",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "bool",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Llm::BeginPrompt(System.String)->System.Int32",
+      "arguments": [
+        "string"
+      ],
+      "returns": "i32",
+      "receiver": "",
+      "capability": "llm-proxy",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "string",
+          "nullable": true,
+          "max_chars": 4096,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "i32",
+        "nullable": false,
+        "min": -2147483648,
+        "max": 2147483647,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Llm::BeginCancel(System.Int32)->System.Int32",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "i32",
+      "receiver": "",
+      "capability": "llm-proxy",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "i32",
+        "nullable": false,
+        "min": -2147483648,
+        "max": 2147483647,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Llm::State(System.Int32)->System.Int32",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "i32",
+      "receiver": "",
+      "capability": "llm-proxy",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "i32",
+        "nullable": false,
+        "min": -2147483648,
+        "max": 2147483647,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Llm::Error(System.Int32)->System.String",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "string",
+      "receiver": "",
+      "capability": "llm-proxy",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "string",
+        "nullable": true,
+        "max_chars": 4096,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Llm::TakeText(System.Int32)->System.String",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "string",
+      "receiver": "",
+      "capability": "llm-proxy",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "string",
+        "nullable": true,
+        "max_chars": 4096,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Llm::Release(System.Int32)->System.Boolean",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "bool",
+      "receiver": "",
+      "capability": "llm-proxy",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "i32",
+          "nullable": false,
+          "min": -2147483648,
+          "max": 2147483647,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "bool",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Input::GetButton(System.String)->System.Boolean",
+      "arguments": [
+        "string"
+      ],
+      "returns": "bool",
+      "receiver": "",
+      "capability": "input",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "string",
+          "nullable": true,
+          "max_chars": 4096,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "bool",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Input::GetButtonUp(System.String)->System.Boolean",
+      "arguments": [
+        "string"
+      ],
+      "returns": "bool",
+      "receiver": "",
+      "capability": "input",
+      "cost": 4,
+      "argument_constraints": [
+        {
+          "type": "string",
+          "nullable": true,
+          "max_chars": 4096,
+          "ownership": "value"
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "bool",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Input::IsFocused()->System.Boolean",
+      "arguments": [],
+      "returns": "bool",
+      "receiver": "",
+      "capability": "input",
+      "cost": 4,
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "bool",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Input::GetPointerX()->System.Single",
+      "arguments": [],
+      "returns": "f32",
+      "receiver": "",
+      "capability": "input",
+      "cost": 4,
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "f32",
+        "nullable": false,
+        "min": -100000,
+        "max": 100000,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Input::GetPointerY()->System.Single",
+      "arguments": [],
+      "returns": "f32",
+      "receiver": "",
+      "capability": "input",
+      "cost": 4,
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "f32",
+        "nullable": false,
+        "min": -100000,
+        "max": 100000,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Input::GetWheel()->System.Single",
+      "arguments": [],
+      "returns": "f32",
+      "receiver": "",
+      "capability": "input",
+      "cost": 4,
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "f32",
+        "nullable": false,
+        "min": -100000,
+        "max": 100000,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::View::GetEye()->UnityEngine.Vector3",
+      "arguments": [],
+      "returns": "vector3",
+      "receiver": "",
+      "capability": "view-data",
+      "cost": 1,
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "vector3",
+        "nullable": false,
+        "length": 3,
+        "min": -100000,
+        "max": 100000,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::View::GetSize()->UnityEngine.Vector3",
+      "arguments": [],
+      "returns": "vector3",
+      "receiver": "",
+      "capability": "view-data",
+      "cost": 1,
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "vector3",
+        "nullable": false,
+        "length": 3,
+        "min": -100000,
+        "max": 100000,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Sound::PlayMusic(UnityEngine.AudioClip,System.Single)->System.Void",
+      "arguments": [
+        "sound",
+        "f32"
+      ],
+      "returns": "void",
+      "receiver": "",
+      "capability": "sound-playback",
+      "cost": 8,
+      "argument_constraints": [
+        {
+          "type": "sound",
+          "nullable": false,
+          "ownership": "instance-and-generation"
+        },
+        {
+          "type": "f32",
+          "nullable": false,
+          "ownership": "value",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Sound::PlayEffect(UnityEngine.AudioClip,System.Single)->System.Void",
+      "arguments": [
+        "sound",
+        "f32"
+      ],
+      "returns": "void",
+      "receiver": "",
+      "capability": "sound-playback",
+      "cost": 8,
+      "argument_constraints": [
+        {
+          "type": "sound",
+          "nullable": false,
+          "ownership": "instance-and-generation"
+        },
+        {
+          "type": "f32",
+          "nullable": false,
+          "ownership": "value",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Sound::StopMusic()->System.Void",
+      "arguments": [],
+      "returns": "void",
+      "receiver": "",
+      "capability": "sound-playback",
+      "cost": 1,
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::Sound::StopEffects()->System.Void",
+      "arguments": [],
+      "returns": "void",
+      "receiver": "",
+      "capability": "sound-playback",
+      "cost": 1,
+      "argument_constraints": [],
+      "receiver_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "return_constraint": {
+        "type": "void",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "cost_status": "candidate-unmeasured"
+    }
+  ],
+  "components": {
+    "transform": {
+      "position": {
+        "type": "vector3",
+        "nullable": false,
+        "length": 3,
+        "min": -100000,
+        "max": 100000,
+        "ownership": "value"
+      },
+      "rotation": {
+        "type": "quaternion",
+        "nullable": false,
+        "length": 4,
+        "min": -1,
+        "max": 1,
+        "ownership": "value"
+      },
+      "scale": {
+        "type": "vector3",
+        "nullable": false,
+        "length": 3,
+        "min": -100000,
+        "max": 100000,
+        "ownership": "value"
+      }
+    },
+    "mesh-renderer": {
+      "mesh": {
+        "type": "mesh",
+        "nullable": true,
+        "ownership": "instance-and-generation"
+      },
+      "material": {
+        "type": "material",
+        "nullable": true,
+        "ownership": "instance-and-generation"
+      }
+    },
+    "light": {
+      "color": {
+        "type": "color",
+        "nullable": false,
+        "length": 4,
+        "min": 0,
+        "max": 16,
+        "ownership": "value"
+      },
+      "intensity": {
+        "type": "f32",
+        "nullable": false,
+        "min": 0,
+        "max": 100000,
+        "ownership": "value"
+      },
+      "type": {
+        "type": "i32",
+        "nullable": false,
+        "min": 0,
+        "max": 2,
+        "ownership": "value"
+      },
+      "range": {
+        "type": "f32",
+        "nullable": false,
+        "min": 1e-05,
+        "max": 10000,
+        "ownership": "value"
+      },
+      "spot": {
+        "type": "f32",
+        "nullable": false,
+        "min": 1,
+        "max": 179,
+        "ownership": "value"
+      },
+      "innerSpot": {
+        "type": "f32",
+        "nullable": false,
+        "min": 0,
+        "max": 179,
+        "ownership": "value"
+      },
+      "shadows": {
+        "type": "i32",
+        "nullable": false,
+        "min": 0,
+        "max": 2,
+        "ownership": "value"
+      },
+      "shadowStrength": {
+        "type": "f32",
+        "nullable": false,
+        "min": 0,
+        "max": 1,
+        "ownership": "value"
+      },
+      "bias": {
+        "type": "f32",
+        "nullable": false,
+        "min": 0,
+        "max": 2,
+        "ownership": "value"
+      },
+      "normalBias": {
+        "type": "f32",
+        "nullable": false,
+        "min": 0,
+        "max": 3,
+        "ownership": "value"
+      },
+      "near": {
+        "type": "f32",
+        "nullable": false,
+        "min": 1e-05,
+        "max": 10,
+        "ownership": "value"
+      },
+      "usePipelineSettings": {
+        "type": "bool",
+        "nullable": false,
+        "ownership": "value"
+      }
+    },
+    "script": {
+      "class": {
+        "type": "string",
+        "nullable": false,
+        "max_chars": 96,
+        "ownership": "value"
+      }
+    },
+    "presentation": {
+      "ambient": {
+        "type": "bool",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "gradient": {
+        "type": "bool",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "sky": {
+        "type": "color",
+        "nullable": false,
+        "ownership": "value",
+        "min": 0,
+        "max": 16,
+        "length": 4
+      },
+      "equator": {
+        "type": "color",
+        "nullable": false,
+        "ownership": "value",
+        "min": 0,
+        "max": 16,
+        "length": 4
+      },
+      "ground": {
+        "type": "color",
+        "nullable": false,
+        "ownership": "value",
+        "min": 0,
+        "max": 16,
+        "length": 4
+      },
+      "background": {
+        "type": "bool",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "backgroundColor": {
+        "type": "color",
+        "nullable": false,
+        "ownership": "value",
+        "min": 0,
+        "max": 16,
+        "length": 4
+      },
+      "post": {
+        "type": "bool",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "threshold": {
+        "type": "f32",
+        "nullable": false,
+        "ownership": "value",
+        "min": 0,
+        "max": 100
+      },
+      "intensity": {
+        "type": "f32",
+        "nullable": false,
+        "ownership": "value",
+        "min": 0,
+        "max": 10
+      },
+      "scatter": {
+        "type": "f32",
+        "nullable": false,
+        "ownership": "value",
+        "min": 0,
+        "max": 1
+      },
+      "aces": {
+        "type": "bool",
+        "nullable": false,
+        "ownership": "value"
+      },
+      "exposure": {
+        "type": "f32",
+        "nullable": false,
+        "ownership": "value",
+        "min": -10,
+        "max": 10
+      },
+      "saturation": {
+        "type": "f32",
+        "nullable": false,
+        "ownership": "value",
+        "min": -100,
+        "max": 100
+      },
+      "vignette": {
+        "type": "f32",
+        "nullable": false,
+        "ownership": "value",
+        "min": 0,
+        "max": 1
+      },
+      "smoothness": {
+        "type": "f32",
+        "nullable": false,
+        "ownership": "value",
+        "min": 0.01,
+        "max": 1
+      }
+    }
+  },
+  "instructions": {
+    "nop": "none",
+    "ldarg": "index",
+    "ldloc": "index",
+    "stloc": "index",
+    "ldfield": "field",
+    "stfield": "field",
+    "ldc.i4": "i32",
+    "ldc.r4": "f32",
+    "ldstr": "string",
+    "ldnull": "none",
+    "dup": "none",
+    "pop": "none",
+    "add": "none",
+    "sub": "none",
+    "mul": "none",
+    "div": "none",
+    "rem": "none",
+    "neg": "none",
+    "ceq": "none",
+    "clt": "none",
+    "cgt": "none",
+    "cle": "none",
+    "cge": "none",
+    "clt.un": "none",
+    "cgt.un": "none",
+    "cle.un": "none",
+    "cge.un": "none",
+    "and": "none",
+    "or": "none",
+    "xor": "none",
+    "not": "none",
+    "conv.i4": "none",
+    "conv.r4": "none",
+    "br": "branch",
+    "brtrue": "branch",
+    "brfalse": "branch",
+    "call": "member",
+    "invoke": "method",
+    "ret": "none",
+    "newarray": "type",
+    "ldlen": "none",
+    "ldelem": "type",
+    "stelem": "type",
+    "newobj": "class",
+    "newvector3": "none",
+    "newcolor": "none",
+    "newlist": "list",
+    "conv.bool": "none",
+    "ldelem.ref": "none",
+    "stelem.ref": "none",
+    "getcomponent": "component"
+  },
+  "value_constraints": {
+    "void": {
+      "type": "void",
+      "nullable": false,
+      "ownership": "value"
+    },
+    "bool": {
+      "type": "bool",
+      "nullable": false,
+      "ownership": "value"
+    },
+    "i32": {
+      "type": "i32",
+      "nullable": false,
+      "min": -2147483648,
+      "max": 2147483647,
+      "ownership": "value"
+    },
+    "f32": {
+      "type": "f32",
+      "nullable": false,
+      "min": -100000,
+      "max": 100000,
+      "ownership": "value"
+    },
+    "string": {
+      "type": "string",
+      "nullable": true,
+      "max_chars": 4096,
+      "ownership": "value"
+    },
+    "vector3": {
+      "type": "vector3",
+      "nullable": false,
+      "length": 3,
+      "min": -100000,
+      "max": 100000,
+      "ownership": "value"
+    },
+    "color": {
+      "type": "color",
+      "nullable": false,
+      "length": 4,
+      "min": -100000,
+      "max": 100000,
+      "ownership": "value"
+    },
+    "node": {
+      "type": "node",
+      "nullable": true,
+      "ownership": "instance-and-generation"
+    },
+    "prefab": {
+      "type": "prefab",
+      "nullable": true,
+      "ownership": "instance-and-generation"
+    },
+    "material": {
+      "type": "material",
+      "nullable": true,
+      "ownership": "instance-and-generation"
+    },
+    "mesh": {
+      "type": "mesh",
+      "nullable": true,
+      "ownership": "instance-and-generation"
+    },
+    "texture": {
+      "type": "texture",
+      "nullable": true,
+      "ownership": "instance-and-generation"
+    },
+    "cubemap": {
+      "type": "cubemap",
+      "nullable": true,
+      "ownership": "instance-and-generation"
+    },
+    "light": {
+      "type": "light",
+      "nullable": true,
+      "ownership": "instance-and-generation"
+    },
+    "list_i32": {
+      "type": "list_i32",
+      "nullable": true,
+      "ownership": "instance-and-generation",
+      "max_elements": 4096
+    },
+    "list_f32": {
+      "type": "list_f32",
+      "nullable": true,
+      "ownership": "instance-and-generation",
+      "max_elements": 4096
+    },
+    "sound": {
+      "type": "sound",
+      "nullable": true,
+      "ownership": "instance-and-generation"
+    }
+  },
+  "array_constraint": {
+    "max_elements": 4096,
+    "nullable": true,
+    "ownership": "recursive-instance-and-generation"
+  },
+  "limits": {
+    "archive": 67108864,
+    "expanded": 134217728,
+    "entries": 4096,
+    "file_bytes": 33554432,
+    "classes": 128,
+    "fields": 128,
+    "methods": 256,
+    "parameters": 16,
+    "locals": 128,
+    "method_instructions": 16384,
+    "program_instructions": 131072,
+    "stack": 128,
+    "resources": 4096,
+    "nodes": 16384,
+    "prefabs": 256,
+    "prefab_nodes": 4096,
+    "components": 32
+  },
+  "builtin_shaders": {
+    "Universal Render Pipeline/Lit": {
+      "_WorkflowMode": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_BaseMap": {
+        "type": 4,
+        "dimension": 2
+      },
+      "_BaseColor": {
+        "type": 0,
+        "dimension": 0
+      },
+      "_Cutoff": {
+        "type": 3,
+        "dimension": 0
+      },
+      "_Smoothness": {
+        "type": 3,
+        "dimension": 0
+      },
+      "_SmoothnessTextureChannel": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_Metallic": {
+        "type": 3,
+        "dimension": 0
+      },
+      "_MetallicGlossMap": {
+        "type": 4,
+        "dimension": 2
+      },
+      "_SpecColor": {
+        "type": 0,
+        "dimension": 0
+      },
+      "_SpecGlossMap": {
+        "type": 4,
+        "dimension": 2
+      },
+      "_SpecularHighlights": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_EnvironmentReflections": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_BumpScale": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_BumpMap": {
+        "type": 4,
+        "dimension": 2
+      },
+      "_Parallax": {
+        "type": 3,
+        "dimension": 0
+      },
+      "_ParallaxMap": {
+        "type": 4,
+        "dimension": 2
+      },
+      "_OcclusionStrength": {
+        "type": 3,
+        "dimension": 0
+      },
+      "_OcclusionMap": {
+        "type": 4,
+        "dimension": 2
+      },
+      "_EmissionColor": {
+        "type": 0,
+        "dimension": 0
+      },
+      "_EmissionMap": {
+        "type": 4,
+        "dimension": 2
+      },
+      "_DetailMask": {
+        "type": 4,
+        "dimension": 2
+      },
+      "_DetailAlbedoMapScale": {
+        "type": 3,
+        "dimension": 0
+      },
+      "_DetailAlbedoMap": {
+        "type": 4,
+        "dimension": 2
+      },
+      "_DetailNormalMapScale": {
+        "type": 3,
+        "dimension": 0
+      },
+      "_DetailNormalMap": {
+        "type": 4,
+        "dimension": 2
+      },
+      "_ClearCoatMask": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_ClearCoatSmoothness": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_Surface": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_Blend": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_Cull": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_AlphaClip": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_SrcBlend": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_DstBlend": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_SrcBlendAlpha": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_DstBlendAlpha": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_ZWrite": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_BlendModePreserveSpecular": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_AlphaToMask": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_ReceiveShadows": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_QueueOffset": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_MainTex": {
+        "type": 4,
+        "dimension": 2
+      },
+      "_Color": {
+        "type": 0,
+        "dimension": 0
+      },
+      "_GlossMapScale": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_Glossiness": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_GlossyReflections": {
+        "type": 2,
+        "dimension": 0
+      },
+      "unity_Lightmaps": {
+        "type": 4,
+        "dimension": 5
+      },
+      "unity_LightmapsInd": {
+        "type": 4,
+        "dimension": 5
+      },
+      "unity_ShadowMasks": {
+        "type": 4,
+        "dimension": 5
+      }
+    },
+    "Universal Render Pipeline/Unlit": {
+      "_BaseMap": {
+        "type": 4,
+        "dimension": 2
+      },
+      "_BaseColor": {
+        "type": 0,
+        "dimension": 0
+      },
+      "_Cutoff": {
+        "type": 3,
+        "dimension": 0
+      },
+      "_Surface": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_Blend": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_Cull": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_AlphaClip": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_BlendOp": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_SrcBlend": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_DstBlend": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_SrcBlendAlpha": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_DstBlendAlpha": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_ZWrite": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_AlphaToMask": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_QueueOffset": {
+        "type": 2,
+        "dimension": 0
+      },
+      "_MainTex": {
+        "type": 4,
+        "dimension": 2
+      },
+      "_Color": {
+        "type": 0,
+        "dimension": 0
+      },
+      "_SampleGI": {
+        "type": 2,
+        "dimension": 0
+      }
+    }
+  },
+  "unity_message_names": [
+    "Awake",
+    "FixedUpdate",
+    "LateUpdate",
+    "OnAnimatorIK",
+    "OnAnimatorMove",
+    "OnApplicationFocus",
+    "OnApplicationPause",
+    "OnApplicationQuit",
+    "OnAudioFilterRead",
+    "OnBecameInvisible",
+    "OnBecameVisible",
+    "OnCollisionEnter",
+    "OnCollisionEnter2D",
+    "OnCollisionExit",
+    "OnCollisionExit2D",
+    "OnCollisionStay",
+    "OnCollisionStay2D",
+    "OnConnectedToServer",
+    "OnControllerColliderHit",
+    "OnDestroy",
+    "OnDisable",
+    "OnDisconnectedFromServer",
+    "OnDrawGizmos",
+    "OnDrawGizmosSelected",
+    "OnEnable",
+    "OnFailedToConnect",
+    "OnFailedToConnectToMasterServer",
+    "OnGUI",
+    "OnJointBreak",
+    "OnJointBreak2D",
+    "OnMasterServerEvent",
+    "OnMouseDown",
+    "OnMouseDrag",
+    "OnMouseEnter",
+    "OnMouseExit",
+    "OnMouseOver",
+    "OnMouseUp",
+    "OnMouseUpAsButton",
+    "OnNetworkInstantiate",
+    "OnParticleCollision",
+    "OnParticleSystemStopped",
+    "OnParticleTrigger",
+    "OnParticleUpdateJobScheduled",
+    "OnPlayerConnected",
+    "OnPlayerDisconnected",
+    "OnPostRender",
+    "OnPreCull",
+    "OnPreRender",
+    "OnRenderImage",
+    "OnRenderObject",
+    "OnSerializeNetworkView",
+    "OnServerInitialized",
+    "OnTransformChildrenChanged",
+    "OnTransformParentChanged",
+    "OnTriggerEnter",
+    "OnTriggerEnter2D",
+    "OnTriggerExit",
+    "OnTriggerExit2D",
+    "OnTriggerStay",
+    "OnTriggerStay2D",
+    "OnValidate",
+    "OnWillRenderObject",
+    "Reset",
+    "Start",
+    "Update"
+  ],
+  "unity_message_source": {
+    "url": "https://docs.unity3d.com/2022.3/Documentation/ScriptReference/MonoBehaviour.html",
+    "section": "Messages",
+    "retrieved": "2026-10-27",
+    "html_sha256": "98fa32718c8321454b9678c4d1e6d75c79137d623d01593be7271e3b8fac3a18",
+    "meaning": "Reserved Unity callback names. Only callbacks listed in callbacks are supported."
+  },
+  "list_types": {
+    "list_i32": "i32",
+    "list_f32": "f32"
+  },
+  "runtime_policy": {
+    "id": "windows-lpac-d3d11-1",
+    "managed_bytes": 67108864,
+    "native_bytes": 134217728,
+    "gpu_estimate_bytes": 268435456,
+    "objects": 16384,
+    "process_bytes": 805306368,
+    "global_process_bytes": 1610612736,
+    "actual_gpu_bytes": 1073741824,
+    "startup_ms": 15000,
+    "frame_ms": 1000,
+    "stop_ms": 500,
+    "cpu_window_ms": 2000,
+    "cpu_budget_ms": 8000,
+    "gpu_stale_ms": 2000,
+    "instructions": 10000,
+    "depth": 32,
+    "execution_ms": 1000,
+    "max_instances": 2,
+    "max_fps": 60,
+    "max_render_pixels": 2073600,
+    "max_render_side": 1920,
+    "manager_clients": 4,
+    "manager_request_bytes": 4096,
+    "manager_reply_bytes": 32768,
+    "manager_io_ms": 2000,
+    "journal_pending": 32,
+    "log_bytes": 65536,
+    "log_per_second": 262144,
+    "max_received_fps": 120,
+    "cache_attempts": 64,
+    "cache_path_max": 240,
+    "counter_poll_ms": 100,
+    "counter_buffer_bytes": 1048576,
+    "counter_instances": 4096
+  },
+  "content_capabilities": {
+    "components": {
+      "mesh-renderer": [
+        "view-data"
+      ]
+    },
+    "resources": {
+      "material": [
+        "view-data"
+      ],
+      "shader": [
+        "view-data"
+      ],
+      "sound": [
+        "sound-playback"
+      ]
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+ "name":"SpatialWallpaper.Sdk",
+ "references":["Unity.Newtonsoft.Json","Unity.RenderPipelines.Core.Runtime","Unity.RenderPipelines.Universal.Runtime"]
+}

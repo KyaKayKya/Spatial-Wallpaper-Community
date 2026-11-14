@@ -1,0 +1,70 @@
+{
+  "commit": "acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0",
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/Cilbox.asmdef",
+      "sha256": "67c64ec41c050e06908523c1ca556a53971e4d38afebcdb9cd2b4d1270880f19",
+      "git_blob": "2cf904865d4cf86c15179c6be7677f66d01846dc",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/Cilbox.asmdef",
+      "local": "Cilbox.asmdef",
+      "local_sha256": "268b591afc2be346758e0fa5111fa0075fb01d772078c55b314aa980c83145c8"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/Cilbox.cs",
+      "sha256": "585e531a5967de427061037676c5455335c1192c4fb72573e652706936079fff",
+      "git_blob": "df362bdacaa6ddbe4f2c6f12f282a2fcbf2b7e97",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/Cilbox.cs",
+      "local": "Cilbox.cs",
+      "local_sha256": "56a20f87e39d6aa0ba1f1d00942b54fa57766c6b3d8aff73a9fc74e2124b7a04"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/CilboxProxy.cs",
+      "sha256": "5ea63dc8a56af36e1120d97bd15230a658fda80195c228e543d2568da6f94bd5",
+      "git_blob": "5a8905303fb56fecd431e3bfe36d8904950dd763",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/CilboxProxy.cs",
+      "local": "CilboxProxy.cs",
+      "local_sha256": "38be9f9ee33d866e3750da0d0e3534470d32ba531c8ff763205835bca1be67d6"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/CilboxSerialization.cs",
+      "sha256": "362152d52b98cec61f62c563477d219f29dd4702c742dc50c44a0191c280730e",
+      "git_blob": "714edd18bc57855ee48527e8946b13d39f6369ff",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/CilboxSerialization.cs",
+      "local": "CilboxSerialization.cs",
+      "local_sha256": "362152d52b98cec61f62c563477d219f29dd4702c742dc50c44a0191c280730e"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/CilboxUsage.cs",
+      "sha256": "3073015aba969eb73e70a33967e1d3b50221014bdc4859c572bdc30a6a19eec9",
+      "git_blob": "e09c3b455b50a779fce9790439cb24e53ad4b306",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/CilboxUsage.cs",
+      "local": "CilboxUsage.cs",
+      "local_sha256": "4463dfffc50fcd6d3a8c4cfd02ef6ffcbc950b153b4860ad7cdb792de3c8d33f"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/CilboxUtil.cs",
+      "sha256": "b95ddc504323bea0cee6824f5b8905d9522aa7d6c84759068e56ce04715d3c21",
+      "git_blob": "4df860ee3bcc384c2184a91542b72af703f01589",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/CilboxUtil.cs",
+      "local": "CilboxUtil.cs",
+      "local_sha256": "987797ca7f2e8771b9f7843a7b664d5e6ccd48a342f14ef0211e9216f06688b4"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/LICENSE",
+      "sha256": "7a246002e192badb258fa4f91a251149cc04198d14674d1717dc4cf6b3d3f9b5",
+      "git_blob": "916b1fffbb6f54c5fbd1c57b3b3be1a737b94025",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/LICENSE",
+      "local": "LICENSE",
+      "local_sha256": "7a246002e192badb258fa4f91a251149cc04198d14674d1717dc4cf6b3d3f9b5"
+    }
+  ],
+  "modifications": [
+    "Cilbox.cs: SDK runtime supplies common marker attribute. Automatic build hooks disabled; explicit compileOnly API returns typed assembly before serialization, scene mutation or proxy activation.",
+    "Cilbox.asmdef: Editor only; references SDK runtime; not auto-referenced. Interpreter/usage/proxy code remain compile dependencies of the upstream compiler but are excluded from Player.",
+    "C# trailing whitespace and extra EOF blank lines normalized; local_sha256 describes LF checkout bytes. Original sha256/git_blob remains unchanged provenance.",
+    "CilboxUtil.cs: marker lookup reads CustomAttributeData without instantiating author custom attributes.",
+    "Cilbox.cs: explicit compileOnly accepts bounded SDK-discovered source types, including referenced Prefab scripts, without instantiating Prefab author components."
+  ],
+  "runtime_execution": "SDK normalized interpreter; no Cilbox native resolver or Serializee parser accepts package input."
+}

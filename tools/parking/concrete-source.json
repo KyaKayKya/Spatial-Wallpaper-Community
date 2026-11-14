@@ -1,0 +1,31 @@
+{
+  "asset": "concrete_wall_004",
+  "source": "https://polyhaven.com/a/concrete_wall_004",
+  "license": "CC0-1.0",
+  "license_url": "https://polyhaven.com/license",
+  "authors": [
+    "Charlotte Baglioni",
+    "Dario Barresi"
+  ],
+  "physical_width_m": 2,
+  "maps": [
+    {
+      "file": "PHConcrete_diff.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/concrete_wall_004/concrete_wall_004_diff_1k.png",
+      "sha256": "7bc6fb17758cfd2f7b297af0d168f308fe36bdfdfc7b2ff1a2a72eabb472a6e1",
+      "size": 5336333
+    },
+    {
+      "file": "PHConcrete_nor_gl.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/concrete_wall_004/concrete_wall_004_nor_gl_1k.png",
+      "sha256": "008cb9cd6b712788645bcfad8c9bb442c86f9c9112a403535ae83520cf5c5585",
+      "size": 5725557
+    },
+    {
+      "file": "PHConcrete_rough.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/concrete_wall_004/concrete_wall_004_rough_1k.png",
+      "sha256": "5bf1ed5d66ec697f50bdf4a690f596eca00d3cb77d3b75bfec9f5c6d17a1f781",
+      "size": 2100492
+    }
+  ]
+}

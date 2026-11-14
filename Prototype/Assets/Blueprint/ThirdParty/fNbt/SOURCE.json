@@ -1,0 +1,10 @@
+{
+  "name": "fNbt",
+  "version": "1.0.0",
+  "commit": "578b9b089905927d69c2c8852dbc54806e236f0f",
+  "url": "https://github.com/mstefarov/fNbt",
+  "archive_sha256": "01ca08cc15d76422cdc9f4ad335cec0f1c05d40abded11754dc0b4e5e6b40b2e",
+  "license": "BSD-3-Clause",
+  "changes": "Source files unchanged; omitted upstream tests, project files and assembly metadata; added a Unity assembly definition and source record.",
+  "included": "NBT reader/writer source; no Minecraft game code, assets or mod runtime"
+}

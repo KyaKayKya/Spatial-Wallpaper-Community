@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "bundle": "approved-pinlights-20261016",
+  "scene_commit": "8525967f80a39ba2bb942e0bd50afeceb709ae87",
+  "license": "Local use only; see Prototype/THIRD_PARTY_ASSETS.md",
+  "files": [
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/CeilingPinlight_Left_empty.exr",
+      "group": "runtime",
+      "size": 181658,
+      "sha256": "bccc572d2ed5a0c3b7a1ce484ef06ef7671c4c8b1fc6382ad1294d83116e88f8",
+      "meta_sha256_lf": "18664c1e9bc7a4ff7f0a96539dcde49fdd0a48da034c75ce08941e095ed6856c"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/CeilingPinlight_Left_occupied.exr",
+      "group": "runtime",
+      "size": 182826,
+      "sha256": "07bd6096861769c64eacb66905d65e8fb48f168209c7d23b83465789f0aef494",
+      "meta_sha256_lf": "a36d0b5abd7b3008fcdc49353ebe3e375c3c1428504143cd36dcf951d18ba992"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/CeilingPinlight_Right_empty.exr",
+      "group": "runtime",
+      "size": 182469,
+      "sha256": "05b103aeaf22fe14a6d842e8381f4e4f1688774419823c08f2b54ebcfa84c887",
+      "meta_sha256_lf": "e3ef0f2903ffec3a28c9ddc58052444fa79229204e2b0099f4dd905d4fccb1fd"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/CeilingPinlight_Right_occupied.exr",
+      "group": "runtime",
+      "size": 183118,
+      "sha256": "3a20af85398b07ffe85f4534a415950f675a2a9541d0bec6d56e4d138cdfa247",
+      "meta_sha256_lf": "ca6ed496abfc9802f19a781f72a4bc8ac3231eaa1413d50fbfb09f61ebc490d8"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/OrganicBaked.fbx",
+      "group": "runtime",
+      "size": 1241884,
+      "sha256": "5978aab13a49b562abd8a9b75259418a18a6271e6f28f78a144f0dd95bf5c68a",
+      "meta_sha256_lf": "dc2369836f7d7e061438bfce8d90507c5f1f963f5bc767175c26acafa3df4666"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/Organic_Sculpture__Flareworks_Studio_occupied.exr",
+      "group": "runtime",
+      "size": 2451683,
+      "sha256": "621932bee0fa9fa495108329b268ce9283503f3ac20449b63c87c01f3bddbd6e",
+      "meta_sha256_lf": "fd5719692d240c03cd41f51ffab181ab985447ced48022ae72d63fc265a0a2fb"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/BakedStudy/PinlightsBaked.fbx",
+      "group": "runtime",
+      "size": 80092,
+      "sha256": "7a6593a06c5e5654dcaf6cd64db51304ceabf6b3df65eee6a3e4bf80041504c3",
+      "meta_sha256_lf": "8d9fde388d42d4dd52affa7e71dbf23ae66577dbce27156852b6ba51e3f78b88"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Models/Organic/Albedo.png",
+      "group": "runtime",
+      "size": 11769303,
+      "sha256": "2e55b6452cae1bf80cc06b95285cbce41ec5a85e519feb88857a39248171d5f9",
+      "meta_sha256_lf": "9f5f4b1e52cf41666c078b5a11b95d775ec34b64ed8d7b4eebce1421bc6caceb"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Models/Organic/MetallicSmoothness.png",
+      "group": "runtime",
+      "size": 2310506,
+      "sha256": "4a2e1385398fd2391259d1e6c38e09dea573eab9234898731d2989628e9f591a",
+      "meta_sha256_lf": "8ecc8d847db5d99f47460aa25303bc87cd8ceb1aa94cbacada3c51cb82f709c1"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Models/Organic/Normal.png",
+      "group": "runtime",
+      "size": 6188614,
+      "sha256": "02cf3835ec8b49b601115f4ea471b6d9445d4773838ebe54b83fe2b270f57c2f",
+      "meta_sha256_lf": "6e77ef80b4f45a224f4d4b922ea04f54186fd1b78dceffd504e64b8e42214c3c"
+    },
+    {
+      "path": "Prototype/Assets/Showcase/Models/Organic/OrganicSculpture.fbx",
+      "group": "runtime",
+      "size": 992188,
+      "sha256": "3843d647108670f781f9c08341f7d64bb4e391a98ac2c9c66028fc4764ba1559",
+      "meta_sha256_lf": "96ae08fd489b09723fad772b65c5ce7d74b6f899a5a67a746224a7b4db9cc356"
+    },
+    {
+      "path": "art/showcase/blender-study/showcase-organic-final.blend",
+      "group": "source",
+      "size": 2780391,
+      "sha256": "c26e6bd8017e681ece3c689ad8668a64cc87feb16a9457abfc6069a369cdf0f6"
+    },
+    {
+      "path": "art/showcase/blender-study/showcase-organic-final.blend1",
+      "group": "source",
+      "size": 2780412,
+      "sha256": "3fa547c3ebb4728cd8ccf3645483938649193aab79e57fd09824bf7f97b79e8e"
+    },
+    {
+      "path": "art/showcase/blender-study/showcase-organic-refined.blend",
+      "group": "source",
+      "size": 2042517,
+      "sha256": "7adb46910a08562362931f0ba0f2074b3c77c3578e101d591ba1d389e9537b7a"
+    },
+    {
+      "path": "art/showcase/blender-study/showcase-organic-study.blend",
+      "group": "source",
+      "size": 2044948,
+      "sha256": "f6fd6d3f08aee174f01f4e1778612bc0a2223d7d1d4e2110024c7a24957165cb"
+    },
+    {
+      "path": "art/showcase/blender-study/showcase-pinlights.blend",
+      "group": "source",
+      "size": 2808917,
+      "sha256": "9d53dbb8d645027e2b097477b38c8ff903c97dda9c155ea61bc32f17ec0ae057"
+    },
+    {
+      "path": "art/showcase/blender-study/showcase-pinlights.blend1",
+      "group": "source",
+      "size": 2808767,
+      "sha256": "6aff3735b0656751db0aa8005aa92340b915b7ca795066de786466db2c88ab6d"
+    },
+    {
+      "path": "art/showcase/blender-study/source-assets/linear-lamp.blend",
+      "group": "source",
+      "size": 79789,
+      "sha256": "ef1c549884d863c15f110280eb80b6268bb650dfaf75f9621d8c7799befc8e0d"
+    },
+    {
+      "path": "art/showcase/blender-study/source-assets/organic.blend",
+      "group": "source",
+      "size": 1991946,
+      "sha256": "00f3026294505f1ab91a5957a45f1a10bc21491fe50aafc230169872e4f3a6a0"
+    },
+    {
+      "path": "art/showcase/blender-study/source-assets/pinlight.blend",
+      "group": "source",
+      "size": 100936,
+      "sha256": "2dbd39fd9f90b024dc2c5f6f85abb5e05f9466b7a42eea612ccb10aadd0486b1"
+    },
+    {
+      "path": "art/showcase/blender-study/source-assets/studio.blend",
+      "group": "source",
+      "size": 69384,
+      "sha256": "344226821b5f2d5e86a8528bcfe6bb910e9f96ff9e26ed2374d6f271db75c7ce"
+    },
+    {
+      "path": "art/showcase/showcase.blend1",
+      "group": "source",
+      "size": 269525,
+      "sha256": "bc2f2aaff425406303c2e223fc3623ca24e626ce3726f9a4c2a2fe970f8df00d"
+    }
+  ]
+}

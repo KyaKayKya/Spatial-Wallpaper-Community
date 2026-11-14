@@ -1,0 +1,11 @@
+"""Compare the fixed 640x360 native URP PNG reference with a captured top-down RGBA frame."""
+from pathlib import Path
+import argparse,hashlib,json,subprocess
+from check_contracts import DATA
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('reference',type=Path);p.add_argument('capture',type=Path);args=p.parse_args();out=args.capture.resolve();source=out/'CompareRgb.cs'
+source.write_text('''using System;using System.IO;using System.Drawing;
+class CompareRgb {static int Main(string[] args){using(var image=new Bitmap(args[0])){byte[] actual=File.ReadAllBytes(args[1]);if(image.Width!=640||image.Height!=360||actual.Length!=640*360*4)throw new Exception("frame-size-mismatch");int count=0,maximum=0;for(int y=0;y<360;y++)for(int x=0;x<640;x++){var value=image.GetPixel(x,y);int at=(y*640+x)*4;foreach(int d in new[]{Math.Abs(value.R-actual[at]),Math.Abs(value.G-actual[at+1]),Math.Abs(value.B-actual[at+2])})if(d!=0){count++;maximum=Math.Max(maximum,d);}}Console.WriteLine(count+" "+maximum);return count==0?0:1;}}}''')
+data=DATA;compiled=subprocess.run([str(data/'MonoBleedingEdge/bin/mono.exe'),str(data/'MonoBleedingEdge/lib/mono/4.5/csc.exe'),'-nologo','-r:System.Drawing.dll','-out:'+str(out/'CompareRgb.exe'),str(source)],capture_output=True,text=True);(out/'comparison-compile.log').write_text(compiled.stdout+compiled.stderr);compiled.check_returncode()
+run=subprocess.run([str(out/'CompareRgb.exe'),str(args.reference.resolve()),str(out/'frame.rgba')],capture_output=True,text=True);(out/'comparison.log').write_text(run.stdout+run.stderr);values=run.stdout.strip().split()
+report={'status':'exact-RGB-match' if run.returncode==0 else 'failed','reference':str(args.reference.resolve()),'reference_sha256':hashlib.sha256(args.reference.read_bytes()).hexdigest(),'frame_sha256':hashlib.sha256((out/'frame.rgba').read_bytes()).hexdigest(),'different_rgb_channels':int(values[0]) if len(values)==2 else None,'maximum_channel_delta':int(values[1]) if len(values)==2 else None,'scope':'fixed-view ordinary native URP reference vs actual LPAC Worker RGB, same exported fixture and pinned configuration; not screen presentation, natural animation, complete projection or RC acceptance'}
+(out/'rgb-comparison.json').write_text(json.dumps(report,indent=2));print(json.dumps(report,indent=2));run.check_returncode()

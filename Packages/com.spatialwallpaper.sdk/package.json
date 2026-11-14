@@ -1,0 +1,31 @@
+{
+  "name": "com.spatialwallpaper.sdk",
+  "version": "0.4.0-preview.1",
+  "displayName": "Spatial Wallpaper SDK",
+  "description": "Native Unity rendering with isolated author scripts, schema5 packages and ABI1 commands; preview release.",
+  "unity": "2022.3",
+  "samples": [
+    {
+      "displayName": "Static Window",
+      "description": "Procedural local validation sample with an external shader.",
+      "path": "Samples~/StaticWindow"
+    },
+    {
+      "displayName": "Starter Kit",
+      "description": "Five procedural SDK scenes: input/storage, audio, dynamic resources, Shader/Prefab and deterministic LLM.",
+      "path": "Samples~/StarterKit"
+    },
+    {
+      "displayName": "Native Async View and Storage",
+      "description": "Real view metadata and asynchronous private storage for native scripts.",
+      "path": "Samples~/NativeScripts"
+    }
+  ],
+  "dependencies": {
+    "com.unity.render-pipelines.universal": "14.0.12",
+    "com.unity.nuget.newtonsoft-json": "3.2.1",
+    "com.unity.modules.assetbundle": "1.0.0",
+    "com.unity.modules.imageconversion": "1.0.0",
+    "com.unity.modules.audio": "1.0.0"
+  }
+}

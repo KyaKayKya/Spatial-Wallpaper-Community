@@ -1,0 +1,35 @@
+[project]
+name = "spatial-wallpaper-tracker"
+version = "0.1.0"
+description = "Local camera recognition worker for Spatial Wallpaper"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "mediapipe==1.1.1",
+  "numpy>=2,<3",
+  "opencv-contrib-python>=5,<6",
+  "winrt-Windows.Media.Capture==3.2.1; sys_platform == 'win32'",
+  "winrt-Windows.Media.Capture.Frames==3.2.1; sys_platform == 'win32'",
+  "winrt-Windows.Devices.Enumeration==3.2.1; sys_platform == 'win32'",
+  "winrt-Windows.Foundation==3.2.1; sys_platform == 'win32'",
+  "winrt-Windows.Foundation.Collections==3.2.1; sys_platform == 'win32'",
+  "winrt-Windows.Graphics.Imaging==3.2.1; sys_platform == 'win32'",
+  "winrt-Windows.Storage.Streams==3.2.1; sys_platform == 'win32'",
+  "winrt-Windows.Media.MediaProperties==3.2.1; sys_platform == 'win32'",
+  "winrt-Windows.Media==3.2.1; sys_platform == 'win32'",
+]
+[dependency-groups]
+dev = ["pytest>=8,<9", "pytest-asyncio>=1,<2", "ruff>=0.14,<0.15"]
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[tool.hatch.build.targets.wheel]
+packages = ["src/spatial_tracker"]
+[project.scripts]
+spatial-tracker = "spatial_tracker.cli:main"
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = ["src"]
+testpaths = ["tests"]
+[tool.ruff]
+line-length = 100
+target-version = "py311"

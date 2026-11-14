@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "scope": "trusted-configuration-contract-not-release-support-matrix",
+  "default": "spatial.urp.forward-plus",
+  "profiles": [
+    {
+      "id": "spatial.urp.forward-plus",
+      "version": "1.1.0",
+      "format_version": 1,
+      "engine": "2022.3.62f3",
+      "pipeline": "14.0.12",
+      "platform": "windows-x86_64",
+      "color_space": "Linear",
+      "graphics_api": "Direct3D11",
+      "settings": {
+        "rendering_mode": "ForwardPlus",
+        "hdr": true,
+        "msaa": 4,
+        "depth_texture": true,
+        "opaque_texture": true,
+        "shadow_cascades": 1,
+        "main_light_shadows": true,
+        "additional_lights": "PerPixel",
+        "additional_light_shadows": true,
+        "soft_shadows": true,
+        "shadow_distance": 12
+      },
+      "renderer_features": [],
+      "camera": {
+        "allow_hdr": true,
+        "allow_msaa": true,
+        "post_processing": true,
+        "renderer_index": -1,
+        "resolved_renderer_index": 0,
+        "render_type": "Base",
+        "camera_stack_count": 0
+      },
+      "capture": {
+        "format": "ARGB32",
+        "graphics_format": "R8G8B8A8_SRGB",
+        "depth_stencil_format": "D24_UNorm_S8_UInt",
+        "srgb": true,
+        "samples": 1,
+        "depth_bits": 24,
+        "readback": "RGBA32"
+      }
+    }
+  ]
+}

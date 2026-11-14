@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "id": "release-supported-configuration-catalog",
+  "status": "candidate-requirements-not-verification",
+  "identity_dimensions": [
+    "os",
+    "display_topology",
+    "dpi",
+    "render_profile_id",
+    "render_profile_version",
+    "render_profile_format_version"
+  ],
+  "requested_toolchain": {
+    "unity": "2022.3.62f3",
+    "urp": "14.0.12"
+  },
+  "build_settings_reference": "tools/sdk/experiments/StageCPipeline.cs explicitly requests Linear and Direct3D11; this is not configuration verification",
+  "render_profiles": [
+    {
+      "id": "spatial.urp.forward-plus",
+      "version": "1.1.0",
+      "format_version": 1,
+      "status": "requested-unverified"
+    }
+  ],
+  "configurations": [
+    {
+      "id": "windows-native-reference-request",
+      "status": "requested-unverified",
+      "request": "Only this exact observed reference configuration is a candidate for this RC execution; no broader Windows, topology or DPI support is claimed.",
+      "identity": {
+        "os": {
+          "platform": "Windows-10-10.0.19045-SP0",
+          "win32_ver": [
+            "10",
+            "10.0.19045",
+            "SP0",
+            "Multiprocessor Free"
+          ],
+          "machine": "AMD64"
+        },
+        "display_topology": [
+          {
+            "name": "\\\\.\\DISPLAY1",
+            "description": "NVIDIA GeForce RTX 5070 Ti",
+            "state_flags": 5,
+            "device_id": "PCI\\VEN_10DE&DEV_2C05&SUBSYS_41A81458&REV_A1",
+            "device_key": "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\Video\\{FE9010D6-04A8-11F1-B92B-F44EFCD6AE87}\\0000",
+            "mode": {
+              "status": "measured",
+              "source": "EnumDisplaySettingsW ENUM_CURRENT_SETTINGS",
+              "value": {
+                "x": 0,
+                "y": 0,
+                "width": 1920,
+                "height": 1080,
+                "frequency_hz": 60,
+                "orientation": 0,
+                "bits_per_pixel": 32
+              }
+            }
+          }
+        ],
+        "dpi": [
+          {
+            "rectangle": [
+              0,
+              0,
+              1920,
+              1080
+            ],
+            "effective_dpi": [
+              96,
+              96
+            ]
+          }
+        ],
+        "render_profile_id": "spatial.urp.forward-plus",
+        "render_profile_version": "1.1.0",
+        "render_profile_format_version": 1
+      }
+    }
+  ],
+  "dependencies": [
+    "Complete current-run D--G catalog for the fixed delivered candidate.",
+    "Frozen input continuity/cycles/faults and applicable performance evidence for this exact configuration."
+  ],
+  "support_claim": false,
+  "candidate_observation": {
+    "path": "Validation/Content/sdk-runtime/G/frame-timing/44287680a3f347be92562108d1d0c1d3/report.json",
+    "sha256": "08841d0be5fab28fa5b55ce6d523dc8d9b1b8bfd9d65149982ed19b71cd0b0a8",
+    "scope": "Actual candidate-h fixed Worker profile1.1.0 and current exact OS/attached topology/DPI; requested-unverified, not acceptance or support certification."
+  }
+}

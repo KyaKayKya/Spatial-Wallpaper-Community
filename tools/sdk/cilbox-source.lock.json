@@ -1,0 +1,102 @@
+{
+  "commit": "acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0",
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/Cilbox.asmdef",
+      "sha256": "67c64ec41c050e06908523c1ca556a53971e4d38afebcdb9cd2b4d1270880f19",
+      "git_blob": "2cf904865d4cf86c15179c6be7677f66d01846dc",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/Cilbox.asmdef"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/Cilbox.asmdef.meta",
+      "sha256": "a34b8ab3b9ae7ede62df009db0c889ef273c7d1e7ca26ae2cdc6e888ba8a4805",
+      "git_blob": "60e6b4f6aff5e4bc1e8302756162b43e14568fbf",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/Cilbox.asmdef.meta"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/Cilbox.cs",
+      "sha256": "585e531a5967de427061037676c5455335c1192c4fb72573e652706936079fff",
+      "git_blob": "df362bdacaa6ddbe4f2c6f12f282a2fcbf2b7e97",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/Cilbox.cs"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/Cilbox.cs.meta",
+      "sha256": "0f74360c2462756b9adb685260226b6ada8bc18a7d8829c889bf7812e2ff9286",
+      "git_blob": "841f84ccefd656f65d2a75a9c9926920773bc2e9",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/Cilbox.cs.meta"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/CilboxProxy.cs",
+      "sha256": "5ea63dc8a56af36e1120d97bd15230a658fda80195c228e543d2568da6f94bd5",
+      "git_blob": "5a8905303fb56fecd431e3bfe36d8904950dd763",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/CilboxProxy.cs"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/CilboxProxy.cs.meta",
+      "sha256": "2d22d7b0100f01e2549e71fef0a1483f6d9dcef40e8964df5aa185d9f1a522cc",
+      "git_blob": "714b80d238dd3b7c92aaf65fabaf2d786bf8eedc",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/CilboxProxy.cs.meta"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/CilboxSerialization.cs",
+      "sha256": "362152d52b98cec61f62c563477d219f29dd4702c742dc50c44a0191c280730e",
+      "git_blob": "714edd18bc57855ee48527e8946b13d39f6369ff",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/CilboxSerialization.cs"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/CilboxSerialization.cs.meta",
+      "sha256": "7d3653c7dd13603fd3aac5e130e9c9bca445d76154b24cadd5b2687df3f0dfde",
+      "git_blob": "5a48115c75401a91435cba8086ac00fdf28e6388",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/CilboxSerialization.cs.meta"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/CilboxUsage.cs",
+      "sha256": "3073015aba969eb73e70a33967e1d3b50221014bdc4859c572bdc30a6a19eec9",
+      "git_blob": "e09c3b455b50a779fce9790439cb24e53ad4b306",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/CilboxUsage.cs"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/CilboxUsage.cs.meta",
+      "sha256": "7db6228fd3feacfc39eb489f096cb7d58aa50946e1c971f3df6dcb81c35e5709",
+      "git_blob": "5c00017413528e4fc465b05a8a902c7a8262260e",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/CilboxUsage.cs.meta"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/CilboxUtil.cs",
+      "sha256": "b95ddc504323bea0cee6824f5b8905d9522aa7d6c84759068e56ce04715d3c21",
+      "git_blob": "4df860ee3bcc384c2184a91542b72af703f01589",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/CilboxUtil.cs"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/CilboxUtil.cs.meta",
+      "sha256": "a75bb0fecdfce0ac77916f70b6e7cfe3cb919b89872d2877f829ac61e807e7cc",
+      "git_blob": "55513e0d7040454c062292b2656ea2d5b8e1edef",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/CilboxUtil.cs.meta"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/LICENSE",
+      "sha256": "7a246002e192badb258fa4f91a251149cc04198d14674d1717dc4cf6b3d3f9b5",
+      "git_blob": "916b1fffbb6f54c5fbd1c57b3b3be1a737b94025",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/LICENSE"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/LICENSE.meta",
+      "sha256": "f9e7291d577610a134a216c902ec9eb1588fa98a453172702b55e80f40e5d4b2",
+      "git_blob": "b5aa8e88ed0fc3c70056189a34bd914187459f9b",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/LICENSE.meta"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/package.json",
+      "sha256": "d81a64e7702a12b96f23ce0c8851c2cc279cf955b5bd7e8d0949e5b4d92e248f",
+      "git_blob": "a0f0225b67be33a5590e24854da39a1128d1dca2",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/package.json"
+    },
+    {
+      "path": "Basis/Packages/com.cnlohr.cilbox/package.json.meta",
+      "sha256": "cac8fa77bb2dce43245c35835aab6b0f8667123b09e785a492d0f15b4459f3b6",
+      "git_blob": "d7b462e765f8cfe73ca42e00aed19d9d86dec1c5",
+      "source": "https://github.com/BasisVR/Basis/blob/acfca6b1c129c9ad5786e8b693e7ad2da2cd73a0/Basis/Packages/com.cnlohr.cilbox/package.json.meta"
+    }
+  ]
+}

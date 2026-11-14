@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "repositoryId",
+    "listingConsent",
+    "works"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "repositoryId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "listingConsent": {
+      "const": true
+    },
+    "works": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "version",
+          "releaseTag",
+          "sdk",
+          "capabilities",
+          "assets",
+          "attribution"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "version": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._+-]{0,99}$"
+          },
+          "releaseTag": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._+-]{0,99}$"
+          },
+          "sdk": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "capabilities": {
+            "type": "array",
+            "uniqueItems": true,
+            "maxItems": 100,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]{1,64}$"
+            }
+          },
+          "assets": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 16,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,199}$"
+            }
+          },
+          "attribution": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 100,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "name",
+                "githubUserId",
+                "license"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "githubUserId": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "license": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                }
+              }
+            }
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 8000
+          },
+          "preview": {
+            "type": "string",
+            "maxLength": 2048,
+            "pattern": "^https://(raw\\.githubusercontent\\.com|github\\.com|user-images\\.githubusercontent\\.com)/"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+using System;using System.IO;using System.Linq;using System.Reflection;using System.Security.Cryptography;using System.Text;using System.Threading;using Newtonsoft.Json;using Newtonsoft.Json.Linq;using SpatialWallpaper.Sdk.Hosting;
+namespace SpatialWallpaper.Supervision.Preview {
+ static class RuntimeDistribution {
+  internal static JObject Read(string path,int limit){var info=new FileInfo(path);if(info.Length<1||info.Length>limit||(info.Attributes&FileAttributes.ReparsePoint)!=0)throw new InvalidDataException("trusted-json-file");using(var text=new StringReader(File.ReadAllText(path,new UTF8Encoding(false,true))))using(var reader=new JsonTextReader(text){MaxDepth=12,DateParseHandling=DateParseHandling.None}){var value=JObject.Load(reader,new JsonLoadSettings{DuplicatePropertyNameHandling=DuplicatePropertyNameHandling.Error});if(reader.Read())throw new InvalidDataException("trusted-json-tail");return value;}}
+  internal static void Fields(JObject value,params string[] names){if(value==null||!value.Properties().Select(p=>p.Name).OrderBy(n=>n,StringComparer.Ordinal).SequenceEqual(names.OrderBy(n=>n,StringComparer.Ordinal)))throw new InvalidDataException("trusted-configuration-fields");}
+  internal static string Text(JToken value){if(value?.Type!=JTokenType.String||((string)value).Length<1||((string)value).Length>2048||((string)value).IndexOf('\0')>=0)throw new InvalidDataException("trusted-configuration-text");return (string)value;}
+  internal static int Integer(JToken value){if(value?.Type!=JTokenType.Integer)throw new InvalidDataException("trusted-configuration-integer");return (int)value;}
+  internal static float Number(JToken value){if(value?.Type!=JTokenType.Float&&value?.Type!=JTokenType.Integer)throw new InvalidDataException("trusted-configuration-number");float number=(float)value;if(float.IsNaN(number)||float.IsInfinity(number))throw new InvalidDataException("trusted-configuration-number");return number;}
+  internal static string Expected(string key)=>typeof(RuntimeDistribution).Assembly.GetCustomAttributes<AssemblyMetadataAttribute>().Single(a=>a.Key==key).Value;
+  internal static JObject Verify(string root,CancellationToken cancellation){var identity=new[]{"sdk","engine","pipeline","vm","backend","rules_sha256","policy_id"}.ToDictionary(key=>key,Expected);return TrustedRuntimeDistribution.Verify(root,identity,typeof(RuntimeDistribution).Assembly.Location,cancellation);}
+ }
+}

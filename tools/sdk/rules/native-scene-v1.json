@@ -1,0 +1,410 @@
+{
+  "abi": 1,
+  "sdk_target": "0.4.0-preview.1",
+  "schema_target": 5,
+  "max_payload_bytes": 65536,
+  "max_commands": 256,
+  "max_writes_per_tick": 4096,
+  "max_snapshot_bytes": 16777216,
+  "max_script_bytes": 4194304,
+  "script_process_bytes": 268435456,
+  "script_startup_ms": 15000,
+  "script_pending_ms": 1000,
+  "script_stop_ms": 500,
+  "max_objects": 16384,
+  "author_members": [
+    {
+      "id": "SpatialWallpaper.Sdk::SceneAnimation::SetFloat(Node,System.String,System.Single)->System.Void",
+      "arguments": [
+        "node",
+        "string",
+        "f32"
+      ],
+      "returns": "void",
+      "action": "AnimatorFloat"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneAnimation::SetBool(Node,System.String,System.Boolean)->System.Void",
+      "arguments": [
+        "node",
+        "string",
+        "bool"
+      ],
+      "returns": "void",
+      "action": "AnimatorBool"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneAnimation::Trigger(Node,System.String)->System.Void",
+      "arguments": [
+        "node",
+        "string"
+      ],
+      "returns": "void",
+      "action": "AnimatorTrigger"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneQueries::BeginBounds(Node)->System.Int32",
+      "arguments": [
+        "node"
+      ],
+      "returns": "i32",
+      "action": "BeginBounds"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneQueries::BeginRaycast(Node,UnityEngine.Vector3,UnityEngine.Vector3,System.Single)->System.Int32",
+      "arguments": [
+        "node",
+        "vector3",
+        "vector3",
+        "f32"
+      ],
+      "returns": "i32",
+      "action": "BeginRaycast"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneQueries::BeginAnimatorState(Node,System.Int32)->System.Int32",
+      "arguments": [
+        "node",
+        "i32"
+      ],
+      "returns": "i32",
+      "action": "BeginAnimatorState"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneQueries::State(System.Int32)->System.Int32",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "i32",
+      "action": "QueryState"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneQueries::Error(System.Int32)->System.String",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "string",
+      "action": "QueryError"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneQueries::ReadVector(System.Int32,System.String)->UnityEngine.Vector3",
+      "arguments": [
+        "i32",
+        "string"
+      ],
+      "returns": "vector3",
+      "action": "QueryVector"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneQueries::ReadFloat(System.Int32,System.String)->System.Single",
+      "arguments": [
+        "i32",
+        "string"
+      ],
+      "returns": "f32",
+      "action": "QueryFloat"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneQueries::ReadInt(System.Int32,System.String)->System.Int32",
+      "arguments": [
+        "i32",
+        "string"
+      ],
+      "returns": "i32",
+      "action": "QueryInt"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneQueries::ReadBool(System.Int32,System.String)->System.Boolean",
+      "arguments": [
+        "i32",
+        "string"
+      ],
+      "returns": "bool",
+      "action": "QueryBool"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneQueries::ReadNode(System.Int32)->Node",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "node",
+      "action": "QueryNode"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneQueries::Release(System.Int32)->System.Void",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "void",
+      "action": "QueryRelease"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneResources::BeginMesh(Node,System.Int32,System.Int32[])->System.Int32",
+      "arguments": [
+        "node",
+        "i32",
+        "i32[]"
+      ],
+      "returns": "i32",
+      "action": "ResourceBeginMesh"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneResources::BeginTexture(UnityEngine.Material,System.String,System.Int32,System.Int32)->System.Int32",
+      "arguments": [
+        "material",
+        "string",
+        "i32",
+        "i32"
+      ],
+      "returns": "i32",
+      "action": "ResourceBeginTexture"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneResources::WriteFloats(System.Int32,System.Int32,System.Single[])->System.Void",
+      "arguments": [
+        "i32",
+        "i32",
+        "f32[]"
+      ],
+      "returns": "void",
+      "action": "ResourceWriteFloats"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneResources::WriteIndices(System.Int32,System.Int32,System.Int32[])->System.Void",
+      "arguments": [
+        "i32",
+        "i32",
+        "i32[]"
+      ],
+      "returns": "void",
+      "action": "ResourceWriteIndices"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneResources::WriteBytes(System.Int32,System.Int32,System.Int32[])->System.Void",
+      "arguments": [
+        "i32",
+        "i32",
+        "i32[]"
+      ],
+      "returns": "void",
+      "action": "ResourceWriteBytes"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneResources::Seal(System.Int32)->System.Void",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "void",
+      "action": "ResourceSeal"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneResources::State(System.Int32)->System.Int32",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "i32",
+      "action": "ResourceState"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneResources::Error(System.Int32)->System.String",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "string",
+      "action": "ResourceError"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneResources::Apply(System.Int32)->System.Void",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "void",
+      "action": "ResourceApply"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneResources::Cancel(System.Int32)->System.Void",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "void",
+      "action": "ResourceCancel"
+    },
+    {
+      "id": "SpatialWallpaper.Sdk::SceneResources::Release(System.Int32)->System.Void",
+      "arguments": [
+        "i32"
+      ],
+      "returns": "void",
+      "action": "ResourceRelease"
+    },
+    {
+      "id": "UnityEngine.CoreModule::UnityEngine.GameObject::SetActive(System.Boolean)->System.Void",
+      "receiver": "node",
+      "arguments": [
+        "bool"
+      ],
+      "returns": "void",
+      "action": "SetActive"
+    }
+  ],
+  "queries": [
+    {
+      "name": "bounds",
+      "arguments": "empty",
+      "result": "bounds6"
+    },
+    {
+      "name": "raycast",
+      "arguments": "ray",
+      "result": "hit"
+    },
+    {
+      "name": "animator_state",
+      "arguments": "layer",
+      "result": "animator"
+    }
+  ],
+  "operations": [
+    {
+      "id": 1,
+      "name": "SetPosition",
+      "kind": "node",
+      "shape": "vector3",
+      "mode": "state",
+      "member": "UnityEngine.CoreModule::UnityEngine.Transform::set_localPosition(UnityEngine.Vector3)->System.Void"
+    },
+    {
+      "id": 2,
+      "name": "SetRotation",
+      "kind": "node",
+      "shape": "quaternion",
+      "mode": "state"
+    },
+    {
+      "id": 3,
+      "name": "SetScale",
+      "kind": "node",
+      "shape": "scale3",
+      "mode": "state"
+    },
+    {
+      "id": 4,
+      "name": "SetActive",
+      "kind": "node",
+      "shape": "bool",
+      "mode": "state"
+    },
+    {
+      "id": 5,
+      "name": "SetLightIntensity",
+      "kind": "light",
+      "shape": "nonnegative",
+      "mode": "state",
+      "member": "UnityEngine.CoreModule::UnityEngine.Light::set_intensity(System.Single)->System.Void"
+    },
+    {
+      "id": 6,
+      "name": "MaterialFloat",
+      "kind": "material",
+      "shape": "named_float",
+      "mode": "state",
+      "member": "UnityEngine.CoreModule::UnityEngine.Material::SetFloat(System.String,System.Single)->System.Void"
+    },
+    {
+      "id": 7,
+      "name": "MaterialColor",
+      "kind": "material",
+      "shape": "named_color",
+      "mode": "state",
+      "member": "UnityEngine.CoreModule::UnityEngine.Material::SetColor(System.String,UnityEngine.Color)->System.Void"
+    },
+    {
+      "id": 8,
+      "name": "AnimatorFloat",
+      "kind": "node",
+      "shape": "named_float",
+      "mode": "state"
+    },
+    {
+      "id": 9,
+      "name": "AnimatorBool",
+      "kind": "node",
+      "shape": "named_bool",
+      "mode": "state"
+    },
+    {
+      "id": 10,
+      "name": "AnimatorTrigger",
+      "kind": "node",
+      "shape": "name",
+      "mode": "event"
+    },
+    {
+      "id": 11,
+      "name": "PlayEffect",
+      "kind": "sound",
+      "shape": "gain",
+      "mode": "event",
+      "member": "SpatialWallpaper.Sdk::Sound::PlayEffect(UnityEngine.AudioClip,System.Single)->System.Void"
+    },
+    {
+      "id": 12,
+      "name": "PlayMusic",
+      "kind": "sound",
+      "shape": "gain",
+      "mode": "event",
+      "member": "SpatialWallpaper.Sdk::Sound::PlayMusic(UnityEngine.AudioClip,System.Single)->System.Void"
+    },
+    {
+      "id": 13,
+      "name": "StopMusic",
+      "kind": "none",
+      "shape": "empty",
+      "mode": "event",
+      "member": "SpatialWallpaper.Sdk::Sound::StopMusic()->System.Void"
+    },
+    {
+      "id": 14,
+      "name": "StopEffects",
+      "kind": "none",
+      "shape": "empty",
+      "mode": "event",
+      "member": "SpatialWallpaper.Sdk::Sound::StopEffects()->System.Void"
+    },
+    {
+      "id": 15,
+      "name": "Instantiate",
+      "kind": "prefab",
+      "shape": "temporary_ids",
+      "mode": "resource",
+      "member": "SpatialWallpaper.Sdk::Objects::Instantiate(Prefab)->Node"
+    },
+    {
+      "id": 16,
+      "name": "Destroy",
+      "kind": "node",
+      "shape": "empty",
+      "mode": "resource",
+      "member": "SpatialWallpaper.Sdk::Objects::Destroy(Node)->System.Void"
+    },
+    {
+      "id": 17,
+      "name": "Query",
+      "kind": "node",
+      "shape": "query",
+      "mode": "query"
+    },
+    {
+      "id": 18,
+      "name": "Resource",
+      "kind": "none",
+      "shape": "resource",
+      "mode": "resource"
+    }
+  ],
+  "mirror_members": [
+    "UnityEngine.CoreModule::UnityEngine.Transform::get_localPosition()->UnityEngine.Vector3",
+    "UnityEngine.CoreModule::UnityEngine.Transform::Rotate(System.Single,System.Single,System.Single)->System.Void",
+    "UnityEngine.CoreModule::UnityEngine.Light::get_intensity()->System.Single"
+  ]
+}

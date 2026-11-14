@@ -1,0 +1,8 @@
+{
+  "asset": "Prototype/Assets/Train/Textures/SnowTrees.png",
+  "method": "Built-in image_gen, transparent_background=true",
+  "date": "2026-10-18",
+  "resolution": [1536, 1024],
+  "purpose": "RGBA snow-tree cutouts sampled at independent depths and speeds; generated artwork, not documentary photography.",
+  "prompt": "Use case: photorealistic-natural. Asset type: transparent RGBA game billboard texture for a photorealistic snowy train-window landscape in Unity. Generate a wide landscape image containing a natural small stand of 5-7 individual winter spruce trees, varying irregular heights and widths, some sparse larch branches, laden with fresh snow. Front-facing telephoto view, full trees visible from their snowy root bases to tips. All trees sit on same baseline near bottom, organically irregular real branches, richly detailed needles and snow clumps; avoid geometric triangles or tiered Christmas tree shapes. Cold overcast diffuse daylight, neutral blue-grey snow and desaturated dark green needles. Genuine transparent background and transparent gaps between branches, NO sky, NO terrain backdrop, NO scenery, NO falling snow, NO haze, NO ground shadows, NO frame, NO text. Keep transparent margin left and right and above; do not crop trees. This is a cutout photographic vegetation asset, not an illustration or a render of a train."
+}

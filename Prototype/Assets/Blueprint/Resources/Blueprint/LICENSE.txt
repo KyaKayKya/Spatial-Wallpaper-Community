@@ -1,0 +1,7 @@
+Pixel Perfection Legacy block textures
+Copyright XSSheep, Nova_Wostra and community contributors.
+Source: https://modrinth.com/resourcepack/pixel-perfection-legacy/version/8HUXdaIC
+Adapted atlas: selected colour textures, first animation frame, resized and packed; three separate terrain colour tiles.
+Licensed under Creative Commons Attribution-ShareAlike 4.0 International.
+https://creativecommons.org/licenses/by-sa/4.0/
+This license applies to the texture assets, not to unrelated application code.

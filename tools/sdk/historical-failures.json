@@ -1,0 +1,1333 @@
+{
+  "schema": 1,
+  "scope": "E historical-failure-closure causal inventory; no fresh execution or release claim",
+  "baseline_commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+  "required_categories": [
+    "author-revision-loss",
+    "host-exit-timeout",
+    "input-timeout"
+  ],
+  "required_incidents": [
+    "input-enumeration-deadline",
+    "input-interactive-deadline-6c6",
+    "input-interactive-deadline-995",
+    "input-current-deadline",
+    "input-accessible-object-deadline",
+    "input-acchittest-deadline",
+    "input-source-deadline-009",
+    "input-first-focus-ui-expiry",
+    "input-first-hook-delay",
+    "input-cursor-before-hook",
+    "input-disposed-channel-continuity",
+    "input-first-click-unlocalized",
+    "author-first-revision-unlocalized",
+    "author-revision-two-unlocalized",
+    "author-revision-three-early",
+    "author-revision-three-matrix",
+    "author-revision-three-expiry-probe",
+    "host-exit-five-second-timeout",
+    "storage-replace-shared-reader",
+    "input-unknown-key-heartbeat-starvation",
+    "input-aged-heartbeat-sample",
+    "input-controlled-ui-msaa-dependency",
+    "input-cleanup-state-generations",
+    "input-move-heartbeat-starvation",
+    "input-soak-deadline-35d",
+    "input-soak-loss-4d6",
+    "input-soak-loss-0ed",
+    "input-soak-loss-c37",
+    "input-first-hook-delay-a260",
+    "input-mixed-cursor-lag-e3bde4d1"
+  ],
+  "incidents": [
+    {
+      "id": "input-enumeration-deadline",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "e3fefb80ff2540168d9d8104f344ae8a"
+      ],
+      "summary": "824131 ms失焦；第26624次heartbeat read deadline约26.347 ms，阶段15完成而1未完成。",
+      "scope": "保持25/50/250 ms原期限；墙钟空档不能区分API等待与线程调度，不用受控挂起恢复替代实际根因。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-e3fefb80ff2540168d9d8104f344ae8a",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/e3fefb80ff2540168d9d8104f344ae8a/report.json",
+          "sha256": "cf8f3a39448567a8e1bc35326f695c5c84e198c1ef24709c6e7a37a7fd933269",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "91c8dafb7e1f873ef1d1cae75e24edfba31230cfd96421d6c107b87e6c261898"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "input-interactive-deadline-6c6",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "6c6c5d4133cb4d038ee6c478a0378953"
+      ],
+      "summary": "97313 ms出现39.823 ms deadline；Interactive未观察到成功返回。",
+      "scope": "保持25/50/250 ms原期限；墙钟空档不能区分API等待与线程调度，不用受控挂起恢复替代实际根因。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-6c6c5d4133cb4d038ee6c478a0378953",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/6c6c5d4133cb4d038ee6c478a0378953/report.json",
+          "sha256": "b3dbf5189a9ad15db66147f93309c554bd9c1ca93a48e3b648ff64556afa02ee",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "2d562faaec80cc924060f9a2fd14d95d5aeebd39893494c5e20a7ef72adccbd7"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "input-interactive-deadline-995",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "9954553828514c7ebb6165de2ae384c6"
+      ],
+      "summary": "Interactive成功返回未确认；需要同请求的真实调用返回证据。",
+      "scope": "保持25/50/250 ms原期限；墙钟空档不能区分API等待与线程调度，不用受控挂起恢复替代实际根因。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-9954553828514c7ebb6165de2ae384c6",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/9954553828514c7ebb6165de2ae384c6/report.json",
+          "sha256": "27ca4cfc28bc9febf816816badea579e0c25349f8d0f7a24e3bce1f45c57b46a",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "631dafb084d21256a6edac0c8c26da4de860cf7444887a2c562e5764c1ba3eaf"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "input-current-deadline",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "e71c9adab2fd4f27bc696166e5450680"
+      ],
+      "summary": "147194 ms失焦；进入COM前Current已耗约25.698 ms。",
+      "scope": "保持25/50/250 ms原期限；墙钟空档不能区分API等待与线程调度，不用受控挂起恢复替代实际根因。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-e71c9adab2fd4f27bc696166e5450680",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/e71c9adab2fd4f27bc696166e5450680/report.json",
+          "sha256": "2a37df0dcf3f2bad7ee3f058d1a667332bc5c1fe46c9c68036bf261ab8facc02",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "496624658bb47a6bee28fd6f8a58242b0b47b292332d0c7115f103273b13d0c1"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "input-accessible-object-deadline",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "01f25395f29f4a0cbea7e8d213190ee2"
+      ],
+      "summary": "235926 ms失去连续性；AccessibleObjectFromPoint开始后未记录返回。",
+      "scope": "保持25/50/250 ms原期限；墙钟空档不能区分API等待与线程调度，不用受控挂起恢复替代实际根因。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-01f25395f29f4a0cbea7e8d213190ee2",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/01f25395f29f4a0cbea7e8d213190ee2/report.json",
+          "sha256": "c41451afc844dcea0ce0e5eb44a1f1cf86bb218375a32634382d14baf813ff2a",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "631dafb084d21256a6edac0c8c26da4de860cf7444887a2c562e5764c1ba3eaf"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "input-acchittest-deadline",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "e387d3c63055454197187589020954af"
+      ],
+      "summary": "第60次heartbeat read deadline约32.312 ms；accHitTest开始后未返回。disposed epoch异常是后续夹具缺陷。",
+      "scope": "保持25/50/250 ms原期限；墙钟空档不能区分API等待与线程调度，不用受控挂起恢复替代实际根因。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-e387d3c63055454197187589020954af",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/e387d3c63055454197187589020954af/report.json",
+          "sha256": "036238dc4648b71361ecdb32bc928abdc39f949defad637e5f54a43b3e77b1e0",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "1438ae663a8316f298d344fe6da804ce5e06d4eb397ad530d8ecd481301f7a78"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "input-source-deadline-009",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "0098b4eeb26349d881cc8d7a27657b3b"
+      ],
+      "summary": "240466 ms捕获source-deadline，内部原因尚未闭合。",
+      "scope": "保持25/50/250 ms原期限；墙钟空档不能区分API等待与线程调度，不用受控挂起恢复替代实际根因。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-0098b4eeb26349d881cc8d7a27657b3b",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/0098b4eeb26349d881cc8d7a27657b3b/report.json",
+          "sha256": "e7ae34d08d31ae55c55cc9deec1ffa4705cba431d9e06ed2d0ddf22147cc79d2",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "adfaa328f456e7e940aec067f9fa393f9d7e954d3d9350b7bc969369f9b5e5db"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "input-first-focus-ui-expiry",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "a7894fdc4fc442308b5f1ec82c31fe1b"
+      ],
+      "summary": "有效查询12.7603 ms，UI三个调用合计约2474 ms后native-focus-request-expired。",
+      "scope": "首击授焦，不归为heartbeat；缺具体调用的失败现场。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-a7894fdc4fc442308b5f1ec82c31fe1b",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/a7894fdc4fc442308b5f1ec82c31fe1b/report.json",
+          "sha256": "d26c3f93a3d32411f2d35df790ca47a77cf51cea04017af3e8110bb319f73d17",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "ce9f981460475adc92bc5a9729f06e5044a5e6f73a433538af4aea9f9382d4c3"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "input-first-hook-delay",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "cd9b60e66efc4b138168400334139a93"
+      ],
+      "summary": "acquire-expired-age-281；首hook晚于send约273.709 ms，helper尚未查询。",
+      "scope": "只定位查询之前；没有证明具体调度/系统调用原因。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-cd9b60e66efc4b138168400334139a93",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/cd9b60e66efc4b138168400334139a93/report.json",
+          "sha256": "5995c5fbf96d9ab82018671a8c52a7144ed30ef5f05f9e2955159eb5ee450273",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "bf885370d06d32a696e99cad500907a011fc00a36e67a4c04af2d46adb806bcd"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "input-cursor-before-hook",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "located-candidate",
+      "historical_runs": [
+        "97d522a4289344faabf76fece42e8ea7"
+      ],
+      "summary": "48721 ms heartbeat-cursor-changed；消费样本早于下一MOVE hook约2.54 ms。",
+      "scope": "候选movementPending修复尚待完整控制、独立复审和真实复验；不按Flags忽略输入。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-97d522a4289344faabf76fece42e8ea7",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/97d522a4289344faabf76fece42e8ea7/report.json",
+          "sha256": "ca9262646dd0652fbe70d1840205a31a7f51da4ffcd8f944a700e1c753c7391f",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "96b8fee47717bd848178d138c3c58eab9e268292155a56493167e9b82b117c95"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "movementPending 修复目前仅有后台控制证据；77038060 前置输入干扰阻断真实复验，属于环境前置失败，不是产品事故关闭依据。原 48.721 秒 heartbeat-cursor-changed 事故保持 open。"
+    },
+    {
+      "id": "input-disposed-channel-continuity",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "e747d13c4f15495ea7c6a28bbfd511cf"
+      ],
+      "summary": "十分钟轮末作者revision已变化；旧通道释放且诊断读取epoch抛错。",
+      "scope": "缺完整来源快照；后续诊断修复或成功轮不关闭原连续性故障。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-e747d13c4f15495ea7c6a28bbfd511cf",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/e747d13c4f15495ea7c6a28bbfd511cf/report.json",
+          "sha256": "83ec8e1c1afb07f9254379ff390128a0e332d68c9340996cbae5e1edcb3706fa",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "3f06d6c156b428268ad963c6c701592de24f3aef01135cef4ad46d958615aa12"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "input-first-click-unlocalized",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "e07126890ba343d3afa73c56a6f8553e"
+      ],
+      "summary": "首次授焦失败，未进入持续运行；缺授焦后诊断。",
+      "scope": "后续首击成功不得解释旧失败。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-e07126890ba343d3afa73c56a6f8553e",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/e07126890ba343d3afa73c56a6f8553e/report.json",
+          "sha256": "02c9388aa1f68cc1267e402e0a2cb1c40f877ab89f938d76de6ca48f1ff56d40",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "fbc3c4efa08df11f92b684d8c45b66f65c7ddb59ec7e17d89905b214287ddd25"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "author-first-revision-unlocalized",
+      "category": "author-revision-loss",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "a5120ad92626455886bbe60d80de8e12"
+      ],
+      "summary": "OS/Host/本地焦点确认后，Space+wheel未达到作者revision 1。",
+      "scope": "缺链路阶段证据，不能套用后续作者或存储修复。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-a5120ad92626455886bbe60d80de8e12",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/a5120ad92626455886bbe60d80de8e12/report.json",
+          "sha256": "5a09b7d956e4592860588e3173366193060cb154c1440c3c27fdb1a510f36cf8",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "6be874b44a5f4b2203805d18911eead2852ab7324c66d3599c9b2f1c73ce9fb3"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "author-revision-two-unlocalized",
+      "category": "author-revision-loss",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "ab584f3b7dac46fc8bf09e89db1cbe77"
+      ],
+      "summary": "作者revision 2缺失。",
+      "scope": "没有与replace Win32 5相同的存储阶段证据。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-ab584f3b7dac46fc8bf09e89db1cbe77",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/ab584f3b7dac46fc8bf09e89db1cbe77/report.json",
+          "sha256": "981ce3b0ee8f5669ad8c9b7bacca2ee6c85f488c7d65923dee7e299a29985f42",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "e3f55e47b6ebb30e6fcedfad1fdbcddf7bd8e55e63b3723418fad67255123105"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "author-revision-three-early",
+      "category": "author-revision-loss",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "fba61f9d74b541de8cd37c17f5170042"
+      ],
+      "summary": "早期通知版作者revision 3缺失。",
+      "scope": "没有请求/提交/回复/消费对应证据，不与已定位Io合并。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-fba61f9d74b541de8cd37c17f5170042",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/fba61f9d74b541de8cd37c17f5170042/report.json",
+          "sha256": "224e416a1c2a9ca0be08b92becbb707cc5318cef257a0a22361a7f3f45837068",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "9e428583d859ef329c7d36896f66cf8f8c7e1cffe31dd06f210d84d0f0db31dc"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "author-revision-three-matrix",
+      "category": "author-revision-loss",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "901c4d4c077d4684b182e96742bf5f3b"
+      ],
+      "summary": "revision 1/2通过，Host已失焦且Ready，helper/channel无错误，revision 3超时。",
+      "scope": "缺存储阶段因果链，保持独立。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-901c4d4c077d4684b182e96742bf5f3b",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/901c4d4c077d4684b182e96742bf5f3b/report.json",
+          "sha256": "94956b37371e831923da83b8ea7c3479c6feb95cefe89f7dbef1416f11ec3059",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "106a1babc7f21940b83fc6d2613b23057db139772431229812bbc0b9a7bf927a"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "author-revision-three-expiry-probe",
+      "category": "author-revision-loss",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "5c0a7df1de4c4145b563fa282a932af2"
+      ],
+      "summary": "过期激活探针通过后，第三次作者存档缺失。",
+      "scope": "不能仅因后续885fac诊断到Io就认定本轮同因。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-5c0a7df1de4c4145b563fa282a932af2",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/5c0a7df1de4c4145b563fa282a932af2/report.json",
+          "sha256": "3a68f139ef280428590afcd852ec3f4a6ecd546fff9d34303a6f761df75754d6",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "90c161a3befa225d9de22939df8c1ff448b180a1d282b69dc35da0e8c4cfe260"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "host-exit-five-second-timeout",
+      "category": "host-exit-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "23e1883f7ec3403f8c16dbb2e07b1ce2"
+      ],
+      "summary": "批次第14轮三次存档完成后Host未在5秒内退出。",
+      "scope": "本ID是批次；尚缺对应子轮完整退出阶段/原始句柄证据。Main-returning、正常Worker停止及后续Host退出成功均不关闭本例。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-23e1883f7ec3403f8c16dbb2e07b1ce2",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-input-repeat/23e1883f7ec3403f8c16dbb2e07b1ce2/report.json",
+          "sha256": "4e7212426836ec475475328b845829295831d28214133549131ef5ae46f155c5",
+          "scope": "historical-failure",
+          "observed_status": "failure-reproduced"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "storage-replace-shared-reader",
+      "category": "author-revision-loss",
+      "status": "closed",
+      "disposition": "reviewed-limited-fix",
+      "historical_runs": [
+        "885fac9f88ed43419c31eaa3f2adbc73",
+        "fd906d07c5e244e28e1f8e64c063c528"
+      ],
+      "summary": "已确认共享读取条件下旧replace返回Win32 5；885fac实际已消费全零，phase8请求6返回Io。",
+      "scope": "只关闭允许删除共享的读句柄存在时旧替换调用失败；不推广其他revision2/3事故或掉电目录持久性。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-885fac9f88ed43419c31eaa3f2adbc73",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/885fac9f88ed43419c31eaa3f2adbc73/report.json",
+          "sha256": "e6b8a73e3779d1f8b661e1f0fdb537cd06aa47c5d0fc977ceee45bb9f2daf835",
+          "scope": "historical-failure",
+          "observed_status": "diagnostic-only-not-complete",
+          "failure_log_sha256": "90c161a3befa225d9de22939df8c1ff448b180a1d282b69dc35da0e8c4cfe260"
+        },
+        {
+          "id": "failure-fd906d07c5e244e28e1f8e64c063c528",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/fd906d07c5e244e28e1f8e64c063c528/report.json",
+          "sha256": "d406bc63b97664068946549b7ecd982b53d0f16a4749ea99bd366d95c436d674",
+          "scope": "historical-failure",
+          "observed_status": "diagnostic-only-not-complete",
+          "failure_log_sha256": "90c161a3befa225d9de22939df8c1ff448b180a1d282b69dc35da0e8c4cfe260"
+        }
+      ],
+      "known_control_runs": [
+        "dde5131adaec44ce98b12ef4e0511218",
+        "6eec5f15ce27474798d7647b4190a24b",
+        "c1d6b7845ac74992972ee70e6295dcc7"
+      ],
+      "closure": {
+        "root_cause": "旧MoveFileEx替换在删除共享读句柄仍打开时返回Win32 5，作者已消费清零输入但存档请求Io。FileRenameInfoEx保留旧读者完整快照并原子替换新文件，不绕过只读限制。",
+        "fix_commit": "bb6798e5bcfe4b44fde896d2e77330522604eb8b",
+        "failure_evidence": [
+          {
+            "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/885fac9f88ed43419c31eaa3f2adbc73/supervisor/experimental-worker-40732.log",
+            "sha256": "0f1e9abda4637e386bbf72f90878db4d4af92b94f534f2c9c9a45b09eb68e3d2",
+            "scope": "作者phase8/request6返回Io，已消费全零输入"
+          },
+          {
+            "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/fd906d07c5e244e28e1f8e64c063c528/supervisor/experimental-storage.jsonl",
+            "sha256": "2798e374d788e552600d89cc22e682db1126f23b24902e66b3f59e557ee36fd1",
+            "scope": "原stage=replace Win32Exception native=5"
+          }
+        ],
+        "red": {
+          "path": "Validation/Content/sdk-runtime/E/storage-replace-replay/15fb0a34b6cb4e54879315ed915bab1b/old-replacement/result.log",
+          "sha256": "1019250b5bcb79573943f828d64a8204becfbe21a11e30c51cddbe1fce7088b1",
+          "scope": "恢复原MoveFileEx调用后共享读取替换真实拒绝访问"
+        },
+        "green": {
+          "path": "Validation/Content/sdk-runtime/E/storage-replace-replay/15fb0a34b6cb4e54879315ed915bab1b/fixed-replacement/result.log",
+          "sha256": "4c50cd2fabd0e287f24f3856676dcf409bf195d37ad12d34615902141a5fdb76",
+          "scope": "当前替换完整原子存档回归通过"
+        },
+        "real": {
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/8c97a5002bee4843bb8b751b201cb4b4/result.json",
+          "sha256": "d067b4f4f818388100427d72f740638a277f6a678e5036af4dc704c0f42d94fd",
+          "scope": "真实三次存档及source/helper/channel/Host正常清理退出"
+        },
+        "supporting_evidence": [
+          {
+            "path": "Validation/Content/sdk-runtime/E/storage-replace-replay/15fb0a34b6cb4e54879315ed915bab1b/report.json",
+            "sha256": "e1b3951e9b84b8852fe9eb55703a2b9f86beeea12b4455374bbcac517c078d33",
+            "scope": "精确源码副本和二进制/日志摘要"
+          },
+          {
+            "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/8c97a5002bee4843bb8b751b201cb4b4/client.log",
+            "sha256": "b00e0a920674a8045310a933942eb42890292a5a90329f7b251a820b155083a3",
+            "scope": "三次存档及正常清理逐项日志"
+          }
+        ],
+        "review": {
+          "decision": "accepted",
+          "implementer": "/root",
+          "reviewer": "/root/frame_transport_review",
+          "reference": {
+            "path": "Validation/Content/sdk-runtime/reports/historical-review-storage-replace.md",
+            "sha256": "30be3357e942b0dfa24492df652b5e789bfc1b669512395f6f7ffef25df98d72",
+            "scope": "实读原失败、精确差异和真实复验后接受限定关闭"
+          }
+        },
+        "remaining": "其他revision2/3、API/调度延迟仍开放，不代替完整E/RC。"
+      }
+    },
+    {
+      "id": "input-unknown-key-heartbeat-starvation",
+      "category": "input-timeout",
+      "status": "closed",
+      "disposition": "reviewed-limited-fix",
+      "historical_runs": [
+        "bee7841549f24220a734ac5a89cb9418"
+      ],
+      "summary": "已确认未知非修饰键错误失效在途heartbeat，固定逻辑缺陷已修复。",
+      "scope": "只关闭对应事件逻辑；不解释e387真实read deadline或全部持续输入超时。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-bee7841549f24220a734ac5a89cb9418",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/keyboard-heartbeat/bee7841549f24220a734ac5a89cb9418/report.json",
+          "sha256": "61188fa88dbdd56dd41dadccbef257a2a5822754884dc95839256738953f7f40",
+          "scope": "historical-failure",
+          "observed_status": "failed"
+        }
+      ],
+      "known_control_runs": [
+        "e26557515b474daab43529fcd8cb15f9",
+        "66fff3cd97ff4e0eb8cf3d4e914fa7f0"
+      ],
+      "closure": {
+        "root_cause": "未映射非修饰键走公共失效路径，反复抛弃在途心跳，导致没有必要的租约饥饿。修复使该类键保留原查询/时间，但仍要求真实拥有权；映射键与修饰键继续失效旧证据。",
+        "fix_commit": "6ebcd66f903fb80129af2027bf3d3439f837a50c",
+        "failure_evidence": [
+          {
+            "path": "Validation/Content/sdk-runtime/E/keyboard-heartbeat/bee7841549f24220a734ac5a89cb9418/result.log",
+            "sha256": "cc2cd962215b58b9bb3c4a4176ba371115b26f8176839ef31d6e41b82ff86f20",
+            "scope": "未知非修饰键使有效心跳失效的准确失败；key-heartbeat-validity-65-True-True-0"
+          }
+        ],
+        "red": {
+          "path": "Validation/Content/sdk-runtime/E/keyboard-heartbeat/bee7841549f24220a734ac5a89cb9418/result.log",
+          "sha256": "cc2cd962215b58b9bb3c4a4176ba371115b26f8176839ef31d6e41b82ff86f20",
+          "scope": "未知非修饰键使有效心跳失效的准确失败；key-heartbeat-validity-65-True-True-0"
+        },
+        "green": {
+          "path": "Validation/Content/sdk-runtime/E/keyboard-heartbeat/e26557515b474daab43529fcd8cb15f9/result.log",
+          "sha256": "b24e59724333d23727017f955c150cf084f2e8b9a35459de93fa3465336806d0",
+          "scope": "原样本及时间保留、零发布/续约、拥有权丢失仍撤销的限定正例"
+        },
+        "real": {
+          "path": "Validation/Content/sdk-runtime/E/unmapped-batch/66fff3cd97ff4e0eb8cf3d4e914fa7f0/00.log",
+          "sha256": "506564e03f6f0dc588d58279afc3837d70c88cb111509f3dd624082b71e85987",
+          "scope": "实际成对未知键、同epoch跨多个租约、作者三次存档和完整拥有者清理；仅细读此轮"
+        },
+        "review": {
+          "decision": "accepted",
+          "implementer": "/root",
+          "reviewer": "/root/frame_transport_review",
+          "reference": {
+            "path": "Validation/Content/sdk-runtime/reports/historical-review-unknown-key.md",
+            "sha256": "223d2dfb2fcffeb7327c30bae729cb460cb769cb7358fa4d30f0ff5b55522b1f",
+            "scope": "独立只读审查接受限定事件逻辑关闭；未执行新测试"
+          }
+        },
+        "remaining": "其他API/调度超时、MOVE饥饿、存档丢失及所有原RC长测仍未由此关闭。"
+      }
+    },
+    {
+      "id": "input-aged-heartbeat-sample",
+      "category": "input-timeout",
+      "status": "closed",
+      "disposition": "reviewed-limited-fix",
+      "historical_runs": [
+        "dd004f5949db4f31b144e17e4ce5104c"
+      ],
+      "summary": "Owns约71.446 ms，命中年龄109 ms；单个老化样本处理缺陷已定位修复。",
+      "scope": "只证明丢弃单次过期样本不发布、不续约；原Host租约保留，不覆盖其他超时。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-dd004f5949db4f31b144e17e4ce5104c",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/dd004f5949db4f31b144e17e4ce5104c/report.json",
+          "sha256": "9d74aa0f87d58195f69acef06b213471edc98ca5b551ed33adb489c890f931bd",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "b6c6ccf4266d98c7ec9e26d8a20471b0f195ec767d9637c12d2b4baf46206916"
+        }
+      ],
+      "known_control_runs": [
+        "636a6b3b03c24f1aa1c02e602a406928",
+        "3dbcf33b063c4076b54295351e821fb7"
+      ],
+      "closure": {
+        "root_cause": "成功查询之后窗口拥有权检查使单个命中样本老化，原实现立即撤销尚有效的输入租约。修复只丢弃过期样本并重新查询，在Next/target.Observe之前返回；过期样本不发布、不续租，其他拒绝仍撤销，持续老化仍按原250ms自然失焦。",
+        "fix_commit": "bb6798e5bcfe4b44fde896d2e77330522604eb8b",
+        "failure_evidence": [
+          {
+            "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/dd004f5949db4f31b144e17e4ce5104c/input-failure.json",
+            "sha256": "eefcebfcbd44c22aaa72bf7d9d9ea58599bf5f50bf72f275924824bc0a805fac",
+            "scope": "原hit-age事故与约71.446ms Owns/109ms命中年龄"
+          }
+        ],
+        "red": {
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/636a6b3b03c24f1aa1c02e602a406928/client.log",
+          "sha256": "1b94079e1513bc9d53b66c20a9890e02c43c5f47154e2fe3c0a29c4306c5f203",
+          "scope": "125ms控制老化零发布但错误撤销的准确失败"
+        },
+        "green": {
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/3dbcf33b063c4076b54295351e821fb7/client.log",
+          "sha256": "3900f8fbf3bfca86dd067c64a36961262852d44c7e7d772a122e3573da37cc15",
+          "scope": "125ms老化零发布，后续新样本前进且保持原有效租约"
+        },
+        "real": {
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/3dbcf33b063c4076b54295351e821fb7/result.json",
+          "sha256": "d067b4f4f818388100427d72f740638a277f6a678e5036af4dc704c0f42d94fd",
+          "scope": "真实来源/通道/helper/Host清理退出与保持焦点"
+        },
+        "supporting_evidence": [
+          {
+            "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/69432b37004e4479afd930d212808d53/client.log",
+            "sha256": "e91a95b6d81116d8c2e85f384c79f58d6f0229fee7f83ffcb7d14daf6339aca6",
+            "scope": "持续老化零发布零续租、自然失焦、新真实点击恢复及清理"
+          },
+          {
+            "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/81c8bd16b66c48b8800739c8d3fe4d79/client.log",
+            "sha256": "5fff7dbaef8d09458203ebb27977d09b718737c88e47d6c72897540e39da7265",
+            "scope": "删除时效检查后过期发布被准确检出"
+          }
+        ],
+        "review": {
+          "decision": "accepted",
+          "implementer": "/root",
+          "reviewer": "/root/frame_transport_review",
+          "reference": {
+            "path": "Validation/Content/sdk-runtime/reports/historical-review-aged-sample.md",
+            "sha256": "598de9f01ee92069ef32b3993133df1255a8e8b287b30e7ad9b3a916ccfb6f7e",
+            "scope": "实际独立只读审查接受上述限定关闭；未运行新测试"
+          }
+        },
+        "remaining": "不解释其他API/deadline、调度或持续输入事故，不代替原1800秒/100/20及完整RC。"
+      }
+    },
+    {
+      "id": "input-controlled-ui-msaa-dependency",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "confirmed-limited-fix",
+      "historical_runs": [
+        "e00b9b6326e04a9c917515284543683a"
+      ],
+      "summary": "自有窗口同期限MSAA受控同步等待依赖已证实。",
+      "scope": "控制实验只证明该依赖，不能解释全部Explorer超时；缺与具体历史Explorer失败的因果闭合。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-e00b9b6326e04a9c917515284543683a",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/desktop-callback/e00b9b6326e04a9c917515284543683a/report.json",
+          "sha256": "4f64ada68b65d88664b05fd099a69efa5129602c1439a634669bc88c75fe74b0",
+          "scope": "historical-failure",
+          "observed_status": "partial-owned-callback-control-not-production-fix"
+        }
+      ],
+      "known_control_runs": [
+        "ba7704e2e3f94f209e5aa4961f3f4fe2"
+      ],
+      "closure": null,
+      "open_reason": "根因或限定修复、针对性红绿、真实复验及独立审查尚未逐项确认；后来的成功不能关闭此事故。"
+    },
+    {
+      "id": "input-cleanup-state-generations",
+      "category": "input-timeout",
+      "status": "closed",
+      "disposition": "reviewed-limited-fix",
+      "historical_runs": [
+        "6e006725b23a4bf19a0fcdb98e65efe4",
+        "48264f0f8f8b41e380d159a5c2107e09"
+      ],
+      "summary": "已确认旧代disposed状态影响新代，以及历史清理故障令释放状态永久错误。",
+      "scope": "仅关闭旧代disposed标志及清理故障传播/迟到释放两条已证实缺陷，不解释未知Host五秒退出或其他输入事故。",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-6e006725b23a4bf19a0fcdb98e65efe4",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/6e006725b23a4bf19a0fcdb98e65efe4/report.json",
+          "sha256": "7bb9a2f68f518d8f3f6e2750736b58cef0a0068333c94ea1f96cc7ab5b76f04d",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "305139cd6a08eb9839bd2ecb76360d23e2e40bbe185c54faa818ea5687d49c21"
+        },
+        {
+          "id": "failure-48264f0f8f8b41e380d159a5c2107e09",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/48264f0f8f8b41e380d159a5c2107e09/report.json",
+          "sha256": "aebe2c649324c321ee1c34a548a6542a6cc53a421ba754ef4af2a0669271f75d",
+          "scope": "historical-failure",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "13fc32fa0ef1c473ba961ce637e3484c2ac14f7d94741d1b016dff90664c695b"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": {
+        "root_cause": "旧代disposed标志阻止新代关闭；原Completion WhenAll在drained失败而owner未释放时阻塞故障传播，Released又要求历史任务RanToCompletion，把保留错误混入实际释放判据。原48264实际PE确认卸hook委托恒返回5及上述路径，finally立即hook断言的异步夹具缺口另列。",
+        "fix_commit": "bb6798e5bcfe4b44fde896d2e77330522604eb8b",
+        "failure_evidence": [
+          {
+            "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/6e006725b23a4bf19a0fcdb98e65efe4/client.log",
+            "sha256": "305139cd6a08eb9839bd2ecb76360d23e2e40bbe185c54faa818ea5687d49c21",
+            "scope": "旧代disposed使恢复后新会话不自行关闭"
+          },
+          {
+            "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/48264f0f8f8b41e380d159a5c2107e09/input-failure.json",
+            "sha256": "261d7572d3cb02c60e840bb0db445a5ae2570cf8b2b0688a7b132c79c0469268",
+            "scope": "首个故障状态断言及原清理失败快照"
+          }
+        ],
+        "red": {
+          "path": "Validation/Content/sdk-runtime/E/input-recovery/89720b2557f9405e8a358fb6179f3041/result.log",
+          "sha256": "fb027af997c7149131eb24b01de785bba0fa6e7022233cdf5d905f66f14e42c5",
+          "scope": "原InputRecovery不能收集异步迟到释放的准确红例"
+        },
+        "green": {
+          "path": "Validation/Content/sdk-runtime/E/input-recovery/2f0e3eb1f77a456c8cbf0de0a6f400b5/result.log",
+          "sha256": "fc51a41d40ce376fd34d94cf9d256f11e694378369d6b87e6c3417d1d54bd3bc",
+          "scope": "同摘要夹具与修复InputRecovery通过迟到回收"
+        },
+        "real": {
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/d0b37a75f3af4c41b76e1d85bd219e4c/result.json",
+          "sha256": "d067b4f4f818388100427d72f740638a277f6a678e5036af4dc704c0f42d94fd",
+          "scope": "故障保留、实际释放、显式重试、新代三存档和正常清理退出"
+        },
+        "supporting_evidence": [
+          {
+            "path": "Validation/Content/sdk-runtime/E/input-recovery/5e519008d5214429b3b4ff146d60885b/result.log",
+            "sha256": "a2e8f7860dddace898e34229b90dbac793b0b5961f4b30e8b4260ebc52c39a98",
+            "scope": "旧代disposed确切红例"
+          },
+          {
+            "path": "Validation/Content/sdk-runtime/E/input-recovery/fd19c04032f64abb9a7588ca63d0d248/result.log",
+            "sha256": "24a9e51ccadddbf2f661022c76a01edb5ab5eb00e4f1329d0607d443330ab34f",
+            "scope": "新代disposed复位绿例，对应99f022460260170540f8bf56e02723ff5eb77c32"
+          },
+          {
+            "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/d0b37a75f3af4c41b76e1d85bd219e4c/client.log",
+            "sha256": "5edcacce39dd041e7423198cd60e634094aeb02d1682c809705a938b866169bc",
+            "scope": "真实故障/释放/重试/新代及正常收尾逐项记录"
+          },
+          {
+            "path": "Validation/Content/sdk-runtime/il-review-48264/client-il.txt",
+            "sha256": "e707ae03ec2200de96c0526181b25751ff2f5fd39f6d76cec8419cc8074b0330",
+            "scope": "原48264实际编译版的只读IL"
+          },
+          {
+            "path": "Validation/Content/sdk-runtime/il-review-48264/d0b37-il.txt",
+            "sha256": "af6849132e983d77412c4c1dbae359bcc91393862e5ca389d8c8d67c49f860a7",
+            "scope": "真实d0b37实际编译版修复路径只读IL"
+          }
+        ],
+        "review": {
+          "decision": "accepted",
+          "implementer": "/root",
+          "reviewer": "/root/frame_transport_review",
+          "reference": {
+            "path": "Validation/Content/sdk-runtime/reports/historical-review-cleanup-generations.md",
+            "sha256": "1bb80c8ced66bf074c14e28c3f7a59af180a865e6b573ebece221fb2544839e2",
+            "scope": "读取原PE补足同版源码缺口后接受限定关闭；未执行原二进制"
+          }
+        },
+        "remaining": "未知Host五秒退出、其他输入超时和完整E/RC保持未完成。"
+      },
+      "review_progress": {
+        "date": "2026-11-08",
+        "reviewer": "/root/frame_transport_review",
+        "status": "partial-proof-entire-incident-stays-open",
+        "disposed_generation": {
+          "fix_commit": "99f022460260170540f8bf56e02723ff5eb77c32",
+          "original_run": "6e006725b23a4bf19a0fcdb98e65efe4",
+          "red_run": "5e519008d5214429b3b4ff146d60885b",
+          "green_run": "fd19c04032f64abb9a7588ca63d0d248",
+          "real_run": "d0b37a75f3af4c41b76e1d85bd219e4c",
+          "finding": "New source/channel reset disposed flags. Controlled exact assertion and real explicit retry/three revisions/completion/cleanup accepted only for this subcase."
+        },
+        "unresolved_original": "48264f0f8f8b41e380d159a5c2107e09 first fails automatic-unhook-failure-stops-reconstruction; finally actual-source-retry-hooks-removed also fails. Missing contemporaneous recovery state/hook handles/release state; later d0b37 success cannot infer its root cause.",
+        "other_limited_fix": "bb6798e async collection red89720/green2f0e3 verifies late release collection while retaining old error; not yet causally matched to 48264 first failure.",
+        "review_scope": "Read original logs, current InputRecovery/WindowsDesktopInput/OwnedInputThread and exact commits; no execution."
+      }
+    },
+    {
+      "id": "input-move-heartbeat-starvation",
+      "category": "input-timeout",
+      "status": "closed",
+      "disposition": "reviewed-limited-fix",
+      "historical_runs": [
+        "6436b901bd984ac893a4f55c3c9d2838"
+      ],
+      "summary": "Continuous MOVE invalidated heartbeat without publishing a valid observation; focus was lost near 271 ms.",
+      "scope": "Only continuous valid MOVE invalidation without publishing same-epoch observations. Original25/50/250ms bounds unchanged; other timing, API and long-run incidents remain open.",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-6436b901bd984ac893a4f55c3c9d2838",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/6436b901bd984ac893a4f55c3c9d2838/report.json",
+          "scope": "historical-failure",
+          "sha256": "cfada88deec3baf5e87a92f8556a8f2818cff6c27485f61a427522fd93117c39",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "490959bb24692fa24e450ded717b1ac686d3c7ea5b716325a5cc7c3ca9e9801e"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": {
+        "root_cause": "Original 6436 Client PE invalidates heartbeat for every mouse event but has no active WM_MOUSEMOVE Publish branch. Old-version samples are discarded; continuous valid movement can therefore starve the heartbeat lease. Green b3495 PE has exact kind512 Publish(Point,Time,Epoch), increments only on success, and still forwards through CallNextHookEx.",
+        "fix_commit": "bb6798e5bcfe4b44fde896d2e77330522604eb8b",
+        "failure_evidence": [
+          {
+            "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/6436b901bd984ac893a4f55c3c9d2838/report.json",
+            "sha256": "cfada88deec3baf5e87a92f8556a8f2818cff6c27485f61a427522fd93117c39",
+            "scope": "original 271ms MOVE starvation failure"
+          },
+          {
+            "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/6436b901bd984ac893a4f55c3c9d2838/Client.exe",
+            "sha256": "88ab025de67a0e7a1672f2d645a53515a902fd2084d30784c70b9086c394dd9d",
+            "scope": "original actual missing-MOVE-publication branch PE"
+          }
+        ],
+        "red": {
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/6436b901bd984ac893a4f55c3c9d2838/report.json",
+          "sha256": "cfada88deec3baf5e87a92f8556a8f2818cff6c27485f61a427522fd93117c39",
+          "scope": "original actual failure; PE inspected independently"
+        },
+        "green": {
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/b3495c4550ac4841806e075d5fee7d63/continuous-motion.json",
+          "sha256": "31540a7f866ee06f89fde8f1fb84595a6956c8a9025651d3da38f8b082808713",
+          "scope": "actual98/98 MOVE commits with stable epoch13"
+        },
+        "real": {
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/b3495c4550ac4841806e075d5fee7d63/report.json",
+          "sha256": "579e48526a28283fee14721d4da109b38e8bba63a94b5186fb5c658381727987",
+          "scope": "same real LPAC author revision3, normal Host stop/exit"
+        },
+        "review": {
+          "decision": "accepted",
+          "implementer": "/root",
+          "reviewer": "/root/frame_transport_review",
+          "reference": {
+            "path": "Validation/Content/sdk-runtime/E/move-heartbeat-review/087c3ecb1d114eba926b1df52ce3d379/review.json",
+            "sha256": "73eb2158b9051f4074bfebfe8219dfc1a455042bbf9ce1c572da27397369e45e",
+            "scope": "independent original PE/log/source causality review"
+          }
+        },
+        "supporting_evidence": [
+          {
+            "path": "Validation/Content/sdk-runtime/E/move-heartbeat-review/087c3ecb1d114eba926b1df52ce3d379/audit.json",
+            "sha256": "100099d26bad2ce432136b28e68b4eef1c0452f746afb6eb3d87f1405916e414",
+            "scope": "original PE and IL/helper SHA"
+          },
+          {
+            "path": "Validation/Content/sdk-runtime/E/move-heartbeat-review/087c3ecb1d114eba926b1df52ce3d379/red-il.txt",
+            "sha256": "eeb454f4d36aa77cb8df90eb38a47908ca8254e494f1614ac8a363216458481a",
+            "scope": "original Client MouseCore/Publish IL"
+          },
+          {
+            "path": "Validation/Content/sdk-runtime/E/move-heartbeat-review/087c3ecb1d114eba926b1df52ce3d379/green-il.txt",
+            "sha256": "c93deb8f1e89b65dd2ddef2eee766b7bfa2d884f9eed3ff77520a50ea1943402",
+            "scope": "actual fixed Client MouseCore/Publish IL"
+          }
+        ],
+        "remaining": "Only MOVE invalidation-without-publication logic is closed. Original/green dirty whole-file source digests differ from the final fix commit; original PE confirms the relevant branches directly. b824 is not whole-matrix pass, 9e0 is background-only; no other timeout/long-run/E/RC closure or deadline relaxation."
+      },
+      "open_reason": null
+    },
+    {
+      "id": "input-soak-deadline-35d",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "located-candidate",
+      "historical_runs": [
+        "35d585a292934ae4bc695a2a2c376b26"
+      ],
+      "summary": "Continuous input lost focus at 460193 ms; observed query 27.58 ms and AccessibleObjectFromPoint 23.89 ms exceeded the then 25 ms budget.",
+      "scope": "Historical native desktop input only; no E acceptance or platform support claim.",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-35d585a292934ae4bc695a2a2c376b26",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/35d585a292934ae4bc695a2a2c376b26/report.json",
+          "scope": "historical-failure",
+          "sha256": "3deacdfc0b6388cc3bfacc75c710ddd87dab183a53902203df79062832976609",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "d83f6e77423bc16ef12fb70a69872f3677dcb5b430fec87df3d51e759ef710b6"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "Thread separation or later successful runs do not establish closure of this failure."
+    },
+    {
+      "id": "input-soak-loss-4d6",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "4d66154188d244519e5542fe4d1cdc3e"
+      ],
+      "summary": "A 30-minute focus run failed at 240402 ms after the ListView OBJID_CLIENT/accHitTest change.",
+      "scope": "Historical native desktop input only; no E acceptance or platform support claim.",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-4d66154188d244519e5542fe4d1cdc3e",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/4d66154188d244519e5542fe4d1cdc3e/report.json",
+          "scope": "historical-failure",
+          "sha256": "9910d7edcaf92447bfc4fe0d1f0ab10e64d78ee7ff7b10bc608711dac1c37bf8",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "598a553b5e90056b8e0734126a445d280b2fea30afaccdbb4c16f07c2e0cbed5"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "No complete causal closure links this incident to a reviewed fix."
+    },
+    {
+      "id": "input-soak-loss-0ed",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "0edf441412f8458689dc1f024fb5c617"
+      ],
+      "summary": "Focus failed at 9437 ms; query 28.284 ms and UI maximum 18 ms were recorded.",
+      "scope": "Historical native desktop input only; no E acceptance or platform support claim.",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-0edf441412f8458689dc1f024fb5c617",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/0edf441412f8458689dc1f024fb5c617/report.json",
+          "scope": "historical-failure",
+          "sha256": "9f5db1c130dfe9ae9c18e4ecdc7670374c39d97426e6be3f191f590dea2b3bcf",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "598a553b5e90056b8e0734126a445d280b2fea30afaccdbb4c16f07c2e0cbed5"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "Timing observations alone do not establish the cause or closure."
+    },
+    {
+      "id": "input-soak-loss-c37",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "c37c8c7123f64a64b82e3f9a042a0ac8"
+      ],
+      "summary": "Static focus run failed at 395914 ms.",
+      "scope": "Historical native desktop input only; no E acceptance or platform support claim.",
+      "evidence": [
+        {
+          "id": "historical-summary",
+          "kind": "git-file",
+          "commit": "c3ff26a918320f8699a495b817c0a11c55a765bc",
+          "path": "docs/work/sdk-runtime/README.md",
+          "sha256": "48e53f70fe8d5aa5f4027cd16221c4ab231cfb7a94f515f3a7b1c2fc0a8428e2",
+          "scope": "context"
+        },
+        {
+          "id": "failure-c37c8c7123f64a64b82e3f9a042a0ac8",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/c37c8c7123f64a64b82e3f9a042a0ac8/report.json",
+          "scope": "historical-failure",
+          "sha256": "d8ab5097e4af7ed1ec99ed8987a3b6dfdf478f0b1c75aa5148133422a6da4727",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "46ccaf39374474ce4de58cbb2d9bb5ab3a60892a31f96c941c5ecf44e4ea8a87"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "Later dd004 aged-sample evidence does not establish that this earlier failure has the same cause."
+    },
+    {
+      "id": "input-first-hook-delay-a260",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "a260da4ed0ae4e29991885c5ad9c9d80",
+        "bcf0729d0b154d27997372f8f10c5510"
+      ],
+      "summary": "First acquisition rejected at original click age 265 ms; no hit query began. SendInput elapsed 269.0563 ms; owner wait-marker gap approximately 211.69 ms. 2026-11-08固定Worker复验bcf072再次于281ms点击年龄拒绝，helper query0、SendInput289.9127ms；仍未证明调度或API等待根因。",
+      "scope": "Real desktop first-click failure on b4bdc28. Timing gaps do not identify scheduler, runtime pause or hook-chain cause; original deadlines remain unchanged.",
+      "evidence": [
+        {
+          "id": "failure-a260da4ed0ae4e29991885c5ad9c9d80",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/a260da4ed0ae4e29991885c5ad9c9d80/report.json",
+          "scope": "historical-failure",
+          "sha256": "f22107e5541bf3ebb232ce8ca43a3cbd3120c1b28f2b00ef482dd091624411d3",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "08ba3f6cf2ddbcba1e2c9708ada4aad922284cbc1aa3f525fd14110599d84c57"
+        },
+        {
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/bcf0729d0b154d27997372f8f10c5510/input-failure.json",
+          "sha256": "c10bc871e2be7ee4262a85ca96e4372d2f87d7d87bf68e6d144e6299d38c8b4c",
+          "scope": "新鲜固定Worker复验：acquire-expired-age-281，helper query0，SendInput289.9127ms",
+          "id": "repeat-failure-bcf0729d0b154d27997372f8f10c5510",
+          "kind": "artifact"
+        }
+      ],
+      "known_control_runs": [],
+      "closure": null,
+      "open_reason": "The preceding 1800-second idle pass and later omission-negative result do not establish a causal fix for first-callback latency."
+    },
+    {
+      "id": "input-mixed-cursor-lag-e3bde4d1",
+      "category": "input-timeout",
+      "status": "open",
+      "disposition": "unresolved",
+      "historical_runs": [
+        "e3bde4d1b0db40f0a69efd9f54c8fbd7"
+      ],
+      "summary": "Real mixed MOVE/key/MOVE lost focus after three durable author edges; committed MOVE ordinal 8 pointed at 470,804 while subsequent heartbeat sampled 471,804 and then waited for another native MOVE.",
+      "scope": "Real LPAC author with production input adapter. Controlled cursor-lag replay reproduces an old-point heartbeat query; this does not attribute every historical timeout to the same cause.",
+      "evidence": [
+        {
+          "id": "failure-e3bde4d1b0db40f0a69efd9f54c8fbd7",
+          "kind": "artifact",
+          "path": "Validation/Content/sdk-runtime/E/native-desktop-input-host/e3bde4d1b0db40f0a69efd9f54c8fbd7/report.json",
+          "scope": "historical-failure",
+          "sha256": "0c436abd06bb5029bf31275543707499d47b44fac7b81937f0c3fdf7655dffc0",
+          "observed_status": "not-complete",
+          "failure_log_sha256": "134b154e6aef8b54417c9dbc85c52157e7ff82135be30fbda1b2beef10cc335f"
+        }
+      ],
+      "known_control_runs": [
+        "5e76d6d0d5134ee486010acfb58bdf7a",
+        "cf9e4a9ad8794d49b51e697829815ddd"
+      ],
+      "closure": null,
+      "open_reason": "Candidate fix has controlled red/green and one real mixed short pass; final source-bound review, full regression, long runs and causal closure receipt remain required."
+    }
+  ]
+}
