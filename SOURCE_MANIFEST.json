@@ -1,7 +1,7 @@
 {
   "format": 1,
   "profile": "spatial-public-source/1",
-  "source_commit": "564c1c685f8893e609ec0620735da2ab50819d99",
+  "source_commit": "f64cc14bfb2c5559c298a7ea579b7a5bdf26be36",
   "public_repository": "https://github.com/KyaKayKya/Spatial-Wallpaper-Community",
   "history_included": false,
   "project_license_selected": false,
@@ -4191,9 +4191,9 @@
     },
     {
       "path": "Prototype/Assets/ContentRuntime/Core/ContentStore.cs",
-      "git_blob": "19fb68e4bde9a6702f1e5d233e5ec550cb18f579",
-      "sha256": "c2c918714c288286665db1dfd2efc29b65ca4f4216f5cb249faa5eb6331de0b8",
-      "bytes": 14986,
+      "git_blob": "d669432f8c085b5b0e011704ea0e77c102a5013e",
+      "sha256": "6304c7c817944d181328fa273981b57a0324bbc9d721e4454649af888edbf52e",
+      "bytes": 15280,
       "git_mode": "100644"
     },
     {
@@ -4282,9 +4282,9 @@
     },
     {
       "path": "Prototype/Assets/ContentRuntime/Runtime/ContentLibraryService.cs",
-      "git_blob": "23b52a69039910827279ddb419fde8f6e4774934",
-      "sha256": "6c474b9a6276eeb5d611b55d06d2958e040694cfad75795a0346bc8b211c608d",
-      "bytes": 11995,
+      "git_blob": "756cdcff19b8b83c7723fe48a9406d1502cceb58",
+      "sha256": "d514335f9792aaa202498d62ba5b0ee7fbe811a5ecbe19b6526ff485eaaa9f98",
+      "bytes": 12203,
       "git_mode": "100644"
     },
     {
@@ -13088,9 +13088,9 @@
     },
     {
       "path": "tools/sdk/NativeStoreChecks.cs",
-      "git_blob": "2967c43c696ca6d147b44a4d2de4d0f6958072b5",
-      "sha256": "797c754f47c3cdcf9ea7e8c71f185c81ce1d74535a251e28fad1f8fe7a40dc2b",
-      "bytes": 3053,
+      "git_blob": "3710f6944dc8d7d5f4b6f88b6ad8c7f6c42936d8",
+      "sha256": "991415dac8d1cff02655ac108f843aeda6750fbe17d1213b7bfac7de35df3b45",
+      "bytes": 3419,
       "git_mode": "100644"
     },
     {

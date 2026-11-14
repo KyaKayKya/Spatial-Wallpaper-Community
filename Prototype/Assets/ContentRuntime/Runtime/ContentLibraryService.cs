@@ -97,7 +97,8 @@ namespace SpatialWallpaper.Content {
      if(updating)JsonData.Fields(payload,"staging_id","work_id","expected_revision");else if(payload.ContainsKey("name"))JsonData.Fields(payload,"staging_id","name");else JsonData.Fields(payload,"staging_id");
      string id=ContentStore.Id((string)payload["staging_id"]),path=Path.Combine(root,"staging",id+".spatial"),target=updating?ContentStore.Id((string)payload["work_id"]):null,expected=updating?ContentStore.Id((string)payload["expected_revision"]):null;
      if(updating&&Store.Latest(target)!=expected)throw new InvalidDataException("revision-conflict");
-     if(await Task.Run(()=>ContentPackageFormat.IsNative(path))){var platform=NativeContentConfiguration.Platform();return await Task.Run(()=>Store.ImportNative(id,platform,target,expected));}
+     bool nativeIncoming=await Task.Run(()=>ContentPackageFormat.IsNative(path));if(updating&&Store.IsNativeBuild((string)Store.Revision(target,expected)["build_id"])&&!nativeIncoming)throw new InvalidDataException("native-update-format-mismatch");
+     if(nativeIncoming){var platform=NativeContentConfiguration.Platform();return await Task.Run(()=>Store.ImportNative(id,platform,target,expected));}
      if(await Task.Run(()=>ContentPackageFormat.IsLegacy(path)))return await Task.Run(()=>updating?Store.Update(id,target,expected):Store.Import(id));
      string name=updating?(string)Store.Snapshot["works"][target]["name"]:payload.ContainsKey("name")?JsonData.Text(payload["name"],128):"SDK 作品";
      var inspection=await presentation.InspectSandboxAsync(path);token.ThrowIfCancellationRequested();var imported=await Task.Run(()=>updating?Store.UpdateSandbox(id,inspection,name,target,expected):Store.ImportSandbox(id,inspection,name));

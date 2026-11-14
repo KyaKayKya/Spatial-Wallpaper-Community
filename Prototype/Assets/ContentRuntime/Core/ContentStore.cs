@@ -30,7 +30,8 @@ namespace SpatialWallpaper.Content {
   static void Safe(string path){for(string p=Path.GetFullPath(path);p!=null;p=Path.GetDirectoryName(p))if(File.Exists(p)||Directory.Exists(p))JsonData.Require((File.GetAttributes(p)&FileAttributes.ReparsePoint)==0,"content-store-link");}
   void Publish(JObject next){Safe(root);Safe(index);string temp=index+"."+Guid.NewGuid().ToString("N")+".tmp";try{using(var stream=new FileStream(temp,FileMode.CreateNew,FileAccess.Write,FileShare.None))using(var writer=new StreamWriter(stream)){writer.Write(next.ToString());writer.Flush();stream.Flush(true);}if(File.Exists(index))File.Replace(temp,index,null);else File.Move(temp,index);state=next;generation=Guid.NewGuid().ToString("N");}finally{if(File.Exists(temp))File.Delete(temp);}}
   public JObject Import(string id)=>ImportCore(id,null,null);
-  public JObject Update(string id,string work,string expectedRevision){RequireCurrent(work,expectedRevision);return ImportCore(id,work,expectedRevision);}
+  public JObject Update(string id,string work,string expectedRevision){RequireCurrent(work,expectedRevision);RequireNonNativeUpdate(work,expectedRevision);return ImportCore(id,work,expectedRevision);}
+  void RequireNonNativeUpdate(string work,string revision){JsonData.Require((string)state["builds"][(string)Revision(work,revision)["build_id"]]?["kind"]!="native-v5","native-update-format-mismatch");}
   void RequireCurrent(string work,string expectedRevision){Id(expectedRevision);JsonData.Require(Latest(work)==expectedRevision,"revision-conflict");}
   JObject RecordImport(string build,JObject metadata,string name,string work,string expectedRevision){
    if(work!=null){RequireCurrent(work,expectedRevision);if((string)Revision(work,expectedRevision)["build_id"]==build)return new JObject{["build_id"]=build,["work_id"]=work,["revision_id"]=expectedRevision,["duplicate"]=true};}
@@ -51,7 +52,7 @@ namespace SpatialWallpaper.Content {
   // Only an authenticated restricted-Validator result can enter this path.
   // No program/content JSON is parsed or executed in the library process.
   public JObject ImportSandbox(string id,RuntimePackageInspection inspection,string name)=>ImportSandboxCore(id,inspection,name,null,null);
-  public JObject UpdateSandbox(string id,RuntimePackageInspection inspection,string name,string work,string expectedRevision){RequireCurrent(work,expectedRevision);return ImportSandboxCore(id,inspection,name,work,expectedRevision);}
+  public JObject UpdateSandbox(string id,RuntimePackageInspection inspection,string name,string work,string expectedRevision){RequireCurrent(work,expectedRevision);RequireNonNativeUpdate(work,expectedRevision);return ImportSandboxCore(id,inspection,name,work,expectedRevision);}
   JObject ImportSandboxCore(string id,RuntimePackageInspection inspection,string name,string work,string expectedRevision){
    if(inspection==null)throw new ArgumentNullException(nameof(inspection));JsonData.Require(!string.IsNullOrWhiteSpace(name)&&name.Length<=128,"content-name");string path=Path.Combine(staging,Id(id)+".spatial");Safe(path);
    using(var source=new FileStream(path,FileMode.Open,FileAccess.Read,FileShare.Read)){
