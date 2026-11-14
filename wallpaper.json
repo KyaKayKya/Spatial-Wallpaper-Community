@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "repositoryId": 1457389189,
+  "listingConsent": true,
+  "works": [
+    {
+      "id": "577c5307-5be9-49b2-96db-e7b5c11151ba",
+      "title": "Original CC0 Triangle",
+      "version": "1.0.0",
+      "releaseTag": "original-cc0-1.0.0",
+      "sdk": "0.4.0-preview.1",
+      "capabilities": [
+        "view-data",
+        "canonical-static-data-v1",
+        "shader-only-2022.3.62f3-v1"
+      ],
+      "assets": [
+        "original-cc0-triangle.spatial"
+      ],
+      "attribution": [
+        {
+          "name": "Spatial Wallpaper original creator example",
+          "githubUserId": 150425413,
+          "license": "CC0-1.0"
+        }
+      ],
+      "description": "Original CC0 geometry and shader with isolated transform animation and real asynchronous view snapshot access. Requires native SDK 0.4 preview. Visual/audio/manual experience is not certified by admission."
+    }
+  ]
+}

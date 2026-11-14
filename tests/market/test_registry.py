@@ -26,6 +26,25 @@ class RegistryTests(unittest.TestCase):
         m = manifest(); m["works"].append(dict(m["works"][0], id="sun"))
         with self.assertRaises(MarketError): registry.validate_manifest(repo(), m)
 
+    def test_native_receipt_capabilities_accept_bounded_dotted_tokens(self):
+        capabilities = ["view-data", "canonical-static-data-v1", "shader-only-2022.3.62f3-v1"]
+        m = manifest(); m["works"][0]["capabilities"] = capabilities
+        self.assertEqual(registry.validate_manifest(repo(), m)["works"][0]["capabilities"], capabilities)
+        for token in ["a", "a" * 64, "v1.2.3", "-", "a-b.c-d"]:
+            with self.subTest(token=token):
+                m = manifest(); m["works"][0]["capabilities"] = [token]
+                registry.validate_manifest(repo(), m)
+
+    def test_capabilities_reject_paths_urls_empty_segments_and_invalid_characters(self):
+        invalid = ["", "a" * 65, ".", "..", ".a", "a.", "a..b", "../a", "a/b", "a\\b",
+                   "https://example.com", "a:b", "a_b", "A", "a b", "a\n", "a\r", "a\t", "雨"]
+        for token in invalid:
+            with self.subTest(token=repr(token)):
+                m = manifest(); m["works"][0]["capabilities"] = [token]
+                with self.assertRaises(MarketError): registry.validate_manifest(repo(), m)
+        m = manifest(); m["works"][0]["capabilities"] = ["view-data", "view-data"]
+        with self.assertRaises(MarketError): registry.validate_manifest(repo(), m)
+
     def test_discovery_paginates_deduplicates_keeps_missing_and_renames(self):
         calls = []
         renamed = repo(); renamed["full_name"] = "alice/renamed"

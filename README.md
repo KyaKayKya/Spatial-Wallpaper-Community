@@ -2,7 +2,7 @@
 
 Public repository: https://github.com/KyaKayKya/Spatial-Wallpaper-Community
 
-Frozen source commit: `f64cc14bfb2c5559c298a7ea579b7a5bdf26be36`. This directory contains no private Git history.
+Frozen source commit: `c22ad3f6f012615452657e0aa419edb37dc5d756`. This directory contains no private Git history.
 
 For normal use, obtain the complete Windows distribution from this repository's Releases. This source-only snapshot is for code review and development; it is not an installer or a complete Unity artwork project.
 

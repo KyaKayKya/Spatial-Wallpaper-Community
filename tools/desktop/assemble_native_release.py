@@ -74,7 +74,9 @@ def copy_file(source, target, expected=None):
     no_link(source)
     before = digest(source)
     require(expected is None or before == expected, 'source digest differs: ' + str(source))
-    require(not target.exists(), 'refuse overwrite: ' + str(target))
+    if target.exists():
+        require(target.is_file() and digest(target) == before, 'refuse changing existing release file: ' + str(target))
+        return before
     target.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(source, target)
     require(digest(target) == before and digest(source) == before, 'source changed while assembling: ' + str(source))
@@ -98,6 +100,7 @@ class FrozenSource:
         self.root = Path(root).resolve()
         require(re.fullmatch(r'[0-9a-f]{40}', commit), 'full source commit SHA required')
         self.commit = commit
+        self.protected_input_differences = []
         self.git('cat-file', '-e', commit + '^{commit}')
         self.paths = self.git('ls-tree', '-r', '--name-only', commit).decode('utf-8').splitlines()
 
@@ -118,13 +121,27 @@ class FrozenSource:
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_bytes(self.bytes(path))
 
+    def source_matches(self, path, expected):
+        frozen = self.bytes(path)
+        if hashlib.sha256(frozen).hexdigest() == expected:
+            return True
+        local = self.root / path
+        if path.endswith(('.cs', '.shader', '.json', '.py', '.cpp', '.h', '.m')) and local.is_file():
+            materialized = local.read_bytes()
+            return hashlib.sha256(materialized).hexdigest() == expected and materialized.replace(b'\r\n', b'\n') == frozen.replace(b'\r\n', b'\n')
+        return False
+
     def require_sources(self, receipt):
         # Generated assembly metadata outside the checkout is separately bound by
         # native identity. Every recorded repository source is compared to Git.
         for name, expected in receipt.get('sources', {}).items():
             relative = name.replace('\\', '/')
             if relative in self.paths:
-                require(hashlib.sha256(self.bytes(relative)).hexdigest() == expected, 'component was built from another source: ' + relative)
+                if relative == 'tools/sdk/experiments/build_unity.py' and not self.source_matches(relative, expected):
+                    require(digest(self.root / relative) == expected, 'protected helper changed since component receipt')
+                    self.protected_input_differences.append({'path': relative, 'sha256': expected, 'scope': 'pre-existing protected Python experiment helper, not compiled into the component'})
+                    continue
+                require(self.source_matches(relative, expected), 'component was built from another source: ' + relative)
         for field in ('mutated_sources_sha256', 'diagnostic_mutations'):
             require(not receipt.get(field), 'diagnostic component cannot ship: ' + field)
 
@@ -293,7 +310,9 @@ def assemble(args):
     source = FrozenSource(args.source_root, args.source_commit)
     out = args.output.resolve()
     portable = out.with_suffix(out.suffix + '.zip')
-    require(not out.exists() and not portable.exists() and not Path(str(portable) + '.sha256').exists(), 'release output/ZIP/checksum already exists; no overwrite')
+    require(not portable.exists() and not Path(str(portable) + '.sha256').exists(), 'release ZIP/checksum already exists; no overwrite')
+    if out.exists():
+        require(args.resume and not (out / 'release-manifest.json').exists() and read(out / 'Provenance/Player.json')['source_commit'] == source.commit, 'only an unfinished owned assembly from this frozen commit can resume')
     for directory in (args.player, args.legacy_runtime, args.native_worker, args.native_host, args.native_validator, args.packages):
         require(not out.is_relative_to(directory.resolve()), 'output cannot be nested in a source build: ' + str(directory))
     native_rules = source.json('tools/sdk/rules/native-scene-v1.json')
@@ -323,10 +342,10 @@ def assemble(args):
         if name not in source.paths:
             continue
         frozen_digest = hashlib.sha256(source.bytes(name)).hexdigest()
-        if frozen_digest != expected:
+        if not source.source_matches(name, expected):
             require(name.endswith('.unity'), 'player code or shader differs from frozen source: ' + name)
             asset_overrides.append({'path': name, 'frozenGitSha256': frozen_digest, 'retainedLocalSha256': expected, 'reason': 'pre-existing protected local scene; never overwritten or staged'})
-    out.mkdir(parents=True, exist_ok=False)
+    out.mkdir(parents=True, exist_ok=args.resume)
     dump(out / 'Provenance/Player.json', player_receipt)
     dump(out / 'Provenance/RetainedLocalAssets.json', asset_overrides)
     player_names = {'SpatialWallpaper.exe', 'UnityPlayer.dll', 'UnityCrashHandler64.exe', 'MonoBleedingEdge', 'SpatialWallpaper_Data', 'D3D12', 'WinPixEventRuntime.dll', 'baselib.dll'}
@@ -384,7 +403,7 @@ def assemble(args):
           'assetLicenses': 'Original built-in asset permissions are not certified by this assembler. Local-validation packages remain local-validation.'})
     instructions = 'Spatial Wallpaper ' + native['sdk'] + '\n\n解压整个目录后双击 Launch.exe。不要只复制 Launch.exe。普通运行不需要另装 Unity/Python；Windows x64 与 .NET Framework 4.8 为系统依赖。\n原Library内导入/显式应用、更新、卸载和社区市场；关闭管理器后原托盘继续控制桌面，完全退出恢复系统壁纸。\n新五包在 native-content，旧 sdk-content 在播放器 StreamingAssets 中保留。Authoring 包含SDK、匹配验证器、导出工具、示例及市场投稿/评论/撤回文档。\n安装/升级：解压至新的空目录，从新目录启动。用户数据位于原管理器数据根，勿删除。卸载：先从托盘完全退出，再删除本便携目录；用户库、作品存档需由用户另行决定是否删除。\n手动体验：五件画面与音效；咖啡馆多层循环；MiniShot视角/命中/存档；用户静音；更新不自动切换；应用失败恢复确切修订；关闭/重开/完全退出/重启；多显示目标与离线校准。未执行项目不能算通过。\n本工具只组包及静态摘要检查，不代表上述真实体验已通过。版权/资源准入/脚本隔离/驱动与GPU风险分别处理。\n'
     (out / '安装与使用.txt').write_text(instructions, encoding='utf-8')
-    release = {'format': 'spatial-wallpaper-portable-release', 'version': native['sdk'], 'source_commit': source.commit,
+    release = {'format': 'spatial-wallpaper-portable-release', 'version': native['sdk'], 'source_commit': source.commit, 'assembly_tool_sha256': digest(Path(__file__)), 'protected_noncompiled_input_differences': source.protected_input_differences,
                'native': native, 'legacy_sdk': legacy.get('sdk'), 'authoring': sdk,
                'packages': packages, 'host_reused_in_both_lanes': True,
                'status': 'assembled-portable-release-pending-required-smoke-and-manual-experience',
@@ -407,6 +426,7 @@ def main():
     for name in ('player', 'legacy-runtime', 'native-worker', 'native-host', 'native-validator', 'platform-index', 'packages', 'creator-example', 'output'):
         parser.add_argument('--' + name, type=Path, required=True)
     parser.add_argument('--source-commit', required=True)
+    parser.add_argument('--resume', action='store_true', help='Verify and retain exact files of an unfinished owned assembly; never overwrite existing program files')
     parser.add_argument('--source-root', type=Path, default=ROOT)
     parser.add_argument('--tracker-python-home', type=Path)
     parser.add_argument('--tracker-site', type=Path)
