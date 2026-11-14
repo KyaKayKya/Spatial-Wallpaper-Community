@@ -19,6 +19,7 @@ from urllib.request import Request, build_opener
 from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import padding, rsa
+from jsonschema import Draft202012Validator
 
 from . import catalog, stats
 from .common import ROOT, OFFICIAL as PRODUCT_REPOSITORY, MarketError, atomic_json, canonical, instant, loads, read_json, require, utc_now, validate
@@ -249,7 +250,22 @@ def registrations():
     return found
 
 
+def normalize_revocations(value):
+    # Repository state has a versioned envelope; catalog/published snapshots
+    # deliberately embed only its works/builds payload. Internal callers may
+    # already supply that payload, but neither form may hide unknown fields.
+    require(isinstance(value, dict) and set(value) in ({"works", "builds"}, {"schemaVersion", "works", "builds"}), "invalid revocations fields")
+    if "schemaVersion" in value:
+        require(type(value["schemaVersion"]) is int and value["schemaVersion"] == 1, "unsupported revocations schemaVersion")
+    result = {key: copy.deepcopy(value[key]) for key in ("works", "builds")}
+    schema = read_json(ROOT / "market/schemas/catalog.schema.json")["properties"]["revocations"]
+    errors = list(Draft202012Validator(schema).iter_errors(result))
+    require(not errors, "revocations: " + "; ".join(error.message for error in errors))
+    return result
+
+
 def collect(gh, previous, now, revocations):
+    revocations = normalize_revocations(revocations)
     old = candidate_previous(previous)
     generation = old["generation"] + 1 if old else 1
     entries, observations = {}, []
@@ -282,9 +298,9 @@ def collect(gh, previous, now, revocations):
     presentation = {k: {f: v[f] for f in ("description", "preview") if f in v} for k, v in entries.items()}
     for entry in entries.values():
         entry.pop("description", None); entry.pop("preview", None)
-    return {"schemaVersion": 1, "kind": "candidate", "generation": generation, "generatedAt": now,
+    return validate("catalog", {"schemaVersion": 1, "kind": "candidate", "generation": generation, "generatedAt": now,
             "expiresAt": (instant(now) + timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "entries": [entries[k] for k in sorted(entries)], "revocations": copy.deepcopy(revocations)}, observations, presentation
+            "entries": [entries[k] for k in sorted(entries)], "revocations": copy.deepcopy(revocations)}), observations, presentation
 
 
 def popularity_rows(state, day):
