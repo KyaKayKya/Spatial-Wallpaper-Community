@@ -1,0 +1,15 @@
+{
+  "repository": "KyaKayKya/Spatial-Wallpaper-Community",
+  "description": "Head-tracked 3D wallpapers for ordinary displays. Native Unity rendering, an isolated creator SDK, and a GitHub community marketplace.",
+  "homepage": "https://github.com/KyaKayKya/Spatial-Wallpaper-Community#readme",
+  "topics": [
+    "3d-wallpaper",
+    "head-tracking",
+    "unity",
+    "desktop-wallpaper",
+    "windows",
+    "csharp",
+    "sdk",
+    "open-source"
+  ]
+}

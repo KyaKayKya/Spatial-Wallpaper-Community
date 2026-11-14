@@ -1,136 +1,80 @@
-# 从空工程制作壁纸
+# 制作你的第一件原生壁纸
 
-本指南对应 `0.3.0-preview.3` 开发候选。内部 RC 总验收尚未完成。
+本指南面向使用 Unity 的作者，帮助你安装 SDK 0.4.0-preview.1，导出一个可准入的 schema5 原生作品。scene-command ABI 为 1。普通用户只需要完整客户端，无需 Unity 或单独安装 Python。
 
-## 安装
+## 准备作者工程
 
-使用 Unity **2022.3.62f3** 创建空工程，目标选择 Windows x86-64。SDK 固定依赖 URP **14.0.12**；在 **Project Settings > Player > Other Settings** 将 Color Space 设为 **Linear**，图形 API 使用 D3D11。
+使用 Unity **2022.3.62f3**、URP **14.0.12**，目标 Windows x86-64／D3D11，Color Space 选择 **Linear**。准备你有权使用和分发的原创素材。
 
-解压 Windows 运行时与客户端 ZIP，分别保留完整目录。打开 Unity 的 **Window > Package Manager**，点击 **+ > Add package from tarball**，选择同一发行物中的 `com.spatialwallpaper.sdk-0.3.0-preview.3.tgz`。此版本使用 `cilbox-acfca6b-normalized-4`，需配套的 Worker 与客户端；旧版本作品需要重新导出。
+在 Package Manager 中选择 **Add package from tarball**，安装匹配发行的 com.spatialwallpaper.sdk-0.4.0-preview.1.tgz。若使用源码目录，将本包放入作者工程的 Packages/com.spatialwallpaper.sdk，并在 Packages/manifest.json 添加：
 
-如需以目录形式安装，关闭 Editor，将发行物中的 SDK 目录复制为工程的 `Packages/com.spatialwallpaper.sdk`，并在 `Packages/manifest.json` 的 `dependencies` 中加入：
-
-```json
+~~~json
 "com.spatialwallpaper.sdk": "file:com.spatialwallpaper.sdk"
-```
+~~~
 
-重新打开工程，等待 Package Manager 完成解析。完整发行包中的 `Editor/Windows~` 保存普通 Play 的可信能力代理；保留整个目录。SDK 不需要 Tracker、摄像头或本仓库的 Prototype 工程。
+不要混用旧版运行库、验证器或 schema4 导出步骤。[旧版创作路径](LegacyGettingStarted.md)仅用于维护既有作品，不能把其包修改版本号作为 schema5 包。
 
-## 创建第一个场景
+## 先理解可以导出什么
 
-1. 在 Package Manager 中选择 **Spatial Wallpaper SDK**，导入 **Starter Kit**。
-2. 选择 **Spatial Wallpaper > Samples > 1 Interaction and storage**。菜单会先提示保存当前场景，再生成新的场景和程序化资源；不会覆盖已有文件。
-3. 在 Game View 中运行普通 Play。点进画面后按空格，方块会在蓝色与橙色之间切换，并保存选择。停止后再次 Play，检查颜色是否恢复。
-4. 在生成的场景中编辑模型和材质，保留 `SceneDefinition` 与其 `contentRoot`。作者脚本使用 `[WallpaperScript]`，当前支持 `Start` 和 `Update`；完整成员与参数限制见[作者 API](AuthorApi.md)。
+外来原生包支持规范静态场景数据和隔离作者程序。内置五件原作品有独立可信原资产库，支持范围不能直接套用到外来包。
 
-空工程首次生成样例时会创建固定 Forward+ 渲染资产，并为样例相机启用后处理。已有工程的渲染管线资产保持不变；比较普通 Play 与沙箱画面前，按[制作预览配置](Rendering.md#匹配制作预览配置)对齐设置。
+先阅读[完整导出边界](../../../docs/guides/外来原生作品导出.md)。骨骼、Animator、探针，以及脚本中的非空 Material/Mesh/Texture/AudioClip/Prefab 字段引用等尚不支持的内容会明确拒绝。不要删掉原效果后声称完整迁移，也不要把任意作者 DLL 或 MonoBehaviour 加入可信宿主。
 
-参考框用于构图。默认保上下，显示比例变化时左右裁剪或扩展；模型统一缩放。地板上表面与参考框底共面。保留示例相机上的 `WindowProjection`，用眼位驱动离轴投影；不要移动场景、旋转相机或抬高地板来模拟贴边。制作相机位于导出内容根之外，正式客户端提供自己的投影与设备眼位。
+## 设置作品身份与根节点
 
-如需自定义背景、环境光或后处理，在 `contentRoot` 上添加 `ScenePresentationSettings`。勾选 **Apply In Play** 可在普通 Play 中预览其受控设置；沙箱预览使用导出的参数。支持范围和限制见[渲染与资源边界](Rendering.md)。
+1. 新建一个 GameObject，添加 SceneDefinition。
+2. 将 contentRoot 指向自己的场景根节点；设置 displayName、authorFrame 和许可来源。
+3. 为 templateId 设置一个稳定的小写 GUID。更新作品时保留这个 GUID，使用新 revision。
+4. 作者脚本标记 WallpaperScript，使用准入支持的成员。每个节点最多一个启用的作者组件。
 
-脚本需要按当前视点拾取目标时，使用 `View.GetEye()` 和 `View.GetSize()`。它们返回作者场景坐标中的当前眼位与有效窗口宽高，不提供相机对象或修改投影的权限。输入指针的 X、Y 均为 0–1，Y 从上向下；读取眼位后沿眼位到窗口点的射线拾取。普通 Play 的场景需保留一个启用的 `WindowProjection` 游戏相机。修改脚本后退出并重新进入 Play；活跃 Play 的重编译恢复尚未验证。
+屏幕是一扇固定窗口：默认保上下、左右裁剪或扩展，模型统一缩放。眼位只驱动离轴投影，不通过平移场景或旋转相机伪造视差。
 
-## 沙箱预览并导出
+View.GetEye() 和 View.GetSize() 读取最近可信快照，不授予作者相机或设备访问权。Storage 和查询使用异步结果；取消、撤权和旧回包不能当作本 Tick 的同步成功。原生准入规则保存在源码仓库根目录 tools/sdk/rules/native-scene-v1.json，最终以验证器诊断为准；[旧作者 API 表](AuthorApi.md)的版本为0.3，不是完整原生 API 清单。
 
-1. 退出普通 Play，选中场景的 `SceneDefinition`。
-2. 打开 **Spatial Wallpaper > Sandbox Preview**，点击 **检查并制作预览快照**。
-3. 在 **运行时发行目录** 中选择同一发行包内的完整运行时目录。它包含 `runtime.json`、Native 预览程序、Supervisor、Validator 和 Worker，不能只选择一个 EXE。
-4. 设置虚拟屏幕分辨率和物理尺寸，点击 **沙箱预览**。作者逻辑将在受限 Worker 中运行；画布出现在独立预览窗口。
-5. 检查画面、交互和诊断，点击 **导出已验证快照** 保存 `.spatial` 文件。
-6. 点击 **停止**。修改场景后重新制作快照和预览；导出始终使用刚才已经验证的同一份快照字节。
+## 导出并验证
 
-调整虚拟屏幕分辨率或物理尺寸后，点击 **重启预览**，即可用新设置重新运行同一快照。旧预览退出后才启动新预览；重启期间点击 **停止** 可取消。重启不会重新读取已修改的场景，场景修改仍需重新制作快照。
+在自己的 Editor 工具中调用真实入口，definition 为上述 SceneDefinition：
 
-普通 Play 用于快速编辑，不能替代沙箱预览。快照诊断会拒绝不支持的组件、回调、成员、材质状态或资源引用。先按具体诊断修正，再重新制作快照；不要向 Worker 复制作者 DLL。
+~~~csharp
+SpatialWallpaper.Sdk.Editor.ExternalNativeExporter.Export(
+    definition,
+    "D:/MyWallpaper/work-1.0.0.spatial",
+    "1.0.0");
+~~~
 
-## 在没有 Unity 的电脑上运行
+选择尚不存在的输出路径。导出拒绝覆盖已有文件，成功产物仍是 local-validation，不能直接作为可投稿包。
 
-使用完整主管理器交付中的 `Launch.exe`，保留同目录的 Player 数据、`sdk-runtime` 和 Tracker 配套文件。原作品库点击 **导入 SDK** 或拖入 `.spatial` 文件；导入只选中，右侧点击 **预览** 进入原预览页，或配置显示器及校准预设后点击 **应用到桌面**。独立 ContentManager 已退出用户通路。目标电脑无需 Unity Editor；当前本机交付仍复用项目已有 Tracker Python 环境，并非无开发环境安装包。
+使用同版本可信验证器检查实际字节：
 
-关闭管理器后壁纸继续播放。通过托盘重新打开管理器；使用托盘的暂停、继续、停止或退出。暂停保留静态画面，停止隐藏壁纸并清除当前应用记录。桌面图标和普通窗口遮挡属于正常桌面合成，不会触发全屏像素一致检查。
+~~~powershell
+.\NativeValidator.exe --package D:/MyWallpaper/work-1.0.0.spatial --platform-index unused
+~~~
 
-要删除作品，点击该作品的 **卸载**，再确认 **卸载并删除存档**。客户端会停止该作品，删除它的全部修订和本机 live/preview 存档，保留其他作品。此操作无法撤销；重新导入会创建新的安装身份和存档。作者工程内普通 Play、Editor 预览的数据独立保存，不会随客户端作品卸载而删除。
+外来包不读取平台库；unused 是为了兼容验证器 CLI 的占位参数。确认退出码为0，JSON中 valid 为true、schema为5、sdk为0.4.0-preview.1。准入通过不代表已实际看过画面或听过声音。
 
-如果提示存档已删除但作品库更新失败，请重试卸载；不要把它当作存档已恢复。如果提示包文件被占用，作品已从库中移除，但部分包文件尚未清理。
+## 导入客户端体验
 
-## 更新已安装的作品
+在匹配完整发行目录运行 Launch.exe，将 .spatial 拖入原 Library，选择作品并预览，再选择目标显示器显式应用。确认场景正常显示，交互与异步存档符合设计；关闭管理器后继续播放，从托盘重开。
 
-1. 在 Unity 中修改场景，重新制作快照、沙箱预览并导出一个新的 `.spatial` 包。
-2. 在原作品库选中目标作品，在右侧详情栏点击 **更新作品包**。
-3. 在文件选择器选择新包。管理器保存为同一作品的新修订，保留安装身份、本机存档和音量；当前播放不变。
-4. 点击 **应用到桌面** 切换到新修订。切换失败时尝试恢复此前成功播放的修订；重启也恢复实际应用的确切修订。
+更新安装不会自动切换正在播放的修订。需要体验新版时再次显式应用。完整操作、每目标声音与恢复见[发行与体验指南](../../../docs/guides/SDK0.4发行与体验.md)。公开下载中的 NativeValidator 不是播放器，不能独立播放作品。
 
-取消文件选择即可取消更新。更新请求固定捕获点击时的作品及最新修订；若另一操作已改变该修订，请刷新后重试，管理器不会自动覆盖变化。同一包重复更新不会新增修订。
+## 分享和投稿
 
-存档身份保持不变，不代表不同作者程序的数据格式自动兼容。修改存档格式时，由作者处理旧数据的读取和迁移。历史修订的手动选择和客户端参数编辑尚未提供。
+1. 用 prepare_shared_external.py --list-resources 生成实际资源与SHA清单。
+2. 逐项准备真实分发权声明，再按[外来原生作品导出](../../../docs/guides/外来原生作品导出.md)生成并复验新的可分享包。
+3. 将不可变产物放入自己的公开 GitHub Release，并在 wallpaper.json 声明准确版本和 capabilities。
+4. 按[投稿指南](../../../docs/guides/壁纸市场创作者入门.md)提交一个绑定仓库/GUID/revision/packageSha256 的元数据 PR。
 
-## 添加配乐与音效
+确认PR自动检查通过并经维护者合并后，才会发布到签名索引。来源登记或作者清单更新不会自动批准修订。
 
-将有权使用的 WAV、OGG 或 MP3 导入工程。在 Audio Import Settings 中使用 **Decompress On Load**，关闭 **Load In Background**。把 AudioClip 拖到作者脚本的公开字段，例如：
+## 遇到问题
 
-```csharp
-using UnityEngine;
-using SpatialWallpaper.Sdk;
-
-[WallpaperScript]
-public sealed class WallpaperMusic : MonoBehaviour {
-    public AudioClip music;
-    public AudioClip click;
-    void Start() { Sound.PlayMusic(music, 1f); }
-    void Update() {
-        if (SpatialWallpaper.Sdk.Input.GetButtonDown("Primary"))
-            Sound.PlayEffect(click, .6f);
-    }
-}
-```
-
-音乐循环播放，再次调用 PlayMusic 会替换当前音乐。音效播放一次，最多同时播放八条；超过时轮换替换一个音效。使用 Sound.StopMusic() 或 Sound.StopEffects() 停止对应组。音量参数范围为 0–1；资源必须属于当前作品。不要添加 AudioSource、AudioListener、音频插件或设备访问代码。
-
-初版导出为单声道、22050 Hz 的 PCM16，单条最长五分钟，仍受作品资源和内存总额度限制。音频随作品打包，客户端离线播放。较长或较大的素材请先裁剪、制作循环并降低长度；不能通过修改版本号或额度绕过准入。
-
-在原作品库右侧详情栏向下滚动，在 **声音** 调整 **配乐**、**音效** 及各自静音；拖动连续生效并自动按作品保存。仅选中的另一作品不会影响当前播放项。重新应用、重启和更新保留设置，卸载删除该作品设置。原页面沙箱预览使用同一作品设置；暂停、切换、停止和退出关闭对应声音，关闭管理器则继续播放。作者普通 Play 与 Editor 沙箱默认配乐25%、音效50%，独立于客户端作品音量。
-
-隔离的 Unity Worker 不直接访问声卡；它只通过认证通道发送两组固定格式的音频，由可信宿主应用用户音量并输出。没有可用设备时画面可以继续；管理器刷新会显示声音错误，修复系统声音后重新应用作品。不把播放指令已接受当作已经听见声音。当前版本不提供空间声、立体声、网络流媒体或自动设备恢复。
-
-Sound 是作品播放功能。下面 Audio.GetBand 使用的来源选择只影响采集特征，不会控制作品配乐。
-
-## 选择音频来源
-
-默认不采集音频。在 **Sandbox Preview > 音频来源应用** 中点击 **刷新应用**，选择一个正在运行的应用，再启动普通 Play 或沙箱预览。两种预览使用同一个工程内的选择；更改前先停止预览和普通 Play。
-
-客户端在原 **设置 > SDK 音频来源应用** 选择来源。选中后停止旧能力会话并恢复实际应用的同一修订；选择 **不采集音频** 清除。先退出作品预览，若壁纸已暂停，再从托盘继续播放后切换音源。原页面预览沿用该选择，应用退出后保持静音。
-
-只采集所选应用及其子进程的有限派生特征，不采集麦克风，不回退到全系统混音。来源应用退出后保持静音；重新启动的应用需要重新选择。列表来自有窗口的应用，找不到时先打开目标应用窗口，再刷新。
-
-## 继续学习
-
-| 示例 | 练习 | 当前范围 |
-| --- | --- | --- |
-| Interaction and storage | 空格切色、异步读写、版本冲突诊断 | 存档按安装身份隔离，普通 Play 与沙箱分开保存 |
-| Audio response | 用 `Audio.GetBand(0)` 改变颜色 | 先在预览或客户端选择来源应用；尚未选择时保持静音 |
-| Dynamic mesh and texture | 更新顶点和纹理像素 | 资源仍受配额限制 |
-| Shader and Prefab | 自定义 Shader、材质参数、实例创建与销毁 | Shader 需通过原有准入；不包含作者 Renderer Feature |
-| LLM reply and cancellation | 模拟回复、取消、结果存档 | 默认返回确定性 `reply-as-data`；外部服务未验证 |
-
-这些示例展示受支持 API，不代表 Animator、骨骼蒙皮或任意 Unity 插件已经获支持。渲染扩展和素材要求见[渲染与资源边界](Rendering.md)。
-
-## 排查问题
-
-| 现象 | 处理 |
+| 现象 | 下一步 |
 | --- | --- |
-| 普通 Play 提示能力会话未运行 | 确认安装包中存在 `Editor/Windows~/PlayBroker.exe` 及其依赖；退出 Play 后使用完整包重新安装 |
-| 运行时目录缺文件或版本不符 | 重新选择同一发行包中的完整目录，不混用历史验证文件 |
-| 导出按钮不可用 | 先制作快照并取得本次沙箱呈现收据 |
-| 修改后导出的内容没有变化 | 重新制作快照；已有快照不会随场景修改而改变 |
-| 预览停止后仍提示恢复待完成 | 点击 **重试恢复并确认旧预览退出**，查看具体错误 |
-| LLM 只返回固定文本 | 默认模拟模式的预期行为；它验证调用通路，不验证模型效果 |
+| 不支持的组件或资源引用 | 对照外来导出边界，保留原作者工程，不静默降质 |
+| 版本/ABI/摘要不一致 | 使用同一发行的 SDK、验证器与运行库重新导出 |
+| 准入通过但没有播放器 | 取得完整客户端；验证器和源码快照不是安装包 |
+| 旧包可用、新包被拒绝 | 核对 schema，勿用0.3的Editor快照流程冒充0.4 |
+| 投稿后索引仍是旧版 | 检查确切修订投稿是否合并、实际包摘要及发布任务结果 |
 
-报告问题时附上 SDK 版本、Unity/URP 版本、显示配置、复现步骤、错误文本及对应的预览诊断。不要发送外部服务凭据。
-
-
-### 在管理器中分享作品包
-
-在作品行点击“分享”，管理器会导出已安装的 `.spatial` 文件，并在资源管理器中定位。把该文件交给对方后，对方可以拖入管理器导入。导出不改变当前播放，不包含本机存档、音源选择或外部服务配置。导出的文件保留在 Content 数据目录的 `exports` 中；不再需要时可自行删除。
-
-旧格式作品必须由作者允许转分享并使用分享许可导出。新格式目前尚无作者再分享授权声明，因此管理器暂不开放分享；包内的许可证文字不代替该授权。本入口不上传到外部服务。当前尚未提供管理器参数编辑和历史修订选择；修改场景仍需在 Unity 中重新导出。
+报告问题时附 SDK/Unity/URP 版本、稳定GUID、修订、包摘要、错误文本及最小复现；不要上传凭据、私人存档或未获授权素材。
