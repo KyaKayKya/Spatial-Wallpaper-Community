@@ -296,10 +296,58 @@ def prepared_components(args, source, release, old, overlay, stage):
     return native, packages
 
 
+def prepare_transition(args, release, old, initial, source):
+    requested = getattr(args, 'supersede_pending', False)
+    reason = getattr(args, 'supersede_reason', None)
+    if not requested:
+        require(reason is None, '--supersede-reason requires --supersede-pending')
+        require(initial or old['status'] == PENDING and old['source_commit'] == source.commit,
+                'only initial or same-freeze pending release may be prepared; different pending freeze requires explicit supersession')
+        return None
+    require(not initial and old.get('status') == PENDING and old['source_commit'] != source.commit,
+            'supersession requires an unsealed pending release and a different frozen source')
+    require(not old.get('pending_supersession'), 'this release already used its one pending supersession')
+    require(isinstance(reason, str) and 1 <= len(reason.strip()) <= 1024 and not any(ord(c) < 32 for c in reason),
+            'a nonempty single-line --supersede-reason is required')
+    require(old.get('initial_manifest_sha256') == INITIAL_MANIFEST and
+            digest(safe(release / 'Provenance/InitialReleaseManifest.json')) == INITIAL_MANIFEST,
+            'pending supersession initial owned manifest anchor differs')
+    portable = Path(str(release) + '.zip')
+    require(not any(safe(path).exists() for path in (portable, Path(str(portable) + '.sha256'), Path(str(portable) + '.finalize.tmp'))),
+            'pending supersession cannot replace a sealed/final ZIP or unfinished archive')
+    ancestry = subprocess.run(['git', '-C', str(source.root), 'merge-base', '--is-ancestor', old['source_commit'], source.commit],
+                              capture_output=True, check=False)
+    require(ancestry.returncode == 0, 'old pending source is not an ancestor of the new frozen source')
+    return {'old_source_commit': old['source_commit'], 'old_manifest_sha256': digest(release / 'release-manifest.json'),
+            'new_source_commit': source.commit, 'reason': reason.strip(), 'scope': 'one explicit unsealed pending freeze replacement; initial archive retained'}
+
+
+def retain_pending_provenance(overlay, release, old, supersession, stage):
+    prefix = 'Provenance/Pending-' + supersession['old_manifest_sha256'] + '/'
+    # Stage exact old evidence before any overlay can replace its source. Never
+    # read an unlisted local file into the distributable or merely retain hashes.
+    retained = {}
+    for name, expected in sorted(old['files'].items()):
+        if not name.startswith('Provenance/'):
+            continue
+        path = safe(release / relative(name))
+        require(path.is_file() and path.stat().st_size <= 16 * 1024 * 1024, 'old provenance is missing or unexpectedly large: ' + name)
+        raw = path.read_bytes()
+        require(hashlib.sha256(raw).hexdigest() == expected, 'old provenance differs before retention: ' + name)
+        target = prefix + name[len('Provenance/'):]
+        overlay.data(target, raw, stage)
+        retained[target] = expected
+    raw_manifest = (release / 'release-manifest.json').read_bytes()
+    require(hashlib.sha256(raw_manifest).hexdigest() == supersession['old_manifest_sha256'], 'old pending manifest changed before retention')
+    overlay.data(prefix + 'release-manifest.json', raw_manifest, stage)
+    supersession['retained_provenance'] = retained
+    supersession['retained_manifest'] = prefix + 'release-manifest.json'
+
+
 def prepare(args):
     release, old, initial = load_owned(args.release)
-    require(initial or old['status'] == PENDING and old['source_commit'] == args.source_commit, 'only initial or same-freeze pending release may be prepared')
     source = assembly.FrozenSource(args.source_root, args.source_commit)
+    supersession = prepare_transition(args, release, old, initial, source)
     for name in ('tools/desktop/finalize_native_release.py', 'tools/desktop/assemble_native_release.py'):
         require(source.source_matches(name, digest(Path(__file__) if name.endswith('/finalize_native_release.py') else Path(assembly.__file__))), 'executed assembly tool differs from frozen source')
     with tempfile.TemporaryDirectory(prefix='spatial-finalize-') as temporary:
@@ -328,12 +376,18 @@ def prepare(args):
         overlay.data('DEPENDENCIES.json', encoded(dependencies), stage)
         if initial:
             overlay.data('Provenance/InitialReleaseManifest.json', (release / 'release-manifest.json').read_bytes(), stage)
+        if supersession:
+            retain_pending_provenance(overlay, release, old, supersession, stage)
         finalization = {'source_commit': source.commit, 'old_source_commit': old['source_commit'], 'old_manifest_sha256': digest(release / 'release-manifest.json'), 'initial_manifest_sha256': INITIAL_MANIFEST, 'initial_zip_sha256': INITIAL_ZIP, 'finalization_tool_sha256': digest(Path(__file__)), 'assembly_source_sha256': hashlib.sha256(source.bytes('tools/desktop/assemble_native_release.py')).hexdigest(), 'retained_launch_tracker_python': True, 'scope': 'SHA-different owned release overlay; no visual/sound/input/display acceptance'}
+        if supersession:
+            finalization['pending_supersession'] = supersession
         overlay.data('Provenance/Finalization.json', encoded(finalization), stage)
         overlay.preflight()
         archive = archive_initial(release)
         overlay.apply()
         manifest = {**old, 'source_commit': source.commit, 'assembly_tool_sha256': digest(Path(__file__)), 'initial_manifest_sha256': INITIAL_MANIFEST, 'native': native, 'authoring': authoring, 'packages': packages, 'status': PENDING, 'files': dict(sorted(overlay.files.items()))}
+        if supersession:
+            manifest['pending_supersession'] = supersession
         manifest['finalization'] = {'initial_zip': str(archive), 'initial_zip_sha256': INITIAL_ZIP, 'changed_files': len(overlay.changed), 'unchanged_overlay_files': len(overlay.skipped), 'user_data': 'unknown files preserved in place, never added to the release inventory or ZIP'}
         finish_manifest(release, manifest)
         print(json.dumps({'prepared': True, 'release': str(release), 'source_commit': source.commit, 'manifest_sha256': digest(release / 'release-manifest.json'), 'changed_files': len(overlay.changed), 'skipped_files': len(overlay.skipped), 'zip_created': False}))
@@ -414,6 +468,8 @@ def main():
     p.add_argument('--release', type=Path, required=True)
     p.add_argument('--source-commit', required=True)
     p.add_argument('--source-root', type=Path, default=ROOT)
+    p.add_argument('--supersede-pending', action='store_true', help='Replace this lineage pending freeze once, preserving its exact prior manifest')
+    p.add_argument('--supersede-reason', help='Required nonempty reason for the explicit pending freeze replacement')
     mode = p.add_mutually_exclusive_group(required=True)
     mode.add_argument('--prepare-only', action='store_true')
     mode.add_argument('--seal', action='store_true')
@@ -421,6 +477,7 @@ def main():
         p.add_argument('--' + name, type=Path)
     args = p.parse_args()
     require(re.fullmatch(r'[0-9a-f]{40}', args.source_commit), 'full frozen source SHA required')
+    require(not args.seal or not args.supersede_pending and args.supersede_reason is None, 'pending supersession is prepare-only')
     needed = ('smoke_report','external_smoke_report') if args.seal else ('player','native_worker','native_host','native_validator','platform_index','packages','creator_example')
     for name in needed:
         require(getattr(args, name) is not None, 'required for this stage: --' + name.replace('_','-'))

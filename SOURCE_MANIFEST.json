@@ -1,7 +1,7 @@
 {
   "format": 1,
   "profile": "spatial-public-source/1",
-  "source_commit": "a8ffade608f850a56b393fad3cfce3219f99af04",
+  "source_commit": "fce355fc0158ebae6888011127e866cb90cdb517",
   "public_repository": "https://github.com/KyaKayKya/Spatial-Wallpaper-Community",
   "history_included": false,
   "project_license_selected": true,
@@ -20,9 +20,9 @@
   "files": [
     {
       "path": ".github/PULL_REQUEST_TEMPLATE/market.md",
-      "git_blob": "0b68ac6eeb1000b0c0d7c0e4cf2734b940c30d60",
-      "sha256": "c6e89d85734175b9fa187c65f55c9075ef3bad464151a46848bc6bcd7a401b18",
-      "bytes": 1033,
+      "git_blob": "82e7bf8f988e696b5bb1c74c73a599cb8c68683d",
+      "sha256": "55b690d34289069d848bdb4f9ee49129867c447e9d7f440428a8e407de65560d",
+      "bytes": 1432,
       "git_mode": "100644"
     },
     {
@@ -6103,8 +6103,8 @@
     },
     {
       "path": "Prototype/Assets/NativeArtworks/Editor/OriginalNativeExample.cs",
-      "git_blob": "1371bdea6dbbe30ea33b31913160828f9a14ccac",
-      "sha256": "8482ee19dacc21114505521b2f112b09dd1492d9cf6714ac8c6da7e809f9ca19",
+      "git_blob": "29988c9a627fb5ab19c52f27e7333bf35e8d7e82",
+      "sha256": "71cd52f8376aab29baa8b109a70359833deeaaab072bb8aa65b3f7ff49ea99ee",
       "bytes": 5061,
       "git_mode": "100644"
     },
@@ -9834,9 +9834,9 @@
     },
     {
       "path": "docs/guides/SDK0.4发行与体验.md",
-      "git_blob": "2dc958685777e6d3f24b434b416f9793eecedc95",
-      "sha256": "4a43743554d7033938f0473e5af688aaa67f6693c8bbbbb46717959b7b394deb",
-      "bytes": 5058,
+      "git_blob": "85664200ebe533594241e74387dc0073e048ccee",
+      "sha256": "870590ec9d8a41aea585853315cd745722cd8d72fdf22b11ec4ead7db860fe54",
+      "bytes": 5074,
       "git_mode": "100644"
     },
     {
@@ -9855,16 +9855,16 @@
     },
     {
       "path": "docs/guides/壁纸市场创作者入门.md",
-      "git_blob": "d9b687c77c3a64eadfe48856e3cd6ed30ca35c55",
-      "sha256": "072009ec43bbc1fe34efdddf993163182c7e3ada5cb78416056f677c931441f1",
-      "bytes": 8155,
+      "git_blob": "dcc6b21beceb17896cf2562ad94fcd68371c3ba3",
+      "sha256": "453d1fa70a07fa7b83bde6921cc273c48d8a08e3064da2ec686d0d5d922b4a4b",
+      "bytes": 9655,
       "git_mode": "100644"
     },
     {
       "path": "docs/guides/壁纸市场维护.md",
-      "git_blob": "25d0f6fe418c53418f4a9a2ea391f2f12fced49e",
-      "sha256": "a68aa15855a558332b9f66c66849aca9f68091d3b49030d16cb16f4545579cd6",
-      "bytes": 10738,
+      "git_blob": "f9035e0c39597caca50b9528cb40dbc13ec93044",
+      "sha256": "5d51aea5322618817fd944886fafb927b84a3194f623a1e1d093020b82559388",
+      "bytes": 12193,
       "git_mode": "100644"
     },
     {
@@ -9925,16 +9925,23 @@
     },
     {
       "path": "market/schemas/submission.schema.json",
-      "git_blob": "1b2fd9e881dc98380458b4b2e78ee8a04c680152",
-      "sha256": "6057785e91ebdec77b7a2ca955b5fb41867e582be6dae53ed68b12f11a8c1f8b",
-      "bytes": 702,
+      "git_blob": "e61c1faac027d2dd910963b49267ea8cc0239d1e",
+      "sha256": "e85744a8103d9e80b77d2567a51ff00a4ff41fc3e99761d960622d1f7db03135",
+      "bytes": 857,
+      "git_mode": "100644"
+    },
+    {
+      "path": "market/templates/submission.json",
+      "git_blob": "654f6a7b8673db79bb7ea9468cc636e28c980753",
+      "sha256": "e4337bb3b39780b8e01f319849df56cb40ff337e4f88a170f23f6bb589178efb",
+      "bytes": 252,
       "git_mode": "100644"
     },
     {
       "path": "tests/desktop/test_finalizer.py",
-      "git_blob": "a29ff4633a3a99af353070b9f69fea8397f8afcc",
-      "sha256": "bbef8092c0540b4984f6e35c447a4002584041cd494d9668c6d80b05e9acf642",
-      "bytes": 8040,
+      "git_blob": "51d2fd7b1090de33f584427dd7ea9aed26553123",
+      "sha256": "a27253d7d7e58e2aefe217c7ea25b6796a629c9afa44f7fd208931895cad79ea",
+      "bytes": 15295,
       "git_mode": "100644"
     },
     {
@@ -10016,9 +10023,9 @@
     },
     {
       "path": "tests/market/test_publish_revocations.py",
-      "git_blob": "7b6b22a6df99e33b6839127f2d21028ec08e43c6",
-      "sha256": "f00d8f79617b88f447e055facb9d64935492500be88c86eadf8b31257e476f63",
-      "bytes": 2973,
+      "git_blob": "31e2380ef57acaf74ad016ebbcb5143bc5a60e78",
+      "sha256": "6f73f86a64199f0590539ef23499e84905e121785bf3e2bffd5de4d2e568af67",
+      "bytes": 3478,
       "git_mode": "100644"
     },
     {
@@ -10036,6 +10043,13 @@
       "git_mode": "100644"
     },
     {
+      "path": "tests/market/test_revision_approval.py",
+      "git_blob": "1a9cb9d2b14adb49f680d4beeeb0810ff87230c9",
+      "sha256": "7b29ce4c36b06dfaa6efa66df03f3df07f714b574a89fd9bc74f13db785dada0",
+      "bytes": 9676,
+      "git_mode": "100644"
+    },
+    {
       "path": "tests/market/test_stats.py",
       "git_blob": "b9e7353eaf63cf4b52ac155d7bf9f22b93a30d16",
       "sha256": "a3d9e9fc0c223c694e62ec30efda3c498963892506726a96c9b2c69b042ae3a3",
@@ -10044,9 +10058,9 @@
     },
     {
       "path": "tests/market/test_work_binding.py",
-      "git_blob": "999473672994481d7b55ee6ba3dbda43975aa8d2",
-      "sha256": "3bd19809d37cdba1d8fa2edf00e9fec8c2f010dc1cba102a42850da5cf2b9a6d",
-      "bytes": 4149,
+      "git_blob": "c1009cab876e4d7289dc2d8130656232379ff6e4",
+      "sha256": "cad88c69af5c6fb09bda71a4ca4a5ebed6a27bfe0d8816f1931938d98198ba3c",
+      "bytes": 4418,
       "git_mode": "100644"
     },
     {
@@ -11178,9 +11192,9 @@
     },
     {
       "path": "tools/desktop/finalize_native_release.py",
-      "git_blob": "0396289c6ba81a5873df0dec11dea3651624aea5",
-      "sha256": "497f3a24571c0623fcaf378659b9d67de91203c5aeb1dcae890abe8f106054a1",
-      "bytes": 29819,
+      "git_blob": "73038394d4b79e56d04c30fd5b5406ebf9f9499d",
+      "sha256": "2abcadfe84451d9d25f0c57af958dc5a6d996a00af699d6c1ac8a461bb218de1",
+      "bytes": 33848,
       "git_mode": "100644"
     },
     {
@@ -12109,9 +12123,9 @@
     },
     {
       "path": "tools/market/README.md",
-      "git_blob": "fb0fcfd35cc424850b35c592ccce93e870bc9649",
-      "sha256": "41e2f565d706760cee37d564184a158d1f524031a746d88abc836c5b1cbf7e91",
-      "bytes": 1078,
+      "git_blob": "8404d285f4fb5458d900059c734552aec4aa1352",
+      "sha256": "8385a76a0f57908547de1c2231e0880ceea4bc2ec9cd0b952c262ab60b419500",
+      "bytes": 1528,
       "git_mode": "100644"
     },
     {
@@ -12186,9 +12200,9 @@
     },
     {
       "path": "tools/market/publish.py",
-      "git_blob": "a4baf8b9458280cba3e529185141a494bcce6fdd",
-      "sha256": "312efe0e7cc28a4141557929f99b19366b8e0f9b863c7bd752b501893e4ad715",
-      "bytes": 35849,
+      "git_blob": "308fd4e60f732353e7307ae7d803b55d04046283",
+      "sha256": "d82c2c7b69033501177267023df9d5e1b4035e8776984e912425a4d6e883d669",
+      "bytes": 38371,
       "git_mode": "100644"
     },
     {

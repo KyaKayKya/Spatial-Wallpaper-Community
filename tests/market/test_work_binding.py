@@ -61,7 +61,8 @@ class WorkBindingTests(unittest.TestCase):
             def releases(self, name): return inputs(101 if name.startswith("alice/") else 202)[2]
             def asset(self, asset): return asset["browser_download_url"], [BODY]
         registrations = {rid: {"repository": inputs(rid)[0]["full_name"]} for rid in (101, 202)}
-        with patch.object(publish, "registrations", return_value=registrations), self.assertRaisesRegex(MarketError, "another repository"):
+        approvals = {(rid, WORK, "1.0.0"): {"repositoryId": rid, "repository": inputs(rid)[0]["full_name"], "workId": WORK, "revision": "1.0.0", "packageSha256": publish.digest(BODY)} for rid in (101, 202)}
+        with patch.object(publish, "registrations", return_value=registrations), patch.object(publish, "submissions", return_value=approvals), self.assertRaisesRegex(MarketError, "another repository"):
             publish.collect(Source(), None, NOW, {"works": [], "builds": []})
 
     def test_promotion_cannot_discard_previous_guid_ownership(self):
