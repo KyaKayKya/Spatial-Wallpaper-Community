@@ -5,21 +5,25 @@ from unittest.mock import patch
 from fixtures import manifest, releases, repo
 from tools.market import publish
 from tools.market.common import ROOT, MarketError, read_json, validate
+import hashlib
 
 NOW = "2026-11-14T00:00:00Z"
 
 
 class CollectionSource:
     def resolve(self, repository_id): return repo()
-    def manifest(self, repository): return manifest()
-    def releases(self, repository): return releases()
+    def manifest(self, repository):
+        value = manifest(); value["works"][0]["assets"] = ["rain.spatial"]; return value
+    def releases(self, repository):
+        value = releases(); value[0]["assets"][0].update(name="rain.spatial", browser_download_url="https://github.com/alice/windows/releases/download/v1/rain.spatial"); return value
     def asset(self, asset): return asset["browser_download_url"], [b"rain"]
 
 
 class PublishedRevocationTests(unittest.TestCase):
     def collect(self, revocations, registrations=None):
         registrations = {101: {"repository": "alice/windows"}} if registrations is None else registrations
-        with patch.object(publish, "registrations", return_value=registrations):
+        approvals = {(101, "rain", "1.0.0"): {"repositoryId": 101, "repository": "alice/windows", "workId": "rain", "revision": "1.0.0", "packageSha256": hashlib.sha256(b"rain").hexdigest()}}
+        with patch.object(publish, "registrations", return_value=registrations), patch.object(publish, "submissions", return_value=approvals):
             return publish.collect(CollectionSource(), None, NOW, revocations)[0]
 
     def test_real_repository_envelope_becomes_valid_nested_candidate(self):

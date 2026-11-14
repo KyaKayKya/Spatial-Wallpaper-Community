@@ -7,7 +7,8 @@
     "repositoryId",
     "repository",
     "workId",
-    "revision"
+    "revision",
+    "packageSha256"
   ],
   "properties": {
     "schemaVersion": {
@@ -28,6 +29,12 @@
     "revision": {
       "type": "string",
       "pattern": "^[A-Za-z0-9][A-Za-z0-9._+-]{0,99}$"
+    },
+    "packageSha256": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64,
+      "pattern": "^[0-9a-f]{64}$"
     }
   }
 }

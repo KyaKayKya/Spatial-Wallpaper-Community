@@ -1,6 +1,8 @@
 import hashlib
 import json
 import tempfile
+import subprocess
+from types import SimpleNamespace
 import unittest
 import zipfile
 from pathlib import Path
@@ -148,6 +150,126 @@ class FinalizerTests(unittest.TestCase):
         path.write_bytes(final.encoded({'source_commit':'c'*40,'sources':{'Supervisor/Test.cs':'b'*64}}))
         with self.assertRaises(ValueError):
             final.receipt(Source(),path)
+
+    def pending_fixture(self):
+        repo = self.root / 'Repo'
+        repo.mkdir()
+        subprocess.run(['git','init','-q',str(repo)],check=True,capture_output=True)
+        def git(*args, data=None):
+            return subprocess.check_output(['git','-C',str(repo),'-c','user.name=Fixture','-c','user.email=fixture@example.invalid',*args],input=data).decode().strip()
+        tree = git('mktree', data=b'')
+        base = git('commit-tree',tree,data=b'old pending\n')
+        child = git('commit-tree',tree,'-p',base,data=b'reviewed correction\n')
+        unrelated = git('commit-tree',tree,data=b'unrelated lineage\n')
+        anchor = self.file('Provenance/InitialReleaseManifest.json',b'initial-owned-manifest')
+        old = {'format':'spatial-wallpaper-portable-release','version':final.VERSION,'status':final.PENDING,
+               'source_commit':base,'initial_manifest_sha256':anchor,
+               'files':{'Launch.exe':self.file('Launch.exe',b'owned-player'),'Provenance/InitialReleaseManifest.json':anchor}}
+        final.finish_manifest(self.release,old)
+        self.anchor_patch = patch.object(final,'INITIAL_MANIFEST',anchor)
+        self.anchor_patch.start()
+        self.addCleanup(self.anchor_patch.stop)
+        return old, SimpleNamespace(root=repo,commit=child), unrelated
+
+    def transition(self, old, source, enabled=False, reason=None):
+        release, loaded, initial = final.load_owned(self.release)
+        self.assertEqual(old,loaded)
+        return final.prepare_transition(SimpleNamespace(supersede_pending=enabled,supersede_reason=reason),release,loaded,initial,source)
+
+    def test_different_pending_freeze_requires_explicit_flag(self):
+        old, source, _ = self.pending_fixture()
+        with self.assertRaises(ValueError):
+            self.transition(old,source)
+        with self.assertRaises(ValueError):
+            self.transition(old,source,reason='review correction')
+
+    def test_explicit_pending_supersession_binds_old_manifest_and_source(self):
+        old, source, _ = self.pending_fixture()
+        before = (self.release/'release-manifest.json').read_bytes()
+        result = self.transition(old,source,True,' real reviewer gate fix ')
+        self.assertEqual(result['old_source_commit'],old['source_commit'])
+        self.assertEqual(result['old_manifest_sha256'],hashlib.sha256(before).hexdigest())
+        self.assertEqual(result['new_source_commit'],source.commit)
+        self.assertEqual(result['reason'],'real reviewer gate fix')
+        self.assertEqual((self.release/'release-manifest.json').read_bytes(),before)
+        # The unchanged overlay preflight still protects every known input.
+        self.file('Launch.exe',b'unknown local drift')
+        with self.assertRaises(ValueError):
+            final.Overlay(self.release,old['files']).preflight()
+
+    def test_pending_supersession_rejects_unrelated_git_source(self):
+        old, source, unrelated = self.pending_fixture()
+        source.commit = unrelated
+        with self.assertRaises(ValueError):
+            self.transition(old,source,True,'review correction')
+
+    def test_pending_supersession_rejects_sealed_release_and_final_zip(self):
+        old, source, _ = self.pending_fixture()
+        old['status'] = final.SEALED
+        final.finish_manifest(self.release,old)
+        with self.assertRaises(ValueError):
+            self.transition(old,source,True,'review correction')
+        old['status'] = final.PENDING
+        final.finish_manifest(self.release,old)
+        Path(str(self.release)+'.zip').write_bytes(b'final archive must be retained')
+        with self.assertRaises(ValueError):
+            self.transition(old,source,True,'review correction')
+
+    def test_pending_supersession_requires_reason_and_is_one_time(self):
+        old, source, _ = self.pending_fixture()
+        for reason in (None,'','   ','line\nbreak'):
+            with self.subTest(reason=reason), self.assertRaises(ValueError):
+                self.transition(old,source,True,reason)
+        old['pending_supersession']={'old_manifest_sha256':'b'*64}
+        final.finish_manifest(self.release,old)
+        with self.assertRaises(ValueError):
+            self.transition(old,source,True,'another correction')
+
+    def test_pending_supersession_preserves_initial_anchor_requirement(self):
+        old, source, _ = self.pending_fixture()
+        self.file('Provenance/InitialReleaseManifest.json',b'untrusted replacement')
+        with self.assertRaises(ValueError):
+            self.transition(old,source,True,'review correction')
+
+
+    def test_pending_supersession_retains_exact_old_provenance_before_replacement(self):
+        old, source, _ = self.pending_fixture()
+        for name in ('Provenance/Player.json','Provenance/Player.SourceMatch.json','Provenance/ScriptWorker.json','Provenance/Supervisor.json','Provenance/NativeValidator.json','Provenance/NativeArtworks.json','Provenance/CreatorExample.json','Provenance/PlatformIndex.json','Provenance/Finalization.json'):
+            old['files'][name] = self.file(name,('old '+name).encode())
+        self.file('Provenance/unlisted-local.json',b'private local evidence')
+        final.finish_manifest(self.release,old)
+        supersession = self.transition(old,source,True,'review correction')
+        overlay = final.Overlay(self.release,old['files'])
+        overlay.data('Provenance/Player.json',b'new Player evidence',self.stage)
+        final.retain_pending_provenance(overlay,self.release,old,supersession,self.stage)
+        overlay.preflight()
+        overlay.apply()
+        prefix = 'Provenance/Pending-'+supersession['old_manifest_sha256']+'/'
+        for name, sha in old['files'].items():
+            if name.startswith('Provenance/'):
+                retained = prefix + name[len('Provenance/'):]
+                self.assertEqual(final.digest(self.release/retained),sha)
+                self.assertEqual(overlay.files[retained],sha)
+        self.assertEqual((self.release/'Provenance/Player.json').read_bytes(),b'new Player evidence')
+        self.assertFalse((self.release/prefix/'unlisted-local.json').exists())
+        self.assertEqual(final.digest(self.release/supersession['retained_manifest']),supersession['old_manifest_sha256'])
+
+    def test_pending_retention_rejects_old_hash_drift_and_unknown_archive_target(self):
+        old, source, _ = self.pending_fixture()
+        name = 'Provenance/Player.json'
+        old['files'][name] = self.file(name,b'old player receipt')
+        final.finish_manifest(self.release,old)
+        supersession = self.transition(old,source,True,'review correction')
+        self.file(name,b'changed receipt')
+        with self.assertRaises(ValueError):
+            final.retain_pending_provenance(final.Overlay(self.release,old['files']),self.release,old,supersession,self.stage)
+        self.file(name,b'old player receipt')
+        overlay = final.Overlay(self.release,old['files'])
+        final.retain_pending_provenance(overlay,self.release,old,supersession,self.stage)
+        self.file('Provenance/Pending-'+supersession['old_manifest_sha256']+'/Player.json',b'unrelated existing file')
+        with self.assertRaises(ValueError):
+            overlay.preflight()
+
 
 
 if __name__=='__main__':

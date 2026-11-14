@@ -237,18 +237,36 @@ def candidate_previous(previous):
     return validate("catalog", result)
 
 
+def submissions():
+    """Only records in this trusted checkout approve exact work/revision bytes."""
+    found = {}
+    for path in sorted((ROOT / "market/submissions").glob("*/*/*.json")):
+        value = validate("submission", read_json(path))
+        require(path.relative_to(ROOT / "market").as_posix() == submission_path(value), "submission filename mismatch")
+        key = (value["repositoryId"], value["workId"], value["revision"])
+        require(key not in found, "duplicate approved submission")
+        found[key] = value
+    return found
+
+
 def registrations():
     found = {}
     for path in sorted((ROOT / "market/registry").glob("*.json")):
         value = validate("registration", read_json(path))
         require(path.name == str(value["repositoryId"]) + ".json", "registration filename mismatch")
         found[value["repositoryId"]] = value
-    for path in sorted((ROOT / "market/submissions").glob("*/*/*.json")):
-        value = validate("submission", read_json(path))
-        require(path.relative_to(ROOT / "market").as_posix() == submission_path(value), "submission filename mismatch")
+    for value in submissions().values():
         prior = found.setdefault(value["repositoryId"], {k: value[k] for k in ("schemaVersion", "repositoryId", "repository")})
         require(prior["repository"] == value["repository"], "submission repository identity conflict")
     return found
+
+
+def require_approved_package(entry, approval):
+    assets = entry["build"]["assets"]
+    require(len(assets) == 1 and assets[0]["name"].endswith(".spatial"), "approved revision requires exactly one .spatial asset")
+    require(entry["repositoryId"] == approval["repositoryId"] and entry["workId"] == approval["workId"]
+            and entry["build"]["version"] == approval["revision"] and assets[0]["sha256"] == approval["packageSha256"],
+            "downloaded package SHA256 or revision differs from approved submission")
 
 
 def normalize_revocations(value):
@@ -269,36 +287,51 @@ def collect(gh, previous, now, revocations):
     revocations = normalize_revocations(revocations)
     old = candidate_previous(previous)
     generation = old["generation"] + 1 if old else 1
-    entries, observations = {}, []
+    # A registered author may change its default-branch manifest at any time.
+    # Preserve signed revisions until an exact new submission is approved;
+    # registration alone never approves all future works or revisions.
+    entries = {e["key"]: copy.deepcopy(e) for e in old["entries"]} if old else {}
+    fields = ("description", "preview", "discussion", "comments")
+    presentation = {e["key"]: {f: copy.deepcopy(e[f]) for f in fields if f in e}
+                    for e in previous["entries"]} if previous else {}
+    approvals = submissions()
+    releases_by_repository = {}
     for repository_id, registration in sorted(registrations().items()):
         repository = gh.resolve(repository_id)
         require(repository["full_name"].lower() == registration["repository"].lower(), "registered repository renamed; review path rebind")
-        manifest = gh.manifest(repository)
+        from .registry import validate_manifest
+        manifest = validate_manifest(repository, gh.manifest(repository))
         releases = gh.releases(repository["full_name"])
-        snapshot = catalog.build_snapshot(repository, manifest, releases, gh.asset, old, generation, now, revocations)
+        releases_by_repository[repository_id] = releases
+        approved = [work for work in manifest["works"] if (repository_id, work["id"], work["version"]) in approvals]
+        if not approved:
+            continue
+        selected = copy.deepcopy(manifest)
+        selected["works"] = approved
+        snapshot = catalog.build_snapshot(repository, selected, releases, gh.asset, old, generation, now, revocations)
+        selected_ids = {work["id"] for work in approved}
         for entry in snapshot["entries"]:
-            if entry["repositoryId"] == repository_id:
-                current_work = next((w for w in manifest["works"] if w["id"] == entry["workId"]), None)
-                if current_work:
-                    for field in ("description", "preview"):
-                        if field in current_work:
-                            entry[field] = copy.deepcopy(current_work[field])
-                entries[entry["key"]] = entry
-                for build in entry["history"]:
-                    for asset in build["assets"]:
-                        matches = [a for r in releases if r["id"] == build["releaseId"] for a in r["assets"] if a["id"] == asset["id"] and a["name"] == asset["name"] and a["size"] == asset["size"]]
-                        if len(matches) == 1:
-                            observations.append({"repositoryId": repository_id, "assetId": asset["id"], "work": entry["key"], "buildId": build["identity"], "downloadCount": matches[0]["download_count"], "status": "revoked" if entry["status"] == "revoked" else "installable", "volumeGroup": None})
-    if old:
-        for entry in old["entries"]:
-            if entry["key"] not in entries:
-                entry = copy.deepcopy(entry)
-                entry["status"] = "revoked"
-                entries[entry["key"]] = entry
-    # Candidate schema intentionally excludes optional presentation fields.
-    presentation = {k: {f: v[f] for f in ("description", "preview") if f in v} for k, v in entries.items()}
+            if entry["repositoryId"] != repository_id or entry["workId"] not in selected_ids:
+                continue
+            approval = approvals[(repository_id, entry["workId"], entry["build"]["version"])]
+            require(approval["repository"].lower() == repository["full_name"].lower(), "approved repository identity changed")
+            require_approved_package(entry, approval)
+            current_work = next(w for w in approved if w["id"] == entry["workId"])
+            presentation.setdefault(entry["key"], {}).update({f: copy.deepcopy(current_work[f]) for f in ("description", "preview") if f in current_work})
+            entries[entry["key"]] = entry
+    observations = []
     for entry in entries.values():
-        entry.pop("description", None); entry.pop("preview", None)
+        # Official withdrawal is independent of whether any new revision was
+        # approved or the author still exposes this work in its manifest.
+        if entry["key"] in revocations["works"] or entry["build"]["identity"] in revocations["builds"]:
+            entry["status"] = "revoked"
+        presentation.setdefault(entry["key"], {})
+        releases = releases_by_repository.get(entry["repositoryId"], [])
+        for build in entry["history"]:
+            for asset in build["assets"]:
+                matches = [a for r in releases if r["id"] == build["releaseId"] for a in r["assets"] if a["id"] == asset["id"] and a["name"] == asset["name"] and a["size"] == asset["size"]]
+                if len(matches) == 1:
+                    observations.append({"repositoryId": entry["repositoryId"], "assetId": asset["id"], "work": entry["key"], "buildId": build["identity"], "downloadCount": matches[0]["download_count"], "status": "revoked" if entry["status"] == "revoked" else "installable", "volumeGroup": None})
     catalog.require_work_bindings(entries.values(), old["entries"] if old else ())
     return validate("catalog", {"schemaVersion": 1, "kind": "candidate", "generation": generation, "generatedAt": now,
             "expiresAt": (instant(now) + timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -348,11 +381,18 @@ def check_pr(gh, number, checked_head, now, admit=None, directory=None):
     manifest = validate_manifest(repository, gh.manifest(repository))
     if "workId" in value:
         require(any(w["id"] == value["workId"] and w["version"] == value["revision"] for w in manifest["works"]), "submitted revision absent from author default-branch manifest")
-    snapshot = catalog.build_snapshot(repository, manifest, gh.releases(repository["full_name"]), gh.asset, None, 1, now, {"works": [], "builds": []})
-    if admit is not None:
-        promote(snapshot, gh.asset, admit, directory)
+        manifest = copy.deepcopy(manifest)
+        manifest["works"] = [w for w in manifest["works"] if w["id"] == value["workId"]]
+        snapshot = catalog.build_snapshot(repository, manifest, gh.releases(repository["full_name"]), gh.asset, None, 1, now, {"works": [], "builds": []})
+        require_approved_package(snapshot["entries"][0], value)
+        if admit is not None:
+            promote(snapshot, gh.asset, admit, directory)
+    else:
+        # Repository registration is discovery only, never revision approval.
+        snapshot = {"entries": []}
     require(gh.get(path)[0]["head"]["sha"] == checked_head, "PR changed during metadata check")
-    return {"checkedHead": checked_head, "repositoryId": repository["id"], "works": len(snapshot["entries"]), "scope": "read-only metadata and native-byte admission" if admit is not None else "metadata only; native admission not run"}
+    return {"checkedHead": checked_head, "repositoryId": repository["id"], "works": len(snapshot["entries"]),
+            "packageSha256": value.get("packageSha256"), "scope": "source registration only; no revision approved" if "workId" not in value else "read-only metadata and native-byte admission" if admit is not None else "metadata and actual package SHA256; native admission not run"}
 
 
 def prepare_validator(gh, output, expected_zip_sha256):
