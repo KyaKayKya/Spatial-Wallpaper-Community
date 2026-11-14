@@ -1,0 +1,10 @@
+*.pem
+*.key
+*.dpapi
+.env
+.local-assets/
+Validation/
+Library/
+Temp/
+__pycache__/
+*.pyc
